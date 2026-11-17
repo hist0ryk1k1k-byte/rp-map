@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Карта мира · Alternative Universe</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🗺️%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Интерактивная политическая карта RP-проекта Alternative Universe">
+
+  <!-- Leaflet 1.9.4 (стабильная ветка с глобальным L) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <!-- Font Awesome 6 (иконки интерфейса и маркеры столиц) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═════════════════════════ ВЕРХНЯЯ ПАНЕЛЬ ═════════════════════════ -->
+  <header id="topbar">
+    <button class="icon-btn" id="btn-toggle-sidebar" title="Боковая панель"><i class="fa-solid fa-bars"></i></button>
+    <div class="brand"><i class="fa-solid fa-earth-europe"></i><span>Alternative Universe</span></div>
+
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="search-input" type="search" placeholder="Государство, столица, провинция…" autocomplete="off" spellcheck="false">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="icon-btn toggle" id="btn-labels"   data-pref="labels"   title="Подписи государств"><i class="fa-solid fa-font"></i></button>
+      <button class="icon-btn toggle" id="btn-grid"     data-pref="grid"     title="Сетка провинций"><i class="fa-solid fa-border-all"></i></button>
+      <button class="icon-btn toggle" id="btn-capitals" data-pref="capitals" title="Столицы"><i class="fa-solid fa-star"></i></button>
+      <button class="btn btn-save" id="btn-save" hidden title="Сохранить в GitHub (Ctrl+S)">
+        <i class="fa-brands fa-github"></i><span class="label">Сохранить</span><span class="dirty-dot"></span>
+      </button>
+      <button class="btn btn-mod" id="btn-mod"><i class="fa-solid fa-lock"></i><span class="label">Модератор</span></button>
+    </div>
+  </header>
+
+  <main id="app">
+    <div id="map" data-tool="select"></div>
+
+    <!-- ═════════════════════════ БОКОВАЯ ПАНЕЛЬ ═════════════════════════ -->
+    <aside id="sidebar" class="panel">
+      <nav class="tabs">
+        <button class="tab active" data-tab="countries"><i class="fa-solid fa-flag"></i><span>Государства</span></button>
+        <button class="tab mod-only" data-tab="editor"><i class="fa-solid fa-pen-ruler"></i><span>Редактор</span></button>
+        <button class="tab mod-only" data-tab="data"><i class="fa-solid fa-database"></i><span>Данные</span></button>
+        <button class="tab mod-only" data-tab="github"><i class="fa-brands fa-github"></i><span>GitHub</span></button>
+      </nav>
+
+      <!-- Государства (публичная вкладка) -->
+      <section class="tab-panel active" data-panel="countries">
+        <input id="country-filter" class="input" type="search" placeholder="Фильтр…" autocomplete="off">
+        <ul id="country-list" class="country-list"></ul>
+        <p class="muted small" id="world-stats"></p>
+      </section>
+
+      <!-- Редактор государства -->
+      <section class="tab-panel" data-panel="editor">
+        <div class="field-row">
+          <select id="editor-select" class="input grow"></select>
+          <button type="button" class="btn btn-accent" id="btn-new-country"><i class="fa-solid fa-plus"></i> Новое</button>
+        </div>
+        <h3 class="section-title" id="editor-title">Новое государство</h3>
+
+        <form id="country-form" autocomplete="off" novalidate>
+          <div class="field-row">
+            <label class="field grow"><span>Название *</span><input name="name" class="input" maxlength="80"></label>
+            <label class="field"><span>Цвет</span>
+              <span class="color-field"><input type="color" name="colorPicker" value="#e63946"><input name="color" class="input mono" maxlength="7"></span>
+            </label>
+          </div>
+          <label class="field"><span>ID <small class="muted">латиница, цифры, «_» и «-»; после создания не меняется</small></span>
+            <input name="id" class="input mono" maxlength="64"></label>
+          <label class="field"><span>URL флага</span>
+            <span class="flag-field"><input name="flagUrl" class="input" placeholder="https://… или flags/lor.png"><img id="flag-preview" alt="" hidden></span>
+          </label>
+
+          <fieldset class="field-group">
+            <legend>Столица</legend>
+            <label class="field"><span>Название</span><input name="capName" class="input"></label>
+            <div class="field-row">
+              <label class="field grow"><span>Широта</span><input name="capLat" class="input mono" inputmode="decimal"></label>
+              <label class="field grow"><span>Долгота</span><input name="capLng" class="input mono" inputmode="decimal"></label>
+              <button type="button" class="btn icon-only" id="btn-pick-capital" title="Указать на карте"><i class="fa-solid fa-location-dot"></i></button>
+            </div>
+          </fieldset>
+
+          <div class="field-row">
+            <label class="field grow"><span>Население</span><input name="population" class="input"></label>
+            <label class="field grow"><span>ВВП</span><input name="gdp" class="input"></label>
+          </div>
+          <label class="field"><span>Крупные города <small class="muted">через запятую или с новой строки</small></span>
+            <textarea name="cities" class="input" rows="3"></textarea></label>
+          <label class="field"><span>Telegram</span><input name="tgLink" class="input" placeholder="https://t.me/… или @channel"></label>
+          <label class="field"><span>Описание</span><textarea name="description" class="input" rows="5"></textarea></label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent"><i class="fa-solid fa-check"></i> Применить</button>
+            <button type="button" class="btn" id="btn-make-active" title="Сделать активным для кисти"><i class="fa-solid fa-paintbrush"></i> Кисть</button>
+            <button type="button" class="btn btn-danger" id="btn-delete-country" title="Удалить государство"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Данные: сетка, импорт/экспорт -->
+      <section class="tab-panel" data-panel="data">
+        <h3 class="section-title">Сетка провинций</h3>
+        <p class="muted small" id="grid-info"></p>
+        <p class="muted small" id="cache-info"></p>
+        <div class="btn-col">
+          <button class="btn btn-accent" id="btn-export-grid"><i class="fa-solid fa-file-arrow-down"></i> Скачать оптимизированный provinces.json</button>
+          <button class="btn" id="btn-load-grid"><i class="fa-solid fa-upload"></i> Загрузить свою сетку провинций (.json/.topojson)</button>
+          <button class="btn" id="btn-clear-cache"><i class="fa-solid fa-rotate"></i> Сбросить кэш сетки</button>
+          <button class="btn" id="btn-clean-orphans"><i class="fa-solid fa-broom"></i> Удалить «осиротевшие» владения</button>
+        </div>
+        <p class="hint">Порядок загрузки сетки: <code>provinces.json</code> из репозитория → кэш браузера → скачивание Natural Earth ADM-1 (~41 МБ, один раз). Положите скачанный <code>provinces.json</code> рядом с <code>index.html</code> — тогда все посетители получат лёгкую сетку сразу. Сетка, загруженная кнопкой, действует только в этой вкладке.</p>
+
+        <h3 class="section-title">Состояние карты</h3>
+        <div class="btn-col">
+          <button class="btn" id="btn-export"><i class="fa-solid fa-download"></i> Скачать map-state.json</button>
+          <button class="btn" id="btn-import"><i class="fa-solid fa-file-import"></i> Импортировать map-state.json</button>
+          <button class="btn btn-danger" id="btn-reset-owners"><i class="fa-solid fa-eraser"></i> Снять все владения</button>
+        </div>
+        <h3 class="section-title">Горячие клавиши</h3>
+        <ul class="hotkeys small">
+          <li><kbd>V</kbd> выбор · <kbd>B</kbd> кисть · <kbd>E</kbd> ластик · <kbd>I</kbd> пипетка · <kbd>P</kbd> зона · <kbd>M</kbd> магнит</li>
+          <li><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd> отмена / повтор · <kbd>Ctrl</kbd>+<kbd>S</kbd> сохранить</li>
+          <li>Зона: клик ставит точку, <kbd>Shift</kbd>+тянуть — рисование от руки, <kbd>Alt</kbd> — без привязки; <kbd>Enter</kbd>, двойной клик или клик по первой точке завершает, <kbd>Backspace</kbd> убирает точку, <kbd>Esc</kbd> отменяет</li>
+          <li>Правка зоны: выберите её инструментом «Выбор» — тяните вершины, ПКМ по вершине удаляет её, кружок на ребре добавляет новую</li>
+          <li>«⌀ Нейтральная территория» в списке государств: нарисованная зона вырезает кусок из страны</li>
+        </ul>
+      </section>
+
+      <!-- GitHub -->
+      <section class="tab-panel" data-panel="github">
+        <form id="gh-form" autocomplete="off">
+          <div class="field-row">
+            <label class="field grow"><span>Владелец</span><input name="owner" class="input mono" placeholder="username"></label>
+            <label class="field grow"><span>Репозиторий</span><input name="repo" class="input mono" placeholder="rp-map"></label>
+          </div>
+          <div class="field-row">
+            <label class="field grow"><span>Ветка</span><input name="branch" class="input mono" placeholder="main"></label>
+            <label class="field grow"><span>Файл</span><input name="path" class="input mono" placeholder="map-state.json"></label>
+          </div>
+          <label class="field"><span>Токен (fine-grained PAT)</span>
+            <input name="token" type="password" class="input mono" placeholder="github_pat_…" autocomplete="off"></label>
+          <label class="check"><input type="checkbox" name="remember"> Запомнить токен на этом устройстве</label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent"><i class="fa-solid fa-floppy-disk"></i> Сохранить настройки</button>
+            <button type="button" class="btn" id="btn-gh-check"><i class="fa-solid fa-plug-circle-check"></i> Проверить</button>
+          </div>
+        </form>
+
+        <div class="divider"></div>
+        <label class="field"><span>Комментарий к коммиту</span><input id="commit-msg" class="input" placeholder="Обновление карты"></label>
+        <div class="btn-col">
+          <button class="btn btn-accent" id="btn-gh-save"><i class="fa-solid fa-cloud-arrow-up"></i> Сохранить в репозиторий</button>
+          <button class="btn" id="btn-gh-load"><i class="fa-solid fa-cloud-arrow-down"></i> Загрузить свежую версию из репозитория</button>
+        </div>
+        <p class="muted small" id="gh-status"></p>
+
+        <details class="hint">
+          <summary>Как получить токен</summary>
+          <ol>
+            <li>GitHub → Settings → Developer settings → Personal access tokens → <b>Fine-grained tokens</b> → Generate new token.</li>
+            <li>Repository access: <b>Only select repositories</b> → репозиторий карты.</li>
+            <li>Permissions → Repository → <b>Contents: Read and write</b>.</li>
+            <li>Токен хранится только в вашем браузере и отправляется только на api.github.com.</li>
+          </ol>
+        </details>
+      </section>
+    </aside>
+
+    <!-- ═════════════════════════ КАРТОЧКА ГОСУДАРСТВА ═════════════════════════ -->
+    <aside id="info-panel" class="panel" hidden>
+      <button class="icon-btn close" id="btn-close-info" title="Закрыть (Esc)"><i class="fa-solid fa-xmark"></i></button>
+      <div id="info-content"></div>
+    </aside>
+
+    <!-- ═════════════════════════ ПАНЕЛЬ ИНСТРУМЕНТОВ МОДЕРАТОРА ═════════════════════════ -->
+    <div id="toolbar" class="toolbar panel" hidden>
+      <div class="tool-group">
+        <button class="tool" data-tool="select" title="Выбор (V)"><i class="fa-solid fa-arrow-pointer"></i></button>
+        <button class="tool" data-tool="paint"  title="Кисть: присвоить провинцию (B)"><i class="fa-solid fa-paintbrush"></i></button>
+        <button class="tool" data-tool="erase"  title="Ластик: снять владение (E)"><i class="fa-solid fa-eraser"></i></button>
+        <button class="tool" data-tool="pick"   title="Пипетка: взять государство с карты (I)"><i class="fa-solid fa-eye-dropper"></i></button>
+        <button class="tool" data-tool="draw"   title="Нарисовать особую зону (P): клики — точки, Shift+тянуть — от руки"><i class="fa-solid fa-draw-polygon"></i></button>
+      </div>
+      <button class="tool" id="btn-snap" title="Привязка к границам (M). Alt — временно отключить"><i class="fa-solid fa-magnet"></i></button>
+      <span class="tool-sep"></span>
+      <label class="active-country" title="Активное государство">
+        <span class="swatch" id="active-swatch"></span>
+        <select id="active-country"></select>
+      </label>
+      <label class="switch" title="Протяжная кисть: зажмите левую кнопку мыши и ведите по провинциям. Перемещение карты мышью на это время отключено.">
+        <input type="checkbox" id="drag-brush"><span>Протяжка</span>
+      </label>
+      <span class="tool-sep"></span>
+      <button class="tool" id="btn-undo" title="Отменить (Ctrl+Z)"><i class="fa-solid fa-rotate-left"></i></button>
+      <button class="tool" id="btn-redo" title="Повторить (Ctrl+Y)"><i class="fa-solid fa-rotate-right"></i></button>
+      <div class="draw-controls" id="draw-controls" hidden>
+        <span class="draw-info">
+          <span id="draw-count" class="small">0 точек</span>
+          <span class="tool-hint">клик — точка · Shift+тянуть — от руки · Alt — без магнита · клик по 1-й точке — замкнуть</span>
+        </span>
+        <button class="btn btn-small btn-accent" id="btn-draw-finish">Готово</button>
+        <button class="btn btn-small" id="btn-draw-cancel">Отмена</button>
+      </div>
+      <div class="draw-controls" id="edit-controls" hidden>
+        <span class="draw-info">
+          <span class="small"><i class="fa-solid fa-bezier-curve"></i> <b id="edit-name"></b></span>
+          <span class="tool-hint" id="edit-hint"></span>
+        </span>
+        <button class="btn btn-small btn-accent" id="btn-edit-done">Готово</button>
+      </div>
+    </div>
+
+    <div id="draft-banner" class="banner panel" hidden></div>
+  </main>
+
+  <div id="loader">
+    <div class="spinner"></div>
+    <div id="loader-text">Загрузка карты…</div>
+    <div id="loader-progress" class="progress" hidden><div id="loader-bar" class="progress-bar"></div></div>
+    <div id="loader-sub" class="small"></div>
+  </div>
+  <div id="toasts" aria-live="polite"></div>
+
+  <input type="file" id="file-state" accept=".json,application/json" hidden>
+  <input type="file" id="file-provinces" accept=".json,.topojson,.geojson,application/json,application/geo+json" hidden>
+
+  <!-- Скрипты -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  <!-- topojson-server: топология для линий границ между государствами -->
+  <script src="https://unpkg.com/topojson-server@3"></script>
+  <!-- topojson-simplify подгружается лениво из app.js — только при первой оптимизации ADM-1 -->
+  <!-- Turf.js: булевы операции силуэтов (union/difference), очистка и упрощение нарисованных зон -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
