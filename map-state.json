@@ -14,10 +14,92 @@
       "gdp": "10404 млрд",
       "cities": [],
       "tgLink": "https://t.me/dunajreprp",
-      "description": ""
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true
+    },
+    "country_2": {
+      "id": "country_2",
+      "name": "Римська Колоніальна Компанія",
+      "color": "#6c33c1",
+      "flagUrl": "",
+      "capital": {
+        "name": "Тінгіс",
+        "lat": 35.7842,
+        "lng": -5.8616
+      },
+      "population": "",
+      "gdp": "",
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_1",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true
+    },
+    "country_3": {
+      "id": "country_3",
+      "name": "ДВАК",
+      "color": "#b8c133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Фуншал",
+        "lat": 32.6781,
+        "lng": -16.8875
+      },
+      "population": "",
+      "gdp": "",
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_1",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true
+    },
+    "country_4": {
+      "id": "country_4",
+      "name": "Індійська Компанія",
+      "color": "#44c133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Калькутта",
+        "lat": 22.4434,
+        "lng": 88.1156
+      },
+      "population": "",
+      "gdp": "",
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_1",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true
     }
   },
   "provinceOwners": {
+    "ARE-338": "country_1",
+    "ARE-339": "country_1",
+    "ARE-341": "country_1",
+    "ARE-344": "country_1",
+    "ARE-346": "country_1",
+    "ARE-347": "country_1",
+    "ARE-348": "country_1",
+    "ARE-349": "country_1",
+    "ARE-350": "country_1",
+    "BEN-2169": "country_3",
+    "BEN-2171": "country_3",
+    "BEN-2174": "country_3",
+    "BEN-2176": "country_3",
+    "BEN-2177": "country_3",
+    "BEN-2178": "country_3",
+    "BEN-2179": "country_3",
+    "BEN-2180": "country_3",
+    "BEN-2182": "country_3",
+    "BHR-4926": "country_1",
+    "BHR-4927": "country_1",
+    "BHR-4928": "country_1",
+    "BHR-4930": "country_1",
     "CHE-159": "country_1",
     "CHE-160": "country_1",
     "CHE-161": "country_1",
@@ -44,6 +126,76 @@
     "CHE-3426": "country_1",
     "CHE-3427": "country_1",
     "CHE-3473": "country_1",
+    "COL-1318": "country_3",
+    "CPV-5041": "country_3",
+    "CPV-5042": "country_3",
+    "CPV-5043": "country_3",
+    "CPV-5045": "country_3",
+    "CPV-5046": "country_3",
+    "CPV-5047": "country_3",
+    "CPV-5048": "country_3",
+    "CPV-5049": "country_3",
+    "CPV-5050": "country_3",
+    "CPV-5051": "country_3",
+    "CPV-5052": "country_3",
+    "CPV-5053": "country_3",
+    "CPV-5054": "country_3",
+    "CPV-5055": "country_3",
+    "CPV-5056": "country_3",
+    "CPV-5057": "country_3",
+    "CPV-5058": "country_3",
+    "CPV-5059": "country_3",
+    "CPV-5060": "country_3",
+    "CPV-5061": "country_3",
+    "CPV-5062": "country_3",
+    "DZA-2143": "country_2",
+    "DZA-2144": "country_2",
+    "DZA-2145": "country_2",
+    "DZA-2146": "country_2",
+    "DZA-2147": "country_2",
+    "DZA-2148": "country_2",
+    "DZA-2149": "country_2",
+    "DZA-2150": "country_2",
+    "DZA-2163": "country_2",
+    "DZA-2164": "country_2",
+    "DZA-2165": "country_2",
+    "DZA-2166": "country_2",
+    "DZA-2188": "country_2",
+    "DZA-2189": "country_2",
+    "DZA-2190": "country_2",
+    "DZA-2191": "country_2",
+    "DZA-2192": "country_2",
+    "DZA-2193": "country_2",
+    "DZA-2194": "country_2",
+    "DZA-2195": "country_2",
+    "DZA-2196": "country_2",
+    "DZA-2197": "country_2",
+    "DZA-2198": "country_2",
+    "DZA-2199": "country_2",
+    "DZA-2200": "country_2",
+    "DZA-2201": "country_2",
+    "DZA-2202": "country_2",
+    "DZA-2203": "country_2",
+    "DZA-2204": "country_2",
+    "DZA-2205": "country_2",
+    "DZA-2206": "country_2",
+    "DZA-2207": "country_2",
+    "DZA-2208": "country_2",
+    "DZA-2209": "country_2",
+    "DZA-2210": "country_2",
+    "DZA-2211": "country_2",
+    "DZA-2212": "country_2",
+    "DZA-2213": "country_2",
+    "DZA-2214": "country_2",
+    "DZA-2215": "country_2",
+    "DZA-2216": "country_2",
+    "DZA-2217": "country_2",
+    "DZA-2218": "country_2",
+    "DZA-2219": "country_2",
+    "DZA-2220": "country_2",
+    "DZA-2221": "country_2",
+    "DZA-2222": "country_2",
+    "DZA-2223": "country_2",
     "ESP-5802": "country_1",
     "ESP-5803": "country_1",
     "ESP-5804": "country_1",
@@ -68,6 +220,7 @@
     "ESP-5826": "country_1",
     "ESP-5827": "country_1",
     "ESP-5828": "country_1",
+    "ESP-5829": "country_3",
     "ESP-5830": "country_1",
     "ESP-5831": "country_1",
     "ESP-5832": "country_1",
@@ -79,6 +232,7 @@
     "ESP-5839": "country_1",
     "ESP-5840": "country_1",
     "ESP-5841": "country_1",
+    "ESP-5842": "country_3",
     "ESP-5843": "country_1",
     "ESP-5844": "country_1",
     "ESP-5845": "country_1",
@@ -97,12 +251,42 @@
     "FRA-5304": "country_1",
     "FRA-5351": "country_1",
     "FRA-5352": "country_1",
+    "GHA-2155": "country_3",
+    "GHA-2158": "country_3",
+    "GHA-2159": "country_3",
+    "GHA-2160": "country_3",
+    "GHA-2161": "country_3",
+    "GHA-2162": "country_3",
+    "GHA-2172": "country_3",
+    "GHA-2173": "country_3",
     "GIB+00?": "country_1",
+    "GNQ-1478": "country_3",
+    "GNQ-1479": "country_3",
+    "HKG-5153": "country_4",
+    "HKG-5154": "country_4",
+    "HKG-5155": "country_4",
+    "HKG-5156": "country_4",
+    "HKG-5158": "country_4",
+    "HKG-5159": "country_4",
+    "HKG-5160": "country_4",
+    "HKG-5161": "country_4",
+    "HKG-5162": "country_4",
+    "HKG-5163": "country_4",
+    "HKG-5164": "country_4",
+    "HKG-5165": "country_4",
+    "HKG-5166": "country_4",
+    "HKG-5167": "country_4",
+    "HKG-5168": "country_4",
+    "HKG-5169": "country_4",
+    "HKG-5170": "country_4",
     "HRV-1493": "country_1",
     "HRV-1583": "country_1",
     "HRV-1584": "country_1",
     "HRV-1586": "country_1",
     "HRV-1592": "country_1",
+    "IRN-3210": "country_1",
+    "IRN-3212": "country_1",
+    "IRN-3228": "country_1",
     "ITA-5358": "country_1",
     "ITA-5359": "country_1",
     "ITA-5360": "country_1",
@@ -212,6 +396,27 @@
     "ITA-5465": "country_1",
     "ITA-5466": "country_1",
     "ITA-5467": "country_1",
+    "KWT-1663": "country_1",
+    "KWT-1664": "country_1",
+    "KWT-1665": "country_1",
+    "KWT-1666": "country_1",
+    "KWT-1667": "country_1",
+    "KWT-3506": "country_1",
+    "LBY-2882": "country_2",
+    "LBY-2964": "country_2",
+    "LBY-2966": "country_2",
+    "LBY-2967": "country_2",
+    "LBY-2968": "country_2",
+    "LBY-2969": "country_2",
+    "LBY-2970": "country_2",
+    "LBY-2971": "country_2",
+    "LBY-2973": "country_2",
+    "LBY-2974": "country_2",
+    "LBY-2975": "country_2",
+    "LBY-2976": "country_2",
+    "LBY-2978": "country_2",
+    "LBY-2985": "country_2",
+    "LBY-5488": "country_2",
     "LIE-4892": "country_1",
     "LIE-4893": "country_1",
     "LIE-4894": "country_1",
@@ -223,6 +428,113 @@
     "LIE-4900": "country_1",
     "LIE-4901": "country_1",
     "LIE-4902": "country_1",
+    "LKA-2448": "country_4",
+    "LKA-2449": "country_4",
+    "LKA-2450": "country_4",
+    "LKA-2451": "country_4",
+    "LKA-2452": "country_4",
+    "LKA-2453": "country_4",
+    "LKA-2454": "country_4",
+    "LKA-2455": "country_4",
+    "LKA-2456": "country_4",
+    "LKA-2457": "country_4",
+    "LKA-2458": "country_4",
+    "LKA-2459": "country_4",
+    "LKA-2460": "country_4",
+    "LKA-2461": "country_4",
+    "LKA-2462": "country_4",
+    "LKA-2463": "country_4",
+    "LKA-2464": "country_4",
+    "LKA-2465": "country_4",
+    "LKA-2466": "country_4",
+    "LKA-2467": "country_4",
+    "LKA-2468": "country_4",
+    "LKA-2469": "country_4",
+    "LKA-2470": "country_4",
+    "LKA-2471": "country_4",
+    "LKA-2472": "country_4",
+    "MAR-1445": "country_2",
+    "MAR-1446": "country_2",
+    "MAR-1447": "country_2",
+    "MAR-1448": "country_2",
+    "MAR-1449": "country_2",
+    "MAR-1451": "country_2",
+    "MAR-1452": "country_2",
+    "MAR-1453": "country_2",
+    "MAR-1454": "country_2",
+    "MAR-1455": "country_2",
+    "MAR-1456": "country_2",
+    "MAR-1457": "country_2",
+    "MAR-3457": "country_2",
+    "MYS-1137": "country_4",
+    "MYS-1139": "country_4",
+    "MYS-1140": "country_4",
+    "MYS-1143": "country_4",
+    "MYS-1144": "country_4",
+    "MYS-1145": "country_4",
+    "MYS-1146": "country_4",
+    "MYS-1147": "country_4",
+    "MYS-1148": "country_4",
+    "MYS-1149": "country_4",
+    "MYS-4831": "country_4",
+    "MYS-4832": "country_4",
+    "NGA-2839": "country_3",
+    "NGA-2841": "country_3",
+    "NGA-2842": "country_3",
+    "NGA-2843": "country_3",
+    "NGA-2844": "country_3",
+    "NGA-2845": "country_3",
+    "NGA-2846": "country_3",
+    "NGA-2847": "country_3",
+    "NGA-2848": "country_3",
+    "NGA-2849": "country_3",
+    "NGA-2850": "country_3",
+    "NGA-2851": "country_3",
+    "NGA-2852": "country_3",
+    "NGA-2853": "country_3",
+    "NGA-2854": "country_3",
+    "NGA-2855": "country_3",
+    "NGA-2856": "country_3",
+    "NGA-2857": "country_3",
+    "NGA-2858": "country_3",
+    "NGA-2859": "country_3",
+    "NGA-2860": "country_3",
+    "NGA-2861": "country_3",
+    "NGA-2862": "country_3",
+    "NGA-2863": "country_3",
+    "NGA-2864": "country_3",
+    "NGA-2865": "country_3",
+    "NGA-2866": "country_3",
+    "NGA-2867": "country_3",
+    "NGA-2868": "country_3",
+    "NGA-2869": "country_3",
+    "NGA-2870": "country_3",
+    "NGA-2873": "country_3",
+    "NGA-2881": "country_3",
+    "NGA-3470": "country_3",
+    "OMN-2404": "country_1",
+    "OMN-2406": "country_1",
+    "OMN-2414": "country_1",
+    "OMN-2424": "country_1",
+    "OMN-2425": "country_1",
+    "OMN-2426": "country_1",
+    "OMN-4836": "country_1",
+    "OMN-5496": "country_1",
+    "OMN-5497": "country_1",
+    "PRT-736": "country_3",
+    "QAT-1099": "country_1",
+    "QAT-1100": "country_1",
+    "QAT-1101": "country_1",
+    "QAT-1105": "country_1",
+    "QAT-1106": "country_1",
+    "QAT-1107": "country_1",
+    "QAT-5487": "country_1",
+    "SAU-1098": "country_1",
+    "SGP-4871": "country_4",
+    "SGP-4872": "country_4",
+    "SGP-4873": "country_4",
+    "SGP-4874": "country_4",
+    "SGP-4875": "country_4",
     "SMR-4883": "country_1",
     "SMR-4884": "country_1",
     "SMR-4885": "country_1",
@@ -232,6 +544,8 @@
     "SMR-4889": "country_1",
     "SMR-4890": "country_1",
     "SMR-4891": "country_1",
+    "STP-4861": "country_3",
+    "STP-4862": "country_3",
     "SVN-198": "country_1",
     "SVN-199": "country_1",
     "SVN-200": "country_1",
@@ -404,10 +718,45 @@
     "SVN-1050": "country_1",
     "SVN-5884": "country_1",
     "SVN-5885": "country_1",
+    "TGO-86": "country_3",
+    "TGO-87": "country_3",
+    "TGO-88": "country_3",
+    "TGO-89": "country_3",
+    "THA-388": "country_4",
+    "THA-493": "country_4",
+    "THA-494": "country_4",
+    "TUN-96": "country_2",
+    "TUN-97": "country_2",
+    "TUN-98": "country_2",
+    "TUN-101": "country_2",
     "TUN-102": "country_1",
+    "TUN-103": "country_2",
     "TUN-104": "country_1",
+    "TUN-105": "country_2",
+    "TUN-106": "country_2",
     "TUN-107": "country_1",
-    "TUN-108": "country_1"
+    "TUN-108": "country_1",
+    "TUN-109": "country_2",
+    "TUN-110": "country_2",
+    "TUN-111": "country_2",
+    "TUN-112": "country_2",
+    "TUN-113": "country_2",
+    "TUN-114": "country_2",
+    "TUN-115": "country_2",
+    "TUN-116": "country_2",
+    "TUN-117": "country_2",
+    "TUN-118": "country_2",
+    "TUN-119": "country_2",
+    "TUN-120": "country_2",
+    "TWN-3414": "country_4",
+    "TZA-3337": "country_1",
+    "TZA-3380": "country_1",
+    "TZA-3381": "country_1",
+    "TZA-3383": "country_1",
+    "TZA-3384": "country_1",
+    "VEN-27": "country_3",
+    "VEN-29": "country_3",
+    "VEN-31": "country_3"
   },
   "customPolygons": [
     {
@@ -705,6 +1054,462 @@
             [
               -2.515,
               42.649
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkptz1xz8cv",
+      "properties": {
+        "name": "калькутта",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              88.147,
+              21.959
+            ],
+            [
+              88.618,
+              22.103
+            ],
+            [
+              88.66,
+              22.205
+            ],
+            [
+              88.475555,
+              22.727497
+            ],
+            [
+              88.032779,
+              22.827759
+            ],
+            [
+              87.706522,
+              22.713168
+            ],
+            [
+              87.628842,
+              22.239471
+            ],
+            [
+              87.409,
+              21.786
+            ],
+            [
+              87.477,
+              21.614
+            ],
+            [
+              87.621,
+              21.651
+            ],
+            [
+              87.704,
+              21.656
+            ],
+            [
+              87.834,
+              21.729
+            ],
+            [
+              87.899,
+              21.795
+            ],
+            [
+              87.97,
+              21.836
+            ],
+            [
+              88.051,
+              21.985
+            ],
+            [
+              88.147,
+              21.959
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkpxkiimn8r",
+      "properties": {
+        "name": "",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              113.494,
+              23.063
+            ],
+            [
+              113.323229,
+              23.001284
+            ],
+            [
+              113.272737,
+              23.019157
+            ],
+            [
+              113.196999,
+              23.115631
+            ],
+            [
+              113.239723,
+              23.145988
+            ],
+            [
+              113.375663,
+              23.126346
+            ],
+            [
+              113.582,
+              23.098
+            ],
+            [
+              113.494,
+              23.063
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkpzfr8tgf3",
+      "properties": {
+        "name": "",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              119.258,
+              26.001
+            ],
+            [
+              119.218,
+              26.059
+            ],
+            [
+              119.216,
+              26.1
+            ],
+            [
+              119.277,
+              26.053
+            ],
+            [
+              119.327,
+              26.048
+            ],
+            [
+              119.459,
+              25.982
+            ],
+            [
+              119.391,
+              25.967
+            ],
+            [
+              119.258,
+              26.001
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkq05ycef0c",
+      "properties": {
+        "name": "",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.851,
+              31.439
+            ],
+            [
+              121.978,
+              31.478
+            ],
+            [
+              121.98,
+              31.54
+            ],
+            [
+              121.844,
+              31.608
+            ],
+            [
+              121.663,
+              31.652
+            ],
+            [
+              121.475,
+              31.771
+            ],
+            [
+              121.386,
+              31.812
+            ],
+            [
+              121.232352,
+              31.861196
+            ],
+            [
+              121.115,
+              31.796
+            ],
+            [
+              121.314,
+              31.656
+            ],
+            [
+              121.517,
+              31.568
+            ],
+            [
+              121.572,
+              31.529
+            ],
+            [
+              121.685,
+              31.507
+            ],
+            [
+              121.851,
+              31.439
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkq2xgsk3si",
+      "properties": {
+        "name": "",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.362,
+              36.192
+            ],
+            [
+              120.552,
+              36.114
+            ],
+            [
+              120.354,
+              36.041
+            ],
+            [
+              120.317534,
+              36.053352
+            ],
+            [
+              120.277565,
+              36.046288
+            ],
+            [
+              120.282418,
+              36.06238
+            ],
+            [
+              120.292,
+              36.062
+            ],
+            [
+              120.362,
+              36.192
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkq4xbh4z8h",
+      "properties": {
+        "name": "",
+        "countryId": "country_4",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09,
+              38.899
+            ],
+            [
+              121.118,
+              38.943
+            ],
+            [
+              121.219,
+              38.94
+            ],
+            [
+              121.334,
+              38.969
+            ],
+            [
+              121.345,
+              38.815
+            ],
+            [
+              121.245,
+              38.776
+            ],
+            [
+              121.198,
+              38.728
+            ],
+            [
+              121.153,
+              38.728
+            ],
+            [
+              121.09,
+              38.899
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkq9alo7g4z",
+      "properties": {
+        "name": "",
+        "countryId": null,
+        "neutral": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              52.538,
+              22.955
+            ],
+            [
+              55.105,
+              22.621
+            ],
+            [
+              55.187,
+              22.704
+            ],
+            [
+              55.627,
+              22.024
+            ],
+            [
+              55.638,
+              21.979
+            ],
+            [
+              55.474743,
+              20.893645
+            ],
+            [
+              54.978,
+              19.995
+            ],
+            [
+              51.979,
+              18.996
+            ],
+            [
+              49.036,
+              18.58
+            ],
+            [
+              48.184,
+              18.164
+            ],
+            [
+              47.691644,
+              17.3192
+            ],
+            [
+              47.631828,
+              16.931804
+            ],
+            [
+              47.305181,
+              17.023287
+            ],
+            [
+              47.399758,
+              19.004415
+            ],
+            [
+              48.299,
+              23.655
+            ],
+            [
+              48.29,
+              24
+            ],
+            [
+              48.223,
+              24.159
+            ],
+            [
+              48.141,
+              24.27
+            ],
+            [
+              47.889,
+              24.502
+            ],
+            [
+              47.535,
+              24.735
+            ],
+            [
+              47.488,
+              24.834
+            ],
+            [
+              51.282,
+              24.303
+            ],
+            [
+              52.538,
+              22.955
             ]
           ]
         ]
