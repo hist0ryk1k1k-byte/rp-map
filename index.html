@@ -13,6 +13,10 @@
   <!-- Font Awesome 6 (иконки интерфейса и маркеры столиц) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         referrerpolicy="no-referrer">
+  <!-- Шрифты подписей: Cinzel (латиница) + Cormorant SC (кириллица — в Cinzel её нет) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+SC:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,9 +35,9 @@
     <div class="topbar-actions">
       <button class="icon-btn toggle ruler" id="btn-ruler" aria-pressed="false" title="Измерить расстояние (R)"><i class="fa-solid fa-ruler"></i></button>
       <span class="topbar-sep"></span>
-      <button class="icon-btn toggle" id="btn-labels"   data-pref="labels"   title="Подписи государств"><i class="fa-solid fa-font"></i></button>
+      <button class="icon-btn toggle" id="btn-labels"   data-pref="labels"   title="Скрыть/показать названия (A)"><i class="fa-solid fa-font"></i></button>
       <button class="icon-btn toggle" id="btn-grid"     data-pref="grid"     title="Сетка провинций"><i class="fa-solid fa-border-all"></i></button>
-      <button class="icon-btn toggle" id="btn-capitals" data-pref="capitals" title="Столицы"><i class="fa-solid fa-star"></i></button>
+      <button class="icon-btn toggle" id="btn-capitals" data-pref="capitals" title="Столицы и города"><i class="fa-solid fa-star"></i></button>
       <button class="btn btn-save" id="btn-save" hidden title="Сохранить в GitHub (Ctrl+S)">
         <i class="fa-brands fa-github"></i><span class="label">Сохранить</span><span class="dirty-dot"></span>
       </button>
@@ -60,9 +64,16 @@
           <select id="country-sort" class="input" title="Сортировка списка">
             <option value="name">По названию</option>
             <option value="area">По площади</option>
+            <option value="population">По населению</option>
+            <option value="gdp">По ВВП</option>
             <option value="provinces">По провинциям</option>
           </select>
         </div>
+        <label class="switch-row" title="Вассалы, колонии и автономии остаются на карте — скрываются только из списка">
+          <input type="checkbox" id="hide-deps">
+          <span class="switch-ui" aria-hidden="true"></span>
+          <span>Скрыть зависимые территории</span>
+        </label>
         <ul id="country-list" class="country-list"></ul>
         <p class="muted small" id="world-stats"></p>
       </section>
@@ -84,6 +95,7 @@
           </div>
           <label class="field"><span>ID <small class="muted">латиница, цифры, «_» и «-»; после создания не меняется</small></span>
             <input name="id" class="input mono" maxlength="64"></label>
+          <label class="check"><input type="checkbox" name="hideMapLabel"> Скрыть название на карте (показывать только при клике/наведении)</label>
           <label class="field"><span>URL флага</span>
             <span class="flag-field"><input name="flagUrl" class="input" placeholder="https://… или flags/lor.png"><img id="flag-preview" alt="" hidden></span>
           </label>
@@ -99,11 +111,16 @@
           </fieldset>
 
           <div class="field-row">
-            <label class="field grow"><span>Население</span><input name="population" class="input"></label>
-            <label class="field grow"><span>ВВП</span><input name="gdp" class="input"></label>
+            <label class="field grow"><span>Население (тыс. чел.)</span>
+              <span class="unit-field"><input name="population" class="input mono" type="number" step="any" min="0" placeholder="45000" inputmode="decimal"><em>тыс.</em></span></label>
+            <label class="field grow"><span>ВВП (млрд ₲)</span>
+              <span class="unit-field"><input name="gdp" class="input mono" type="number" step="any" min="0" placeholder="450" inputmode="decimal"><em>млрд</em></span></label>
           </div>
-          <label class="field"><span>Крупные города <small class="muted">через запятую или с новой строки</small></span>
-            <textarea name="cities" class="input" rows="3"></textarea></label>
+          <div class="field">
+            <span>Крупнейшие города <small class="muted">метка ставится кнопкой с прицелом</small></span>
+            <div id="cities-editor" class="cities-editor"></div>
+            <button type="button" class="btn btn-small add-city" id="btn-add-city"><i class="fa-solid fa-plus"></i> Добавить город</button>
+          </div>
           <fieldset class="field-group" id="dep-fields">
             <legend>Зависимость</legend>
             <label class="field"><span>Сюзерен (зависимость от)</span><select name="overlordId" class="input"></select></label>
@@ -145,9 +162,10 @@
         </div>
         <h3 class="section-title">Горячие клавиши</h3>
         <ul class="hotkeys small">
-          <li><kbd>V</kbd> выбор · <kbd>B</kbd> кисть · <kbd>E</kbd> ластик · <kbd>I</kbd> пипетка · <kbd>P</kbd> зона · <kbd>M</kbd> магнит</li>
+          <li><kbd>V</kbd> выбор · <kbd>B</kbd> кисть · <kbd>E</kbd> ластик · <kbd>I</kbd> пипетка · <kbd>P</kbd> зона · <kbd>N</kbd> переименовать · <kbd>M</kbd> магнит</li>
+          <li>ПКМ по провинции — переименовать её (лорное название видно в тултипах и поиске)</li>
           <li><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd> отмена / повтор · <kbd>Ctrl</kbd>+<kbd>S</kbd> сохранить</li>
-          <li><kbd>R</kbd> линейка: клик — точка, двойной клик / <kbd>Enter</kbd> — завершить, <kbd>Backspace</kbd> — убрать точку, <kbd>Esc</kbd> — очистить</li>
+          <li><kbd>A</kbd> названия государств на карте · <kbd>R</kbd> линейка: клик — точка, двойной клик / <kbd>Enter</kbd> — завершить, <kbd>Backspace</kbd> — убрать точку, <kbd>Esc</kbd> — очистить</li>
           <li>Зона: клик ставит точку, <kbd>Shift</kbd>+тянуть — рисование от руки, <kbd>Alt</kbd> — без привязки; <kbd>Enter</kbd>, двойной клик или клик по первой точке завершает, <kbd>Backspace</kbd> убирает точку, <kbd>Esc</kbd> отменяет</li>
           <li>Правка зоны: выберите её инструментом «Выбор» — тяните вершины, ПКМ по вершине удаляет её, кружок на ребре добавляет новую</li>
           <li>«⌀ Нейтральная территория» в списке государств: нарисованная зона вырезает кусок из страны</li>
@@ -208,6 +226,7 @@
         <button class="tool" data-tool="erase"  title="Ластик: снять владение (E)"><i class="fa-solid fa-eraser"></i></button>
         <button class="tool" data-tool="pick"   title="Пипетка: взять государство с карты (I)"><i class="fa-solid fa-eye-dropper"></i></button>
         <button class="tool" data-tool="draw"   title="Нарисовать особую зону (P): клики — точки, Shift+тянуть — от руки"><i class="fa-solid fa-draw-polygon"></i></button>
+        <button class="tool" data-tool="rename" title="Переименовать провинцию (N) — или ПКМ по провинции"><i class="fa-solid fa-tag"></i></button>
       </div>
       <button class="tool" id="btn-snap" title="Привязка к границам (M). Alt — временно отключить"><i class="fa-solid fa-magnet"></i></button>
       <span class="tool-sep"></span>

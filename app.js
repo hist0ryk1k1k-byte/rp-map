@@ -39,9 +39,18 @@ const CONFIG = Object.freeze({
   topojsonServerUrl: 'https://unpkg.com/topojson-server@3',
   topojsonSimplifyUrl: 'https://unpkg.com/topojson-simplify@3',
   initialView: { center: [48, 18], zoom: 4 },
-  labelsMinZoom: 3,
+  labels: {
+    fontStack: "'Cinzel', 'Cormorant SC', Georgia, 'Times New Roman', serif",
+    letterSpacing: 0.12,            // em — должно совпадать с CSS
+    fill: 0.78,                     // доля ширины крупнейшего полигона, которую стремится занять текст
+    minPx: 9, maxPx: 18,            // кегль независимых держав
+    dependentScale: 0.78,           // зависимые территории — на ~22% мельче
+    minTerritoryPx: 38,             // уже — подпись плавно гаснет
+    overflow: 1.2,                  // текст даже минимальным кеглем шире территории в 1.2 раза — гаснет
+  },
   maxTopologyPoints: 4_000_000,     // выше — не строим топологию (слишком долго для браузера)
   undoLimit: 200,
+  currency: '₲',                    // валюта ВВП в карточках (ВВП хранится в млрд)
   snapPx: 12,                       // радиус прилипания к границам, px экрана
   maxEditVertices: 800,             // больше — маркеры вершин не показываются (тормоза DOM)
   silhouetteDebounce: 120,
@@ -298,13 +307,59 @@ const IDB = {
 };
 
 /* ───────────────────────────── 3. STORE ───────────────────────────── */
-const emptyState = () => ({ countries: {}, provinceOwners: {}, customPolygons: [] });
+const emptyState = () => ({ countries: {}, provinceOwners: {}, provinceNames: {}, customPolygons: [] });
 
-function toList(v) {
-  if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
-  if (typeof v === 'string') return v.split(/[,\n;]/).map((x) => x.trim()).filter(Boolean);
-  return [];
+/**
+ * Население (в тыс. чел.) и ВВП (в млрд) хранятся числами. Миграция старых сохранений,
+ * где там лежали строки: "45 000", "12,5", "₲450 млрд", "1,2 трлн", "45 млн" → число.
+ * Единицы в строке пересчитываются: население — тыс./млн/млрд → тыс.; ВВП — млн/млрд/трлн → млрд.
+ * Строка-число без единиц для населения > 2 000 000 «тысяч» (больше 2 млрд человек — такого
+ * не бывает) — это старый счёт в людях ("45 000 000"), делится на 1000.
+ */
+function parseNumericStat(v, kind) {
+  if (v == null || v === '') return null;
+  if (typeof v === 'number') return Number.isFinite(v) && v >= 0 ? v : null;
+  const str = String(v).toLowerCase().replace(/[\s\u00a0\u202f]/g, '');
+  const m = str.match(/\d[\d.,]*/);
+  if (!m) return null;
+  let num = m[0];
+  if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(num)) num = num.replace(/,/g, '');            // 45,000 / 1,234.5
+  else if (/^\d{1,3}(\.\d{3}){2,}$/.test(num)) num = num.replace(/\./g, '');           // 45.000.000
+  else num = num.replace(',', '.');                                                    // 12,5
+  let n = parseFloat(num);
+  if (!Number.isFinite(n) || n < 0) return null;
+  const unit = (re) => re.test(str);
+  if (kind === 'population') {
+    if (unit(/млрд|bn|billion/)) n *= 1e6;
+    else if (unit(/млн|mln|million|\bm\b/)) n *= 1e3;
+    else if (!unit(/тыс|k\b|thousand/) && n > 2e6) n /= 1e3;                           // > 2 млрд «тысяч» — старый счёт в людях
+  } else {
+    if (unit(/трлн|trillion|tn/)) n *= 1e3;
+    else if (unit(/млн|mln|million/) && !unit(/млрд/)) n /= 1e3;
+  }
+  return Math.round(n * 1000) / 1000;
 }
+
+/**
+ * Крупнейшие города: [{ id, name, lat, lng }]. Совместимость со старыми сохранениями:
+ * массив строк ["Город 1"] или строка через запятую → объекты с lat/lng = null.
+ */
+function toCities(v) {
+  const arr = Array.isArray(v) ? v : typeof v === 'string' ? v.split(/[,\n;]/) : [];
+  const used = new Set();
+  return arr.map((x, i) => {
+    const o = typeof x === 'string' ? { name: x } : x && typeof x === 'object' ? x : null;
+    const name = String(o?.name ?? '').trim();
+    if (!name) return null;
+    const lat = parseFloat(o.lat), lng = parseFloat(o.lng ?? o.lon);
+    const ok = Number.isFinite(lat) && Number.isFinite(lng);
+    let id = String(o.id ?? '').trim() || `city_${i + 1}`;
+    while (used.has(id)) id += '_';
+    used.add(id);
+    return { id, name, lat: ok ? clamp(lat, -90, 90) : null, lng: ok ? lng : null };
+  }).filter(Boolean);
+}
+const hasPoint = (p) => !!p && Number.isFinite(p.lat) && Number.isFinite(p.lng);
 
 function normalizeCountry(c) {
   if (!c || typeof c !== 'object') return null;
@@ -324,15 +379,16 @@ function normalizeCountry(c) {
     color: normColor(c.color) || colorFromString(id),
     flagUrl: stripMarkdownLink(c.flagUrl),
     capital,
-    population: c.population == null ? '' : String(c.population).trim(),
-    gdp: c.gdp == null ? '' : String(c.gdp).trim(),
-    cities: toList(c.cities),
+    population: parseNumericStat(c.population, 'population'),   // тыс. человек, Number | null
+    gdp: parseNumericStat(c.gdp, 'gdp'),                        // млрд, Number | null
+    cities: toCities(c.cities),
     tgLink: cleanTgLink(c.tgLink),
     description: c.description == null ? '' : String(c.description),
     // зависимость: сюзерен, тип, наследование цвета (по умолчанию — да)
     overlordId: c.overlordId ? String(c.overlordId).trim() || null : null,
     dependencyType: String(c.dependencyType ?? '').trim(),
     inheritOverlordColor: c.inheritOverlordColor !== false,
+    hideMapLabel: c.hideMapLabel === true,     // не рисовать постоянную подпись (тултип и карточка работают)
   };
 }
 
@@ -386,7 +442,11 @@ function normalizeCustom(p) {
 
 function normalizeState(raw) {
   const src = raw && typeof raw === 'object' ? raw : {};
-  const out = { ...src, countries: {}, provinceOwners: {}, customPolygons: [] };
+  const out = { ...src, countries: {}, provinceOwners: {}, provinceNames: {}, customPolygons: [] };
+  for (const [fid, name] of Object.entries(src.provinceNames || {})) {          // лорные названия провинций
+    const t = String(name ?? '').trim();
+    if (t) out.provinceNames[String(fid)] = t;
+  }
 
   const list = Array.isArray(src.countries)
     ? src.countries
@@ -519,6 +579,13 @@ const Store = {
         this._write(fid, val && this.state.countries[val] ? val : null);
       }
     }
+    if (step.names) {
+      back.names = new Map();
+      for (const [fid, val] of step.names) {
+        back.names.set(fid, this.state.provinceNames[fid] || null);
+        if (val) this.state.provinceNames[fid] = val; else delete this.state.provinceNames[fid];
+      }
+    }
     if (step.customs) {
       back.customs = this._customsSnapshot();
       this.state.customPolygons = step.customs.map(normalizeCustom).filter(Boolean);
@@ -526,12 +593,26 @@ const Store = {
     to.push(back);
     if (step.owners) this.emit('owners', [...step.owners.keys()]);
     if (step.customs) this.emit('custom');
+    if (step.names) this.emit('names', [...step.names.keys()]);
     this.emit('history');
     this.setDirty(true);
     return true;
   },
   undo() { if (this._batch) this.endBatch(); return this._travel(this.undoStack, this.redoStack); },
   redo() { return this._travel(this.redoStack, this.undoStack); },
+
+  /* — лорные названия провинций — */
+  provinceCustomName(fid) { return this.state.provinceNames[fid] || null; },
+  setProvinceName(fid, name) {
+    const prev = this.state.provinceNames[fid] || null, next = String(name ?? '').trim() || null;
+    if (prev === next) return false;
+    if (this._batch) this.endBatch();
+    this._pushStep({ names: new Map([[fid, prev]]) });
+    if (next) this.state.provinceNames[fid] = next; else delete this.state.provinceNames[fid];
+    this.emit('names', [fid]);
+    this.setDirty(true);
+    return true;
+  },
 
   /* — государства — */
   upsertCountry(data) {
@@ -589,9 +670,10 @@ const Store = {
 
   /** Стабильная сериализация: ключи provinceOwners отсортированы → аккуратные git-диффы. */
   serialize() {
-    const s = this.state, owners = {};
+    const s = this.state, owners = {}, names = {};
     for (const k of Object.keys(s.provinceOwners).sort(naturalCompare)) owners[k] = s.provinceOwners[k];
-    return JSON.stringify({ ...s, provinceOwners: owners }, null, 2) + '\n';
+    for (const k of Object.keys(s.provinceNames).sort(naturalCompare)) names[k] = s.provinceNames[k];
+    return JSON.stringify({ ...s, provinceOwners: owners, provinceNames: names }, null, 2) + '\n';
   },
 };
 
@@ -602,6 +684,24 @@ function countryColor(c, depth = 0) {
   return o && depth < 16 ? shade(countryColor(o, depth + 1), 0.12) : c.color;
 }
 const fmtArea = (km2) => `${Math.round(km2).toLocaleString('ru-RU')} км²`;
+const fmtNum = (v, digits) => v.toLocaleString('ru-RU', { maximumFractionDigits: digits });
+/** 45000 → «45 000 тыс.», 12.5 → «12,5 тыс.» */
+const fmtPop = (k) => `${fmtNum(k, k >= 1000 ? 0 : 2)} тыс.`;
+/** 450 → «₲450 млрд», 12.4 → «₲12,4 млрд» */
+const fmtGdp = (bn) => `${CONFIG.currency}${fmtNum(bn, bn >= 100 ? 0 : 2)} млрд`;
+
+/**
+ * Показатель страны: собственный и вместе со всеми владениями (вассалы вассалов тоже).
+ * get(cid) → число или null. → { own, total, depsSum }.
+ */
+function statWithDeps(cid, get) {
+  const own = get(cid) || 0;
+  let depsSum = 0;
+  for (const v of Store.allVassals(cid)) depsSum += get(v) || 0;
+  return { own, total: own + depsSum, depsSum, hasOwn: get(cid) != null && get(cid) !== 0 };
+}
+const statPop = (cid) => Store.country(cid)?.population ?? null;
+const statGdp = (cid) => Store.country(cid)?.gdp ?? null;
 const fmtKm = (km) => `${km.toLocaleString('ru-RU', { maximumFractionDigits: km < 10 ? 1 : 0 })} км`;
 
 /* ───────────────────────────── 4. DRAFTS ───────────────────────────── */
@@ -623,12 +723,21 @@ function resolveFeatureId(f, i) {
   const v = firstFilled(f.properties?.id, f.id);
   return v === undefined ? `f_${i}` : String(v).trim();
 }
+/** Название провинции для показа: лорное имя из provinceNames, иначе исходное из сетки. */
 function provinceName(f, fallback = true) {
+  const fid = f?.properties?.__fid;
+  const custom = fid != null ? Store.state.provinceNames?.[fid] : null;
+  return custom || provinceOrigName(f, fallback);
+}
+/** Исходное название из сетки (Natural Earth). */
+function provinceOrigName(f, fallback = true) {
   const n = f?.properties?.name;
   if (n) return String(n);
   return fallback ? `Провинция ${f?.properties?.__fid ?? '?'}` : '';
 }
 const provinceCountry = (f) => (f?.properties?.country ? String(f.properties.country) : '');
+/** Реальная страна — только модератору, в скобках (игроку не ломаем погружение в AU). */
+const realCountryHint = (f) => (App.modMode && provinceCountry(f) ? `(${provinceCountry(f)})` : '');
 
 function pickTopoObject(topo) {
   const names = Object.keys(topo.objects || {});
@@ -1032,25 +1141,128 @@ function latlngsToGeometry(polys) {
   return g;
 }
 
-/** Точка для подписи: центроид крупнейшего полигона (или взвешенный центр, если частей много и они сопоставимы). */
-function geomLabelPoint(g) {
-  const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
-  let W = 0, X = 0, Y = 0, best = null;
-  for (const poly of polys) {
-    const ring = poly[0];
-    let a = 0, cx = 0, cy = 0;
-    for (let i = 0; i < ring.length - 1; i++) {
-      const [x0, y0] = ring[i], [x1, y1] = ring[i + 1], cr = x0 * y1 - x1 * y0;
-      a += cr; cx += (x0 + x1) * cr; cy += (y0 + y1) * cr;
+/* — точка и рамка подписи — */
+const D2R = Math.PI / 180;
+const mercY = (lat) => Math.log(Math.tan(Math.PI / 4 + clamp(lat, -85, 85) * D2R / 2)) / D2R;
+const mercLat = (y) => (2 * Math.atan(Math.exp(y * D2R)) - Math.PI / 2) / D2R;
+
+/** Знаковое расстояние от точки до полигона (> 0 — внутри). poly: [outer, ...holes] в плоских координатах. */
+function pointToPolygonDist(x, y, poly) {
+  let inside = false, minSq = Infinity;
+  for (const ring of poly) {
+    for (let i = 0, len = ring.length, j = len - 1; i < len; j = i++) {
+      const a = ring[i], b = ring[j];
+      if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+      let px = a[0], py = a[1], dx = b[0] - px, dy = b[1] - py;
+      if (dx || dy) {
+        const t = clamp(((x - px) * dx + (y - py) * dy) / (dx * dx + dy * dy), 0, 1);
+        px += dx * t; py += dy * t;
+      }
+      const d = (x - px) ** 2 + (y - py) ** 2;
+      if (d < minSq) minSq = d;
     }
-    if (!a) continue;
-    cx /= 3 * a; cy /= 3 * a;
-    const w = Math.abs(a / 2) * Math.cos(cy * Math.PI / 180);
-    W += w; X += cx * w; Y += cy * w;
-    if (!best || w > best.w) best = { w, ll: [cy, cx] };
   }
-  if (!W) return null;
-  return { ll: best.w >= W * 0.6 ? best.ll : [Y / W, X / W], area: W };
+  return (inside ? 1 : -1) * Math.sqrt(minSq);
+}
+
+/**
+ * Полюс недоступности (алгоритм polylabel, Mapbox): точка внутри полигона, максимально удалённая
+ * от его границ, — лучшее место для подписи (центроид у вогнутых фигур может оказаться снаружи или в море).
+ */
+function polylabel(poly, precision, maxCells = 900) {
+  const outer = poly[0];
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const [x, y] of outer) { if (x < minX) minX = x; if (y < minY) minY = y; if (x > maxX) maxX = x; if (y > maxY) maxY = y; }
+  const width = maxX - minX, height = maxY - minY, cellSize = Math.min(width, height);
+  if (!cellSize) return [minX, minY];
+  const cell = (x, y, hh) => { const d = pointToPolygonDist(x, y, poly); return { x, y, h: hh, d, max: d + hh * Math.SQRT2 }; };
+  // простая куча по убыванию max
+  const heap = [];
+  const push = (c) => { heap.push(c); let i = heap.length - 1; while (i > 0) { const p = (i - 1) >> 1; if (heap[p].max >= c.max) break; heap[i] = heap[p]; i = p; } heap[i] = c; };
+  const pop = () => {
+    const top = heap[0], last = heap.pop();
+    if (heap.length) {
+      let i = 0;
+      for (;;) {
+        const l = 2 * i + 1, r = l + 1;
+        let m = i, mv = last.max;
+        if (l < heap.length && heap[l].max > mv) { m = l; mv = heap[l].max; }
+        if (r < heap.length && heap[r].max > mv) m = r;
+        if (m === i) break;
+        heap[i] = heap[m]; i = m;
+      }
+      heap[i] = last;
+    }
+    return top;
+  };
+  let hh = cellSize / 2;
+  for (let x = minX; x < maxX; x += cellSize) for (let y = minY; y < maxY; y += cellSize) push(cell(x + hh, y + hh, hh));
+  // стартовые кандидаты: центр рамки и центроид
+  let best = cell(minX + width / 2, minY + height / 2, 0);
+  let A = 0, cx = 0, cy = 0;
+  for (let i = 0, len = outer.length, j = len - 1; i < len; j = i++) {
+    const a = outer[i], b = outer[j], f = a[0] * b[1] - b[0] * a[1];
+    cx += (a[0] + b[0]) * f; cy += (a[1] + b[1]) * f; A += f * 3;
+  }
+  if (A) { const c = cell(cx / A, cy / A, 0); if (c.d > best.d) best = c; }
+  let n = heap.length;
+  while (heap.length && n < maxCells) {
+    const c = pop();
+    if (c.d > best.d) best = c;
+    if (c.max - best.d <= precision) continue;
+    hh = c.h / 2;
+    push(cell(c.x - hh, c.y - hh, hh)); push(cell(c.x + hh, c.y - hh, hh));
+    push(cell(c.x - hh, c.y + hh, hh)); push(cell(c.x + hh, c.y + hh, hh));
+    n += 4;
+  }
+  return [best.x, best.y];
+}
+
+/**
+ * Якорь подписи страны: самый большой по площади полигон силуэта (материк, а не острова/колонии),
+ * в нём — полюс недоступности. → { ll: [lat, lng], bbox: [w, s, e, n] крупнейшего полигона }.
+ */
+const labelAnchorCache = new WeakMap();
+function labelAnchor(g) {
+  let res = labelAnchorCache.get(g);
+  if (res) return res;
+  const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
+  let best = null, bestArea = -1;
+  for (const poly of polys) {
+    let area;
+    if (hasTurf()) { try { area = turf.area({ type: 'Polygon', coordinates: poly }); } catch { area = 0; } }
+    else {
+      const r = poly[0]; area = 0;
+      for (let i = 0; i < r.length - 1; i++) area += r[i][0] * r[i + 1][1] - r[i + 1][0] * r[i][1];
+      area = Math.abs(area) * Math.cos((r[0][1] || 0) * D2R);
+    }
+    if (area > bestArea) { bestArea = area; best = poly; }
+  }
+  if (!best) return null;
+  // считаем в проекции Меркатора — как на экране
+  const planar = best.map((ring) => ring.map(([x, y]) => [x, mercY(y)]));
+  let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+  for (const [x, y] of best[0]) { if (x < w) w = x; if (y < s) s = y; if (x > e) e = x; if (y > n) n = y; }
+  const size = Math.max(e - w, mercY(n) - mercY(s));
+  const [px, py] = polylabel(planar, size / 120);
+  res = { ll: [mercLat(py), px], bbox: [w, s, e, n] };
+  labelAnchorCache.set(g, res);
+  return res;
+}
+
+/** Ширина текста подписи при кегле 1px (с учётом верхнего регистра и letter-spacing). */
+const labelWidthCache = new Map();
+let labelCtx = null;
+function labelUnitWidth(text) {
+  let w = labelWidthCache.get(text);
+  if (w === undefined) {
+    labelCtx ||= document.createElement('canvas').getContext('2d');
+    labelCtx.font = `600 100px ${CONFIG.labels.fontStack}`;
+    const up = text.toLocaleUpperCase('ru');
+    w = (labelCtx.measureText(up).width + [...up].length * CONFIG.labels.letterSpacing * 100) / 100;
+    labelWidthCache.set(text, w);
+  }
+  return w;
 }
 
 /**
@@ -1382,6 +1594,8 @@ const MapView = {
   layerById: new Map(),
   customById: new Map(),
   metaById: new Map(),
+  labels: new Map(),       // cid → { marker, el, text, dependent, bbox }
+  cityMarkers: new Map(),  // `${cid}:${cityId}` → L.Marker ('__capital' — столица)
   hoverLayer: null,
   hoverLatLng: null,
   selected: null,
@@ -1430,7 +1644,11 @@ const MapView = {
     map.on('click', (e) => Tools.onPointer(e, null));
     map.on('mousedown', (e) => Tools.onPointerDown(e, null));
     map.on('dblclick', () => Tools.onDblClick());
-    map.on('zoomend', () => this.updateLabelVisibility());
+    map.on('zoomend', () => { this.updateLabelSizes(); this.updateZoomClasses(); });
+    this.updateZoomClasses();
+    this.applyLabelToggle();
+    // шрифты (Cinzel / Cormorant SC) догружаются асинхронно — тогда ширины текста пересчитываются
+    document.fonts?.addEventListener?.('loadingdone', () => { labelWidthCache.clear(); this.updateLabelSizes(); });
 
     map.setView(CONFIG.initialView.center, CONFIG.initialView.zoom);
   },
@@ -1443,6 +1661,7 @@ const MapView = {
     group.on('click',     (e) => Tools.onPointer(e, L_(e)));
     group.on('mousedown', (e) => Tools.onPointerDown(e, L_(e)));
     group.on('dblclick',  () => Tools.onDblClick());
+    group.on('contextmenu', (e) => Tools.onContext(e, L_(e)));
   },
 
   /* — стили: заливку страны даёт силуэт, сами провинции и зоны прозрачны — */
@@ -1531,7 +1750,8 @@ const MapView = {
       ? `<span class="dot" style="background:${countryColor(owner)}"></span><b>${esc(owner.name)}</b>`
       : '<span class="dot neutral"></span><b>Ничейная земля</b>';
     const lord = owner && Store.country(owner.overlordId);
-    const sub = [region, base].filter(Boolean).map(esc).join(' · ');
+    const real = App.modMode && base ? `<span class="tt-real">(${esc(base)})</span>` : '';
+    const sub = [region ? esc(region) : '', real].filter(Boolean).join(' ');
     return `<div class="tt-head">${head}</div>` +
       (lord ? `<div class="tt-dep">${esc(depLabel(owner))} · ${esc(lord.name)}</div>` : '') +
       (sub ? `<div class="tt-region">${sub}</div>` : '') +
@@ -1578,22 +1798,55 @@ const MapView = {
     }
   },
 
+  /**
+   * Столицы (12px, жёлтые) и крупные города (7px, белые). Размер в пикселях фиксирован —
+   * при отдалении метки не растут; видимость подписей и городов задаёт CSS по классам зума.
+   */
   renderCapitals() {
     this.capitalsGroup.clearLayers();
+    this.cityMarkers.clear();
     if (!Prefs.capitals) return;
-    for (const c of Object.values(Store.state.countries)) {
-      const cap = c.capital;
-      if (!cap || !Number.isFinite(cap.lat) || !Number.isFinite(cap.lng)) continue;
-      const icon = L.divIcon({
-        className: 'capital-marker',
-        html: `<span class="cap" style="--c:${countryColor(c)}"><i class="fa-solid fa-star"></i></span>`,
-        iconSize: [22, 22], iconAnchor: [11, 11],
-      });
-      L.marker([cap.lat, cap.lng], { icon, keyboard: false, riseOnHover: true })
-        .bindTooltip(`<b>${esc(cap.name || 'Столица')}</b><br>${esc(c.name)}`, { direction: 'top', offset: [0, -12], className: 'cap-tip' })
+    const add = (c, key, p, name, kind) => {
+      const cap = kind === 'capital', size = cap ? 12 : 7;
+      const marker = L.marker([p.lat, p.lng], {
+        icon: L.divIcon({
+          className: `settlement ${kind}`, iconSize: [size, size], iconAnchor: [size / 2, size / 2],
+          html: `<span class="pin">${cap ? '<i class="fa-solid fa-star"></i>' : ''}</span><span class="pin-label">${esc(name)}</span>`,
+        }),
+        keyboard: false, riseOnHover: true, zIndexOffset: cap ? 400 : 0,
+      })
+        .bindTooltip(`<b>${esc(name)}</b><br>${cap ? 'Столица' : 'Город'} · ${esc(c.name)}`, { direction: 'top', offset: [0, -size / 2 - 3], className: 'cap-tip' })
         .on('click', () => UI.openCountry(c.id))
         .addTo(this.capitalsGroup);
+      this.cityMarkers.set(`${c.id}:${key}`, marker);
+    };
+    for (const c of Object.values(Store.state.countries)) {
+      for (const city of c.cities) if (hasPoint(city)) add(c, city.id, city, city.name, 'city');
+      if (hasPoint(c.capital)) add(c, '__capital', c.capital, c.capital.name || 'Столица', 'capital');
     }
+  },
+  /** z-far (< 4): столица 8px, без подписей и городов · z-mid (≥ 4): подписи столиц, точки городов · z-near (≥ 5): подписи городов. */
+  updateZoomClasses() {
+    const z = this.map.getZoom(), el = this.map.getContainer();
+    el.classList.toggle('z-far', z < 4);
+    el.classList.toggle('z-mid', z >= 4);
+    el.classList.toggle('z-near', z >= 5);
+  },
+  /** Плавно подлететь к городу и подсветить его метку и тултип. cityId '__capital' — столица. */
+  focusCity(cid, cityId) {
+    const c = Store.country(cid);
+    if (!c) return;
+    const p = cityId === '__capital' ? c.capital : c.cities.find((x) => x.id === cityId);
+    if (!hasPoint(p)) { this.flyToCountry(cid); return; }
+    this.map.flyTo([p.lat, p.lng], Math.max(6, this.map.getZoom()), { duration: 0.9 });
+    this.map.once('moveend', () => {
+      const m = this.cityMarkers.get(`${cid}:${cityId}`);
+      if (!m || !this.capitalsGroup.hasLayer(m)) return;
+      m.openTooltip();
+      const el = m.getElement();
+      el?.classList.add('is-focus');
+      setTimeout(() => el?.classList.remove('is-focus'), 2800);
+    });
   },
 
   meta(fid) {
@@ -1607,27 +1860,75 @@ const MapView = {
     return m;
   },
 
-  /** Подписи — по силуэту страны (с учётом особых и вырезанных зон). */
+  /**
+   * Подписи государств. DOM-элементы переиспользуются (без пересоздания при каждом изменении),
+   * поэтому кегль и прозрачность меняются плавно через CSS-transition.
+   */
   renderLabels() {
-    this.labelsGroup.clearLayers();
-    if (!Prefs.labels) return;
+    const live = new Set();
     for (const c of Object.values(Store.state.countries)) {
+      if (c.hideMapLabel) continue;
       const g = Silhouettes.geom(c.id);
-      let ll, area;
-      const lp = g ? geomLabelPoint(g) : null;
-      if (lp) ({ ll, area } = lp);
-      else if (c.capital && Number.isFinite(c.capital.lat)) { ll = [c.capital.lat, c.capital.lng]; area = 1; }
+      const anchor = g ? labelAnchor(g) : null;
+      let ll, bbox = null;
+      if (anchor) ({ ll, bbox } = anchor);
+      else if (c.capital && Number.isFinite(c.capital.lat)) ll = [c.capital.lat, c.capital.lng];
       else continue;
-      const size = clamp(9 + 1.7 * Math.log2(1 + area), 10, 22);
-      L.marker(ll, {
-        icon: L.divIcon({ className: 'country-label', html: `<span style="font-size:${size.toFixed(1)}px">${esc(c.name)}</span>`, iconSize: null }),
-        interactive: false, keyboard: false, pane: 'labelsPane',
-      }).addTo(this.labelsGroup);
+      live.add(c.id);
+      let lb = this.labels.get(c.id);
+      if (!lb) {
+        const marker = L.marker(ll, {
+          icon: L.divIcon({ className: 'country-label', html: '<span class="is-hidden"></span>', iconSize: null }),
+          interactive: false, keyboard: false, pane: 'labelsPane',
+        }).addTo(this.labelsGroup);
+        lb = { marker, el: marker.getElement().firstChild };
+        this.labels.set(c.id, lb);
+      } else {
+        lb.marker.setLatLng(ll);
+      }
+      lb.text = c.name;
+      lb.bbox = bbox;
+      lb.dependent = !!c.overlordId;
+      lb.el.textContent = c.name;
+      lb.el.classList.toggle('is-dependent', lb.dependent);
     }
-    this.updateLabelVisibility();
+    for (const [cid, lb] of this.labels) {
+      if (live.has(cid)) continue;
+      this.labelsGroup.removeLayer(lb.marker);
+      this.labels.delete(cid);
+    }
+    requestAnimationFrame(() => this.updateLabelSizes());      // новые подписи проявляются из opacity 0
   },
-  updateLabelVisibility() {
-    this.map.getContainer().classList.toggle('hide-labels', this.map.getZoom() < CONFIG.labelsMinZoom);
+
+  /**
+   * Кегль — по экранной ширине крупнейшего полигона страны на текущем зуме:
+   * текст занимает ~78% его ширины, в пределах minPx…maxPx (у зависимых — ×0.78).
+   * Слишком мелкая территория или не помещающийся текст → подпись плавно гаснет.
+   */
+  updateLabelSizes() {
+    const map = this.map, z = map.getZoom(), cfg = CONFIG.labels;
+    for (const lb of this.labels.values()) {
+      const k = lb.dependent ? cfg.dependentScale : 1;
+      let size, visible;
+      if (lb.bbox) {
+        const [w, s, e, n] = lb.bbox;
+        const p1 = map.project([n, w], z), p2 = map.project([s, e], z);
+        const pw = Math.abs(p2.x - p1.x), ph = Math.abs(p2.y - p1.y), unit = labelUnitWidth(lb.text);
+        const raw = Math.min(pw * cfg.fill / unit, ph * 0.5);                // плоские страны — ещё и по высоте
+        const min = Math.max(7.5, cfg.minPx * k), max = cfg.maxPx * k;
+        size = clamp(raw * k, min, max);
+        visible = pw >= cfg.minTerritoryPx && unit * min <= pw * cfg.overflow;
+      } else {                                                                  // нет территории — подпись у столицы
+        size = cfg.minPx * k;
+        visible = z >= 5;
+      }
+      lb.el.style.fontSize = `${size.toFixed(1)}px`;
+      lb.el.classList.toggle('is-hidden', !visible);
+    }
+  },
+  /** Кнопка «Названия (A)»: слой подписей плавно гаснет/проявляется, а не пропадает. */
+  applyLabelToggle() {
+    this.map.getContainer().classList.toggle('labels-off', !Prefs.labels);
   },
 
   refreshAll() {
@@ -1765,7 +2066,8 @@ const Tools = {
         return;
       }
       case 'draw': this.addVertexAt(e.latlng, e.originalEvent); return;
-      case 'capital': this.finishCapitalPick(e.latlng); return;
+      case 'capital': this.finishPointPick(e.latlng); return;
+      case 'rename': if (layer) this.openRename(layer, e.latlng); return;
     }
   },
   onPointerDown(e, layer) {
@@ -1779,6 +2081,56 @@ const Tools = {
   },
   onHover(layer) { if (this.stroking && layer) this.apply(layer); },
   endStroke() { if (this.stroking) { this.stroking = false; Store.endBatch(); } },
+  /** ПКМ по провинции/зоне в режиме модератора — переименование. */
+  onContext(e, layer) {
+    if (!App.modMode || Ruler.active || this.tool === 'draw' || !layer) return;
+    L.DomEvent.preventDefault(e.originalEvent);
+    this.openRename(layer, e.latlng);
+  },
+  /** Мини-попап переименования прямо над провинцией. */
+  openRename(layer, latlng) {
+    const { kind, id } = layer._rp, map = MapView.map;
+    let current, orig, hint;
+    if (kind === 'province') {
+      const f = Geo.byId.get(id);
+      current = provinceName(f); orig = provinceOrigName(f);
+      hint = `Исходно: ${orig}${provinceCountry(f) ? ` (${provinceCountry(f)})` : ''} · ID ${id}`;
+    } else {
+      const z = Store.findCustom(id);
+      current = z?.properties.name || ''; orig = ''; hint = z?.properties.countryId ? 'Особая зона' : 'Нейтральная зона';
+    }
+    let popup;
+    const close = () => map.closePopup(popup);
+    const input = h('input', { class: 'input', value: current, maxlength: 80, placeholder: orig || 'Название', 'aria-label': 'Новое название' });
+    const save = () => {
+      const v = input.value.trim();
+      if (kind === 'province') Store.setProvinceName(id, v && v !== orig ? v : null);
+      else Store.updateCustom(id, { name: v });
+      close();
+      toast(v ? `Название: «${v}»` : 'Название сброшено', 'ok', 1600);
+    };
+    const reset = () => { Store.setProvinceName(id, null); close(); toast(`Возвращено исходное: «${orig}»`, 'ok', 1600); };
+    input.addEventListener('keydown', (e) => {
+      e.stopPropagation();                         // не отдаём клавиши карте (стрелки, +/−)
+      if (e.key === 'Enter') { e.preventDefault(); save(); }
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+    });
+    const box = h('div', { class: 'rename-box' },
+      h('div', { class: 'rb-title' }, ic('fa-solid fa-tag'), kind === 'province' ? ' Название провинции' : ' Название зоны'),
+      h('div', { class: 'rb-hint' }, hint),
+      input,
+      h('div', { class: 'rb-actions' },
+        h('button', { type: 'button', class: 'btn btn-small btn-accent', onclick: save }, ic('fa-solid fa-check'), ' Сохранить'),
+        kind === 'province' && Store.provinceCustomName(id)
+          ? h('button', { type: 'button', class: 'btn btn-small', onclick: reset }, ic('fa-solid fa-rotate-left'), ' Сбросить к исходному') : null,
+        h('button', { type: 'button', class: 'btn btn-small', onclick: close }, 'Отмена')));
+    L.DomEvent.disableClickPropagation(box);
+    L.DomEvent.disableScrollPropagation(box);
+    popup = L.popup({ className: 'rename-popup', closeButton: false, minWidth: 250, maxWidth: 320, autoPanPadding: [40, 40] })
+      .setLatLng(latlng).setContent(box).openOn(map);
+    setTimeout(() => { input.focus(); input.select(); }, 60);
+  },
+
   onDblClick() {
     if (Ruler.active) Ruler.finish();
     else if (this.tool === 'draw') this.finishDraw();
@@ -2065,14 +2417,15 @@ const Tools = {
     UI.syncToolbar();
   },
 
-  /* — выбор столицы на карте — */
-  startCapitalPick(cb) {
+  /* — выбор точки на карте (столица, город) — */
+  startPointPick(cb, message = 'Кликните по карте, чтобы указать точку (Esc — отмена)') {
+    if (Ruler.active) Ruler.toggle(false);
     this._capital = { prevTool: this.tool === 'capital' ? 'select' : this.tool, cb };
     this.tool = 'capital';
     this.sync();
-    toast('Кликните по карте, чтобы указать столицу (Esc — отмена)', 'info');
+    toast(message, 'info');
   },
-  finishCapitalPick(ll) {
+  finishPointPick(ll) {
     const c = this._capital;
     this._capital = null;
     this.tool = c?.prevTool || 'select';
@@ -2172,15 +2525,8 @@ const UI = {
 
     // переключатели слоёв
     $$('[data-pref]').forEach((btn) => {
-      const key = btn.dataset.pref;
-      btn.setAttribute('aria-pressed', String(!!Prefs[key]));
-      btn.addEventListener('click', () => {
-        Prefs[key] = !Prefs[key]; savePrefs();
-        btn.setAttribute('aria-pressed', String(Prefs[key]));
-        if (key === 'labels') MapView.renderLabels();
-        if (key === 'grid') MapView.restyleProvinces(null);
-        if (key === 'capitals') MapView.renderCapitals();
-      });
+      btn.setAttribute('aria-pressed', String(!!Prefs[btn.dataset.pref]));
+      btn.addEventListener('click', () => this.togglePref(btn.dataset.pref));
     });
 
     $('#btn-mod').addEventListener('click', () => App.toggleMod());
@@ -2189,6 +2535,8 @@ const UI = {
     $('#country-filter').addEventListener('input', () => this.renderCountryList());
     $('#country-sort').value = Prefs.sort || 'name';
     $('#country-sort').addEventListener('change', (e) => { Prefs.sort = e.target.value; savePrefs(); this.renderCountryList(); });
+    $('#hide-deps').checked = !!Prefs.hideDeps;
+    $('#hide-deps').addEventListener('change', (e) => { Prefs.hideDeps = e.target.checked; savePrefs(); this.renderCountryList(); });
     $('#btn-ruler').addEventListener('click', () => Ruler.toggle());
 
     this.initSearch();
@@ -2203,6 +2551,14 @@ const UI = {
     Store.on('custom', () => this.scheduleRefresh());
     Store.on('dirty', (v) => this.setDirty(v));
     Store.on('history', () => this.syncHistory());
+  },
+
+  togglePref(key) {
+    Prefs[key] = !Prefs[key]; savePrefs();
+    $(`[data-pref="${key}"]`)?.setAttribute('aria-pressed', String(Prefs[key]));
+    if (key === 'labels') MapView.applyLabelToggle();
+    if (key === 'grid') MapView.restyleProvinces(null);
+    if (key === 'capitals') MapView.renderCapitals();
   },
 
   refreshAll() {
@@ -2234,11 +2590,19 @@ const UI = {
     const sort = Prefs.sort || 'name';
     const counts = Store.provinceCounts();
     const list = $('#country-list');
-    const items = Store.countryList().filter((c) => !q || c.name.toLowerCase().includes(q));
-    if (sort === 'area') items.sort((a, b) => Silhouettes.area(b.id) - Silhouettes.area(a.id) || a.name.localeCompare(b.name, 'ru'));
-    if (sort === 'provinces') items.sort((a, b) => (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, 'ru'));
+    const all = Store.countryList();
+    const items = all.filter((c) => (!q || c.name.toLowerCase().includes(q)) && !(Prefs.hideDeps && c.overlordId));
+    // значение для сортировки и правой колонки списка
+    const metric = {
+      name:      { get: (c) => Silhouettes.area(c.id) || null, fmt: fmtArea },
+      area:      { get: (c) => Silhouettes.area(c.id) || null, fmt: fmtArea },
+      population:{ get: (c) => c.population, fmt: fmtPop },
+      gdp:       { get: (c) => c.gdp, fmt: fmtGdp },
+      provinces: { get: (c) => counts.get(c.id) || null, fmt: (n) => `${n} пр.` },
+    }[sort] || { get: () => null, fmt: String };
+    if (sort !== 'name') items.sort((a, b) => (metric.get(b) ?? -1) - (metric.get(a) ?? -1) || a.name.localeCompare(b.name, 'ru'));
     list.replaceChildren(...items.map((c) => {
-      const lord = Store.country(c.overlordId), area = Silhouettes.area(c.id);
+      const lord = Store.country(c.overlordId), val = metric.get(c);
       return h('li', {
         class: 'country-item' + (c.id === MapView.selected ? ' active' : ''),
         dataset: { id: c.id },
@@ -2251,19 +2615,25 @@ const UI = {
       h('span', { class: 'ci-main' },
         h('span', { class: 'ci-name' }, c.name),
         lord ? h('span', { class: 'ci-sub' }, `${depLabel(c)} · ${lord.name}`) : null),
-      h('span', { class: 'ci-area', title: `Провинций: ${counts.get(c.id) || 0}` },
-        sort === 'provinces' ? `${counts.get(c.id) || 0} пр.` : area ? fmtArea(area) : '—'));
+      h('span', { class: 'ci-area', title: `Провинций: ${counts.get(c.id) || 0}` }, val != null ? metric.fmt(val) : '—'));
     }));
     if (!items.length) {
+      const hidden = Prefs.hideDeps && all.some((c) => c.overlordId);
       list.append(h('li', { class: 'empty' }, q ? 'Ничего не найдено'
+        : all.length && hidden ? 'Все государства — зависимые территории (снимите фильтр).'
         : App.modMode ? 'Государств пока нет — создайте первое во вкладке «Редактор».' : 'Государств пока нет.'));
     }
     const total = MapView.layerById.size;
-    let owned = 0, area = 0;
+    let owned = 0, area = 0, pop = 0, gdp = 0;
     counts.forEach((n) => (owned += n));
-    for (const id of Object.keys(Store.state.countries)) area += Silhouettes.area(id);
+    for (const c of all) { area += Silhouettes.area(c.id); pop += c.population || 0; gdp += c.gdp || 0; }
+    const hiddenDeps = Prefs.hideDeps ? all.filter((c) => c.overlordId).length : 0;
     $('#world-stats').textContent = total
-      ? `Государств: ${Object.keys(Store.state.countries).length} · общая площадь: ${fmtArea(area)} · провинций распределено: ${owned} из ${total} (${Math.round(owned / total * 100)}%)`
+      ? [`Государств: ${all.length}${hiddenDeps ? ` (зависимых скрыто: ${hiddenDeps})` : ''}`,
+        `площадь: ${fmtArea(area)}`,
+        pop ? `население: ${fmtPop(pop)}` : '',
+        gdp ? `ВВП: ${fmtGdp(gdp)}` : '',
+        `провинций распределено: ${owned} из ${total} (${Math.round(owned / total * 100)}%)`].filter(Boolean).join(' · ')
       : '';
   },
 
@@ -2304,13 +2674,18 @@ const UI = {
 
   countryCard(c, context) {
     const n = Store.provinceCounts().get(c.id) || 0;
-    const own = Silhouettes.area(c.id), deps = Store.allVassals(c.id);
-    const areaVal = own || deps.size
-      ? [own ? fmtArea(own) : '—', deps.size ? h('span', { class: 'dd-sub' }, `(с зависимыми: ${fmtArea(Silhouettes.totalArea(c.id))})`) : null]
-      : null;
+    // собственное значение + «(с владениями: …)», если у вассалов сумма > 0
+    const withDeps = (get, fmt) => {
+      const st = statWithDeps(c.id, get);
+      if (!st.hasOwn && !st.depsSum) return null;
+      return [st.hasOwn ? fmt(st.own) : '—', st.depsSum > 0 ? h('span', { class: 'dd-sub' }, `(с владениями: ${fmt(st.total)})`) : null];
+    };
     const stats = [
-      ['Столица', c.capital?.name], ['Население', c.population], ['ВВП', c.gdp],
-      ['Площадь', areaVal], ['Провинций', `${n}`],
+      ['Столица', c.capital?.name],
+      ['Население', withDeps(statPop, fmtPop)],
+      ['ВВП', withDeps(statGdp, fmtGdp)],
+      ['Площадь', withDeps((id) => Silhouettes.area(id) || null, fmtArea)],
+      ['Провинций', `${n}`],
     ].filter(([, v]) => v);
     const hasCap = c.capital && Number.isFinite(c.capital.lat);
     const lord = Store.country(c.overlordId), vassals = Store.vassals(c.id);
@@ -2341,8 +2716,14 @@ const UI = {
         h('span', { class: 'vl-main' }, h('span', { class: 'vl-name' }, v.name), h('span', { class: 'vl-type' }, depLabel(v))),
         h('span', { class: 'vl-area' }, Silhouettes.area(v.id) ? fmtArea(Silhouettes.area(v.id)) : ''))))) : null,
       c.cities.length ? h('div', { class: 'block' },
-        h('h3', null, ic('fa-solid fa-city'), ' Крупные города'),
-        h('div', { class: 'chips' }, c.cities.map((x) => h('span', { class: 'chip' }, x)))) : null,
+        h('h3', null, ic('fa-solid fa-city'), ' Крупнейшие города'),
+        h('ul', { class: 'city-list' }, c.cities.map((city) => (hasPoint(city)
+          ? h('li', {
+            class: 'has-point', tabindex: 0, title: 'Показать на карте',
+            onclick: () => MapView.focusCity(c.id, city.id),
+            onkeydown: (e) => { if (e.key === 'Enter') MapView.focusCity(c.id, city.id); },
+          }, h('span', { class: 'city-dot' }), h('span', { class: 'cl-name' }, city.name), ic('fa-solid fa-location-arrow cl-go'))
+          : h('li', { class: 'no-point', title: 'Точка на карте не задана' }, h('span', { class: 'city-dot' }), h('span', { class: 'cl-name' }, city.name)))))) : null,
       c.description ? h('div', { class: 'block' },
         h('h3', null, ic('fa-solid fa-scroll'), ' Описание'),
         h('p', { class: 'desc' }, c.description)) : null,
@@ -2357,9 +2738,9 @@ const UI = {
   openProvince(fid, { silent = false } = {}) {
     const f = Geo.byId.get(fid);
     if (!f) return;
-    const owner = Store.owner(fid), name = provinceName(f), base = provinceCountry(f);
+    const owner = Store.owner(fid), name = provinceName(f), real = realCountryHint(f);
     if (owner) {
-      this.openCountry(owner, { silent, context: base ? `${name} · ${base}` : name });
+      this.openCountry(owner, { silent, context: real ? `${name} ${real}` : name });
       this.current = { type: 'province', id: fid };
       if (!silent) App.setHash(`p=${fid}`);
       return;
@@ -2371,9 +2752,10 @@ const UI = {
       h('div', { class: 'info-hero neutral' },
         h('div', { class: 'info-flag placeholder' }, ic('fa-solid fa-mountain-sun')),
         h('div', { class: 'hero-text' }, h('h2', null, name), h('div', { class: 'muted small' }, 'Ничейная земля'))),
-      h('dl', { class: 'stats' },
-        base ? [h('dt', null, 'Базовая страна'), h('dd', null, base)] : null,
-        h('dt', null, 'ID провинции'), h('dd', { class: 'mono' }, fid)),
+      App.modMode ? h('dl', { class: 'stats' },
+        provinceCountry(f) ? [h('dt', null, 'Реальная страна'), h('dd', null, provinceCountry(f))] : null,
+        Store.provinceCustomName(fid) ? [h('dt', null, 'Исходное название'), h('dd', null, provinceOrigName(f))] : null,
+        h('dt', null, 'ID провинции'), h('dd', { class: 'mono' }, fid)) : null,
       App.modMode && active && Tools.activeCountry !== NEUTRAL ? h('div', { class: 'info-actions' },
         h('button', { class: 'btn btn-accent', onclick: () => Store.setOwner(fid, active.id) },
           ic('fa-solid fa-paintbrush'), ` Присвоить: ${active.name}`)) : null));
@@ -2388,8 +2770,7 @@ const UI = {
     latlng = latlng || (this.current?.type === 'custom' && this.current.id === id ? this.current.latlng : null);
     const under = MapView.provinceAt(latlng);
     const region = f.properties.name || (under ? provinceName(under) : '');
-    const base = under ? provinceCountry(under) : '';
-    const context = [region, base].filter(Boolean).join(' · ');
+    const context = [region, under ? realCountryHint(under) : ''].filter(Boolean).join(' ');
     const owner = Store.country(f.properties.countryId);
     if (owner) {
       this.openCountry(owner.id, { silent, context: context || null });
@@ -2427,6 +2808,7 @@ const UI = {
     const pick = (r) => {
       ul.hidden = true; input.value = ''; input.blur();
       if (r.type === 'country') this.openCountry(r.id, { fly: true });
+      else if (r.type === 'city') { this.openCountry(r.id); MapView.focusCity(r.id, r.cityId); }
       else { MapView.flyToProvince(r.id); this.openProvince(r.id); }
     };
     input.addEventListener('input', () => {
@@ -2434,18 +2816,21 @@ const UI = {
       results = [];
       if (q) {
         for (const c of Store.countryList()) {
-          const hit = c.name.toLowerCase().includes(q) ? null
-            : (c.capital?.name || '').toLowerCase().includes(q) ? `столица: ${c.capital.name}`
-            : c.cities.find((x) => x.toLowerCase().includes(q));
-          if (hit === null || hit) results.push({ type: 'country', id: c.id, label: c.name, sub: hit ? (hit.startsWith('столица') ? hit : `город: ${hit}`) : '', color: countryColor(c) });
+          const color = countryColor(c);
+          if (c.name.toLowerCase().includes(q)) results.push({ type: 'country', id: c.id, label: c.name, sub: '', color });
+          if ((c.capital?.name || '').toLowerCase().includes(q)) results.push({ type: 'city', id: c.id, cityId: '__capital', label: c.capital.name, sub: `столица · ${c.name}`, color });
+          for (const city of c.cities) {
+            if (city.name.toLowerCase().includes(q)) results.push({ type: 'city', id: c.id, cityId: city.id, label: city.name, sub: `город · ${c.name}`, color });
+          }
         }
         if (q.length >= 2) {
           for (const f of Geo.features) {
             const n = provinceName(f, false);
-            if (n && n.toLowerCase().includes(q)) {
+            const orig = App.modMode ? provinceOrigName(f, false) : '';        // модератор находит и по исходному имени
+            if ((n && n.toLowerCase().includes(q)) || (orig && orig.toLowerCase().includes(q))) {
               const o = Store.country(Store.owner(f.properties.__fid));
-              const base = provinceCountry(f);
-              results.push({ type: 'province', id: f.properties.__fid, label: n, sub: [base, o ? o.name : 'ничья'].filter(Boolean).join(' · '), color: o ? countryColor(o) : null });
+              const sub = [o ? o.name : 'ничья', realCountryHint(f)].filter(Boolean).join(' ');
+              results.push({ type: 'province', id: f.properties.__fid, label: n, sub, color: o ? countryColor(o) : null });
               if (results.length >= 30) break;
             }
           }
@@ -2453,7 +2838,7 @@ const UI = {
       }
       results = results.slice(0, 12);
       ul.replaceChildren(...results.map((r) => h('li', { onmousedown: (e) => { e.preventDefault(); pick(r); } },
-        r.type === 'country' ? ic('fa-solid fa-flag') : ic('fa-solid fa-map-location-dot'),
+        ic(r.type === 'country' ? 'fa-solid fa-flag' : r.type === 'city' ? (r.cityId === '__capital' ? 'fa-solid fa-star' : 'fa-solid fa-city') : 'fa-solid fa-map-location-dot'),
         r.color ? h('span', { class: 'swatch', style: { background: r.color } }) : null,
         h('span', { class: 'sr-label' }, r.label),
         r.sub ? h('span', { class: 'sr-sub' }, r.sub) : null)));
@@ -2478,12 +2863,17 @@ const UI = {
     $('#dep-types').replaceChildren(...DEPENDENCY_TYPES.map((t) => h('option', { value: t })));
     F('overlordId').addEventListener('change', () => this.syncDependencyFields());
     $('#btn-pick-capital').addEventListener('click', () => {
-      Tools.startCapitalPick((ll) => {
+      Tools.startPointPick((ll) => {
         F('capLat').value = round6(ll.lat).toFixed(4);
         F('capLng').value = round6(L.Util.wrapNum(ll.lng, [-180, 180], true)).toFixed(4);
         this.openSidebar(); this.showTab('editor');
         toast('Координаты столицы заполнены — нажмите «Применить»', 'ok');
-      });
+      }, 'Кликните по карте, чтобы указать столицу (Esc — отмена)');
+    });
+    $('#btn-add-city').addEventListener('click', () => {
+      this.cityRows.push({ id: uid('city'), name: '', lat: null, lng: null });
+      this.renderCityRows();
+      $$('#cities-editor .city-name').pop()?.focus();
     });
     form.addEventListener('submit', (e) => { e.preventDefault(); this.applyForm(); });
     $('#btn-delete-country').addEventListener('click', () => this.deleteEditing());
@@ -2493,6 +2883,53 @@ const UI = {
     });
     this.fillForm(null);
   },
+  /* — список «Крупнейшие города» в редакторе — */
+  cityRows: [],
+  renderCityRows() {
+    const box = $('#cities-editor');
+    box.replaceChildren(...this.cityRows.map((city, i) => {
+      let row = null;
+      const sync = () => row?.classList.toggle('has-point', hasPoint(city));
+      const name = h('input', { class: 'input city-name', value: city.name, placeholder: 'Название города', maxlength: 60, 'aria-label': 'Название города' });
+      name.addEventListener('input', () => { city.name = name.value; });
+      const coord = (key) => {
+        const inp = h('input', {
+          class: 'input mono coord', value: Number.isFinite(city[key]) ? Number(city[key].toFixed(4)) : '', placeholder: key,
+          inputmode: 'decimal', title: key === 'lat' ? 'Широта' : 'Долгота',
+        });
+        inp.addEventListener('input', () => {
+          const v = parseFloat(inp.value.replace(',', '.'));
+          city[key] = Number.isFinite(v) ? v : null;
+          sync();
+        });
+        return inp;
+      };
+      row = h('div', { class: 'city-row' + (hasPoint(city) ? ' has-point' : '') },
+        h('span', { class: 'city-dot', title: 'Метка на карте: задана / не задана' }),
+        name, coord('lat'), coord('lng'),
+        h('button', { type: 'button', class: 'btn btn-small icon-only', title: 'Указать на карте', onclick: () => this.pickCityPoint(city) }, ic('fa-solid fa-location-crosshairs')),
+        h('button', { type: 'button', class: 'btn btn-small icon-only btn-danger', title: 'Удалить город', onclick: () => { this.cityRows.splice(i, 1); this.renderCityRows(); } }, '×'));
+      return row;
+    }));
+    if (!this.cityRows.length) box.append(h('p', { class: 'muted small cities-empty' }, 'Городов пока нет.'));
+  },
+  pickCityPoint(city) {
+    Tools.startPointPick((ll) => {
+      city.lat = round6(ll.lat);
+      city.lng = round6(L.Util.wrapNum(ll.lng, [-180, 180], true));
+      if (!city.name.trim()) city.name = 'Новый город';
+      this.openSidebar(); this.showTab('editor');
+      this.renderCityRows();
+      const c = Store.country(this.editingId);
+      if (c) {                                   // у существующей страны метка появляется сразу
+        Store.upsertCountry({ ...c, cities: this.cityRows.map((x) => ({ ...x, name: x.name.trim() })) });
+        toast(`Город «${city.name}» отмечен на карте`, 'ok');
+      } else {
+        toast('Координаты города заполнены — нажмите «Применить», чтобы создать государство', 'ok');
+      }
+    }, `Кликните по карте, чтобы отметить город «${city.name.trim() || 'новый'}» (Esc — отмена)`);
+  },
+
   nextCountryId() {
     let max = 0;
     for (const id of Object.keys(Store.state.countries)) { const m = id.match(/^country_(\d+)$/); if (m) max = Math.max(max, +m[1]); }
@@ -2511,9 +2948,10 @@ const UI = {
     F('capName').value = c?.capital?.name || '';
     F('capLat').value = Number.isFinite(c?.capital?.lat) ? c.capital.lat : '';
     F('capLng').value = Number.isFinite(c?.capital?.lng) ? c.capital.lng : '';
-    F('population').value = c?.population || '';
-    F('gdp').value = c?.gdp || '';
-    F('cities').value = (c?.cities || []).join('\n');
+    F('population').value = c?.population ?? '';
+    F('gdp').value = c?.gdp ?? '';
+    this.cityRows = (c?.cities || []).map((x) => ({ ...x }));
+    this.renderCityRows();
     F('tgLink').value = c?.tgLink || '';
     F('description').value = c?.description || '';
     // сюзерен: без самой страны и без её вассалов (иначе цикл)
@@ -2524,6 +2962,7 @@ const UI = {
     F('overlordId').value = c?.overlordId && !banned.has(c.overlordId) ? c.overlordId : '';
     F('dependencyType').value = c?.overlordId ? depLabel(c) : '';
     F('inheritOverlordColor').checked = c ? c.inheritOverlordColor !== false : true;
+    F('hideMapLabel').checked = !!c?.hideMapLabel;
     this.syncDependencyFields();
     $('#editor-title').textContent = c ? `Редактирование: ${c.name}` : 'Новое государство';
     $('#btn-delete-country').hidden = !c;
@@ -2556,6 +2995,14 @@ const UI = {
       toast('Координаты столицы должны быть числами', 'warn'); return;
     }
     if (F('tgLink') && !cleanTgLink(F('tgLink'))) { toast('Ссылка Telegram не распознана (нужно https://t.me/… или @name)', 'warn'); return; }
+    const num = (name, label) => {
+      const raw = F(name).replace(',', '.');
+      if (raw === '') return { v: null };
+      const v = Number(raw);
+      return Number.isFinite(v) && v >= 0 ? { v } : { err: `${label}: нужно неотрицательное число` };
+    };
+    const population = num('population', 'Население'), gdp = num('gdp', 'ВВП');
+    if (population.err || gdp.err) { toast(population.err || gdp.err, 'warn'); return; }
     const overlordId = F('overlordId') || null;
     if (overlordId && overlordId === id) { toast('Государство не может зависеть само от себя', 'warn'); return; }
     if (overlordId && Store.wouldCycle(id, overlordId)) { toast('Нельзя: получится цикл зависимостей (сюзерен сам зависит от этой страны)', 'warn'); return; }
@@ -2565,11 +3012,12 @@ const UI = {
       id, name, color,
       flagUrl: F('flagUrl'),
       capital: { name: F('capName'), lat, lng },
-      population: F('population'), gdp: F('gdp'),
-      cities: F('cities'), tgLink: F('tgLink'), description: form.elements.namedItem('description').value,
+      population: population.v, gdp: gdp.v,
+      cities: this.cityRows.map((x) => ({ ...x, name: x.name.trim() })).filter((x) => x.name), tgLink: F('tgLink'), description: form.elements.namedItem('description').value,
       overlordId,
       dependencyType: overlordId ? F('dependencyType') || DEPENDENCY_TYPES[0] : '',
       inheritOverlordColor: form.elements.namedItem('inheritOverlordColor').checked,
+      hideMapLabel: form.elements.namedItem('hideMapLabel').checked,
     });
     const isNew = !this.editingId;
     this.fillForm(c);
@@ -2656,6 +3104,7 @@ const UI = {
       `Источник: ${Geo.source}. Полигонов: ${MapView.layerById.size}. ` +
       `Слияние силуэтов: ${Geo.topology ? 'topojson.merge' : 'turf.union (без топологии — медленнее)'}${hasTurf() ? ' + Turf' : ' — Turf.js не загрузился, зоны без вырезания'}. ` +
       `Своих полигонов: ${Store.state.customPolygons.length}. ` +
+      `Переименовано провинций: ${Object.keys(Store.state.provinceNames).length}. ` +
       (orphans ? `⚠ Владений без провинции в сетке: ${orphans}.` : '');
     $('#btn-clean-orphans').disabled = !orphans;
     Geo.cacheInfo().then((m) => {
@@ -2784,6 +3233,7 @@ const App = {
       Silhouettes.refreshVisuals(); Silhouettes.schedule(); MapView.renderLabels();
     });
     Store.on('custom', () => { MapView.renderCustom(); Silhouettes.schedule(); Tools.onCustomChanged(); });
+    Store.on('names', () => { if (MapView.hoverLayer) MapView.restyle(MapView.hoverLayer); UI.scheduleRefresh(); });
     this.bindGlobalEvents();
     this.setMod(kv.get(SS, CONFIG.keys.mod) === true, { quiet: true });
 
@@ -2845,10 +3295,11 @@ const App = {
         if (e.key === 'Backspace') { e.preventDefault(); Ruler.undoPoint(); return; }
       }
       if (e.code === 'KeyR' && !mod && !e.altKey) { Ruler.toggle(); return; }
+      if (e.code === 'KeyA' && !mod && !e.altKey) { UI.togglePref('labels'); return; }
       if (e.key === 'Escape') {
         if (Tools.tool === 'draw' && Tools.draw.points.length) Tools.cancelDraw();
         else if (Tools.editing) Tools.stopEdit();
-        else if (Tools.tool === 'capital') Tools.finishCapitalPick(null);
+        else if (Tools.tool === 'capital') Tools.finishPointPick(null);
         else UI.closeInfo();
         return;
       }
@@ -2864,7 +3315,7 @@ const App = {
       }
       // e.code — чтобы горячие клавиши работали и в кириллической раскладке
       if (e.code === 'KeyM') { Tools.toggleSnap(); return; }
-      const map = { KeyV: 'select', KeyB: 'paint', KeyE: 'erase', KeyI: 'pick', KeyP: 'draw' };
+      const map = { KeyV: 'select', KeyB: 'paint', KeyE: 'erase', KeyI: 'pick', KeyP: 'draw', KeyN: 'rename' };
       if (map[e.code]) Tools.set(map[e.code]);
     });
   },
