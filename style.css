@@ -111,6 +111,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.92em; }
 .search-results li.empty { color: var(--muted); cursor: default; }
 
 .topbar-actions { display: flex; align-items: center; gap: 6px; }
+.topbar-sep { width: 1px; height: 22px; background: var(--line-2); margin: 0 2px; }
 
 /* ───────── Кнопки ───────── */
 .icon-btn {
@@ -236,8 +237,14 @@ body:not(.mod-mode) .mod-only { display: none !important; }
 .swatch.empty { background: repeating-linear-gradient(45deg, #444 0 3px, #2a2a2a 3px 6px) !important; }
 .swatch.neutral { background: repeating-linear-gradient(45deg, #ffffff 0 3px, #9aa0a8 3px 6px) !important; }
 .mini-flag { width: 24px; height: 16px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4); }
-.ci-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ci-count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.ci-main { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+.ci-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ci-sub { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ci-sub::before { content: "↳ "; opacity: .7; }
+.ci-area { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.list-tools { display: flex; gap: 6px; }
+.list-tools #country-filter { flex: 1 1 auto; min-width: 0; }
+.list-tools #country-sort { width: auto; flex: none; font-size: 12px; }
 
 /* ───────── Формы ───────── */
 .input {
@@ -265,6 +272,7 @@ select.input { cursor: pointer; }
 
 .field-group { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 8px 10px 0; margin: 0 0 10px; }
 .field-group legend { padding: 0 6px; font-size: 12px; color: var(--muted); }
+.field-group.is-disabled .field:not(:first-of-type), .field-group.is-disabled .check { opacity: .45; }
 
 .color-field { display: flex; gap: 6px; }
 .color-field input[type="color"] { width: 38px; height: 34px; padding: 2px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--panel-2); cursor: pointer; }
@@ -328,6 +336,47 @@ kbd {
 .stats { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 14px 16px; }
 .stats dt { color: var(--muted); }
 .stats dd { margin: 0; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+.stats .dd-sub { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); }
+
+/* бейдж сюзерена */
+.overlord-badge {
+  --oc: #888;
+  display: flex; align-items: center; gap: 8px;
+  width: calc(100% - 32px);
+  margin: 12px 16px 0;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--oc) 55%, transparent);
+  border-left: 4px solid var(--oc);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--oc) 16%, var(--panel-2));
+  color: var(--text);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .15s;
+}
+.overlord-badge:hover { background: color-mix(in srgb, var(--oc) 28%, var(--panel-2)); }
+.overlord-badge > .fa-crown { color: var(--accent-2); }
+.overlord-badge .ob-type { color: var(--muted); white-space: nowrap; }
+.overlord-badge b { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.overlord-badge .ob-flag { width: 24px; height: 16px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4); flex: none; }
+.overlord-badge .ob-arrow { color: var(--muted); font-size: 11px; }
+
+/* список вассалов */
+.vassal-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.vassal-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--panel-2);
+  cursor: pointer;
+  outline: none;
+}
+.vassal-list li:hover, .vassal-list li:focus-visible { background: #232a36; }
+.vl-main { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+.vl-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vl-type { font-size: 11px; color: var(--muted); }
+.vl-area { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .block { margin: 14px 16px 0; }
 .block h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
@@ -436,6 +485,7 @@ kbd {
 .tt-head .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85), 0 0 0 2.5px rgba(0, 0, 0, 0.35); }
 .tt-head .dot.neutral { background: repeating-linear-gradient(45deg, #ffffff 0 2px, #9aa0a8 2px 4px); }
 .tt-region { margin: 2px 0 0 18px; font-size: 12px; color: var(--muted); }
+.tt-dep { margin: 2px 0 0 18px; font-size: 11.5px; color: var(--accent-2); }
 .tt-zone { margin: 4px 0 0 18px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-2); }
 
 /* маркеры столиц */
@@ -484,6 +534,33 @@ kbd {
 .snap-dot.edge { background: #fff; color: #1b1813; border-color: var(--accent-2); }
 .snap-dot.close { background: var(--ok); color: #fff; }
 @keyframes snap-pulse { 50% { box-shadow: 0 0 0 7px rgba(240, 195, 109, 0.12), 0 2px 6px rgba(0, 0, 0, 0.45); } }
+
+/* линейка */
+.ruler-label { background: none; border: 0; }
+.ruler-label span {
+  position: absolute;
+  left: 10px; top: -12px;
+  display: flex; flex-direction: column;
+  padding: 3px 8px;
+  white-space: nowrap;
+  font: 600 12px/1.25 var(--font);
+  font-variant-numeric: tabular-nums;
+  color: #1b1813;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(27, 24, 19, 0.25);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+.ruler-label small { font-size: 10.5px; font-weight: 500; color: #5a554c; }
+.ruler-label.start span { font-weight: 500; color: #5a554c; }
+.ruler-label.live span { background: rgba(27, 24, 19, 0.88); color: #fff; border-color: transparent; }
+.ruler-label.live small { color: #d8d2c4; }
+.ruler-label.total span { background: var(--accent-2); border-color: var(--accent); }
+.ruler-label.total small { color: #4a3a17; }
+body.ruler-on #map, body.ruler-on #map .leaflet-interactive { cursor: crosshair !important; }
+body.ruler-on .capital-marker { pointer-events: none; }
+#btn-ruler[aria-pressed="true"] { color: var(--accent-ink); background: var(--accent); }
 
 /* подписи государств */
 .country-label { background: none; border: 0; }
@@ -590,7 +667,7 @@ kbd {
   :root { --topbar-h: 52px; }
   #topbar { gap: 6px; padding: 0 6px; }
   .btn .label { display: none; }
-  .topbar-actions .icon-btn.toggle { display: none; }
+  .topbar-actions .icon-btn.toggle:not(.ruler), .topbar-sep { display: none; }
   #sidebar { left: 8px; right: 8px; top: 8px; bottom: 8px; width: auto; }
   #info-panel {
     top: auto; left: 8px; right: 8px; bottom: 8px;

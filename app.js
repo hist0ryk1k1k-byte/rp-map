@@ -12,7 +12,8 @@
      3. Store       — appState, история (undo/redo), события, сериализация
      4. Drafts      — автосохранение черновика модератора в localStorage
      5. Geo         — загрузка/парсинг сетки провинций (GeoJSON / TopoJSON)
-     6. Геометрия   — Turf-обёртки, Silhouettes (единые силуэты стран)
+     6. Геометрия   — Turf-обёртки, Silhouettes (силуэты стран, блоки «сюзерен + вассалы»,
+                      площадь в км²), Ruler (линейка по дуге большого круга)
      7. MapView     — Leaflet: подложки, провинции, зоны, столицы, подписи
      8. Tools       — инструменты модератора (кисть, ластик, пипетка, зоны:
                       привязка, лассо, редактор вершин)
@@ -328,7 +329,30 @@ function normalizeCountry(c) {
     cities: toList(c.cities),
     tgLink: cleanTgLink(c.tgLink),
     description: c.description == null ? '' : String(c.description),
+    // зависимость: сюзерен, тип, наследование цвета (по умолчанию — да)
+    overlordId: c.overlordId ? String(c.overlordId).trim() || null : null,
+    dependencyType: String(c.dependencyType ?? '').trim(),
+    inheritOverlordColor: c.inheritOverlordColor !== false,
   };
+}
+
+const DEPENDENCY_TYPES = ['Зависимая территория', 'Вассал', 'Протекторат', 'Доминион', 'Автономия', 'Марионеточное государство', 'Колония'];
+const depLabel = (c) => c.dependencyType || DEPENDENCY_TYPES[0];
+
+/** Убирает ссылки на несуществующих сюзеренов, на самих себя и циклы (A → B → A). */
+function sanitizeDependencies(countries) {
+  for (const c of Object.values(countries)) {
+    if (c.overlordId && (c.overlordId === c.id || !countries[c.overlordId])) c.overlordId = null;
+  }
+  for (const c of Object.values(countries)) {
+    const seen = new Set([c.id]);
+    let cur = c;
+    while (cur?.overlordId) {
+      if (seen.has(cur.overlordId)) { console.warn(`[Store] цикл зависимостей разорван у «${c.name}»`); c.overlordId = null; break; }
+      seen.add(cur.overlordId);
+      cur = countries[cur.overlordId];
+    }
+  }
 }
 
 /** Значение «Нейтральная территория (ластик зоны)» в списках выбора. В данных хранится как countryId: null. */
@@ -368,6 +392,7 @@ function normalizeState(raw) {
     ? src.countries
     : Object.entries(src.countries || {}).map(([key, v]) => ({ ...v, id: key }));
   for (const c of list) { const n = normalizeCountry(c); if (n) out.countries[n.id] = n; }
+  sanitizeDependencies(out.countries);
 
   let dropped = 0;
   for (const [fid, cid] of Object.entries(src.provinceOwners || {})) {
@@ -419,6 +444,28 @@ const Store = {
   owner(fid) { return this.state.provinceOwners[fid] || null; },
   country(id) { return (id && this.state.countries[id]) || null; },
   countryList() { return Object.values(this.state.countries).sort((a, b) => a.name.localeCompare(b.name, 'ru')); },
+  /* — зависимости — */
+  vassals(id) { return this.countryList().filter((c) => c.overlordId === id); },
+  allVassals(id, acc = new Set()) {
+    for (const v of this.vassals(id)) if (!acc.has(v.id) && v.id !== id) { acc.add(v.id); this.allVassals(v.id, acc); }
+    return acc;
+  },
+  /** Станет ли overlordId предком самого id (цикл)? */
+  wouldCycle(id, overlordId) {
+    const seen = new Set();
+    for (let cur = overlordId; cur; cur = this.state.countries[cur]?.overlordId) {
+      if (cur === id || seen.has(cur)) return true;
+      seen.add(cur);
+    }
+    return false;
+  },
+  /** Корень «блока» — верхний сюзерен по цепочке стран, наследующих его цвет. */
+  blocRoot(c) {
+    let cur = c, n = 0;
+    while (cur?.overlordId && cur.inheritOverlordColor && this.state.countries[cur.overlordId] && n++ < 32) cur = this.state.countries[cur.overlordId];
+    return cur?.id;
+  },
+
   provinceCounts() {
     const m = new Map();
     for (const [fid, cid] of Object.entries(this.state.provinceOwners)) {
@@ -500,6 +547,7 @@ const Store = {
     delete this.state.countries[id];
     for (const [fid, cid] of Object.entries(this.state.provinceOwners)) if (cid === id) delete this.state.provinceOwners[fid];
     this.state.customPolygons = this.state.customPolygons.filter((p) => p.properties.countryId !== id);
+    for (const c of Object.values(this.state.countries)) if (c.overlordId === id) c.overlordId = null;   // вассалы становятся независимыми
     this.undoStack = []; this.redoStack = [];                  // история ссылалась бы на удалённое государство
     this.emit('countries'); this.emit('owners', null); this.emit('custom'); this.emit('history');
     this.setDirty(true);
@@ -546,6 +594,15 @@ const Store = {
     return JSON.stringify({ ...s, provinceOwners: owners }, null, 2) + '\n';
   },
 };
+
+/** Цвет страны НА КАРТЕ: вассал с inheritOverlordColor — чуть светлее цвета сюзерена. */
+function countryColor(c, depth = 0) {
+  if (!c) return '#8a8a8a';
+  const o = c.overlordId && c.inheritOverlordColor ? Store.country(c.overlordId) : null;
+  return o && depth < 16 ? shade(countryColor(o, depth + 1), 0.12) : c.color;
+}
+const fmtArea = (km2) => `${Math.round(km2).toLocaleString('ru-RU')} км²`;
+const fmtKm = (km) => `${km.toLocaleString('ru-RU', { maximumFractionDigits: km < 10 ? 1 : 0 })} км`;
 
 /* ───────────────────────────── 4. DRAFTS ───────────────────────────── */
 const Drafts = {
@@ -1004,33 +1061,55 @@ function geomLabelPoint(g) {
  * или затрагивающие их зоны.
  */
 const Silhouettes = {
-  cache: new Map(),     // cid → { provSig, provGeom, provBBox, key, geom }
-  layers: new Map(),    // cid → L.Polygon
-  group: null,
-  renderer: null,
+  cache: new Map(),     // cid → { provSig, provGeom, provBBox, key, geom, area, rev }
+  layers: new Map(),    // cid → L.Polygon (заливка; контур — в зависимости от роли в блоке)
+  blocs: new Map(),     // rootId → { key, geom, layer } — внешний контур сюзерена вместе с вассалами
+  blocMembers: new Map(),
+  group: null, renderer: null,
+  blocGroup: null, blocRenderer: null,
 
   init(map) {
     this.renderer = L.canvas({ pane: 'silhouettePane', padding: 0.5 });
+    this.blocRenderer = L.canvas({ pane: 'blocPane', padding: 0.5 });
     this.group = L.layerGroup().addTo(map);
+    this.blocGroup = L.layerGroup().addTo(map);
   },
   schedule: debounce(() => Silhouettes.rebuild(), CONFIG.silhouetteDebounce),
-  reset() { this.cache.clear(); this.layers.clear(); this.group.clearLayers(); },
+  reset() {
+    this.cache.clear(); this.layers.clear(); this.blocs.clear();
+    this.group.clearLayers(); this.blocGroup.clearLayers();
+  },
 
-  style(c) {
-    const sel = MapView.selected === c.id;
-    return {
-      interactive: false, stroke: true, color: shade(c.color, -0.45), weight: 2.2, opacity: 0.95,
-      lineJoin: 'round', fill: true, fillColor: c.color, fillOpacity: sel ? 0.72 : 0.55,
-    };
+  geom(cid) { return this.cache.get(cid)?.geom || null; },
+  /** Площадь собственной территории, км² (turf.area по силуэту: провинции + свои зоны − чужие). */
+  area(cid) { return this.cache.get(cid)?.area || 0; },
+  /** Площадь вместе со всеми зависимыми территориями (рекурсивно). */
+  totalArea(cid) { let sum = this.area(cid); for (const v of Store.allVassals(cid)) sum += this.area(v); return sum; },
+
+  /** 'solo' — сама по себе; 'root' — сюзерен блока; 'member' — вассал, наследующий цвет. */
+  role(cid) {
+    const root = Store.blocRoot(Store.country(cid));
+    if (root !== cid) return 'member';
+    return (this.blocMembers.get(cid)?.length || 0) > 1 ? 'root' : 'solo';
+  },
+  style(cid) {
+    const c = Store.country(cid), col = countryColor(c), role = this.role(cid);
+    const st = { interactive: false, lineJoin: 'round', fill: true, fillColor: col, fillOpacity: MapView.selected === cid ? 0.72 : 0.55 };
+    if (role === 'solo') return { ...st, stroke: true, color: shade(col, -0.45), weight: 2.2, opacity: 0.95, dashArray: null };
+    if (role === 'root') return { ...st, stroke: false, dashArray: null };                     // контур рисует блок
+    return { ...st, stroke: true, color: shade(col, -0.55), weight: 1.3, opacity: 0.9, dashArray: '6 5' };   // граница вассала
+  },
+  blocStyle(root) {
+    const col = countryColor(Store.country(root));
+    return { interactive: false, stroke: true, fill: false, color: shade(col, -0.45), weight: 2.2, opacity: 0.95, lineJoin: 'round' };
   },
   restyle(ids) {
     for (const [cid, layer] of this.layers) {
       if (ids && !ids.includes(cid)) continue;
-      const c = Store.country(cid);
-      if (c) layer.setStyle(this.style(c));
+      if (Store.country(cid)) layer.setStyle(this.style(cid));
     }
+    if (!ids) for (const [root, b] of this.blocs) if (b.layer && Store.country(root)) b.layer.setStyle(this.blocStyle(root));
   },
-  geom(cid) { return this.cache.get(cid)?.geom || null; },
 
   mergeProvinces(fids) {
     if (!fids.length) return null;
@@ -1064,7 +1143,7 @@ const Silhouettes = {
       const fids = (byCountry.get(c.id) || []).sort();
       const provSig = fids.join('\u0001');
       let e = this.cache.get(c.id);
-      if (!e) this.cache.set(c.id, (e = {}));
+      if (!e) this.cache.set(c.id, (e = { rev: 0 }));
       let dirty = false;
       if (e.provSig !== provSig) {
         e.provSig = provSig;
@@ -1081,24 +1160,196 @@ const Silhouettes = {
         let g = e.provGeom;
         for (const z of relevant) g = z.owner === c.id ? tUnion(g, z.geom) : tDiff(g, z.geom);
         e.geom = g;
+        e.area = geoAreaKm2(g);
+        e.rev++;
         changed.push(c.id);
       }
     }
     for (const cid of [...this.cache.keys()]) if (!Store.state.countries[cid]) { this.cache.delete(cid); changed.push(cid); }
 
+    this.refreshVisuals(changed);
+    if (changed.length) {
+      MapView.renderLabels();
+      UI.scheduleRefresh();                    // площади в списке и карточке
+      console.debug(`[Silhouettes] пересчитано стран: ${changed.length} за ${Math.round(performance.now() - t0)} мс`);
+    }
+  },
+
+  /** Перерисовать изменённые страны, пересобрать блоки «сюзерен + вассалы», обновить стили всех. */
+  refreshVisuals(changed = []) {
     for (const cid of changed) this.draw(cid);
-    if (changed.length) MapView.renderLabels();
-    if (changed.length) console.debug(`[Silhouettes] пересчитано стран: ${changed.length} за ${Math.round(performance.now() - t0)} мс`);
+    const members = new Map();
+    for (const c of Object.values(Store.state.countries)) {
+      const r = Store.blocRoot(c);
+      if (!members.has(r)) members.set(r, []);
+      members.get(r).push(c.id);
+    }
+    this.blocMembers = members;
+    this.renderBlocs();
+    this.restyle();
+  },
+  renderBlocs() {
+    const live = new Set();
+    for (const [root, ids] of this.blocMembers) {
+      if (ids.length < 2) continue;
+      const withGeom = ids.filter((cid) => this.geom(cid)).sort();
+      if (!withGeom.length) continue;
+      live.add(root);
+      const key = withGeom.map((cid) => `${cid}:${this.cache.get(cid).rev}`).join('|');
+      const old = this.blocs.get(root);
+      if (old && old.key === key) continue;
+      if (old?.layer) this.blocGroup.removeLayer(old.layer);
+      const g = unionMany(withGeom.map((cid) => this.geom(cid)));
+      const layer = g ? L.GeoJSON.geometryToLayer({ type: 'Feature', geometry: g }, { renderer: this.blocRenderer, pane: 'blocPane', ...this.blocStyle(root) }) : null;
+      if (layer) this.blocGroup.addLayer(layer);
+      this.blocs.set(root, { key, geom: g, layer });
+    }
+    for (const [root, b] of this.blocs) {
+      if (live.has(root)) continue;
+      if (b.layer) this.blocGroup.removeLayer(b.layer);
+      this.blocs.delete(root);
+    }
   },
 
   draw(cid) {
     const old = this.layers.get(cid);
     if (old) { this.group.removeLayer(old); this.layers.delete(cid); }
-    const g = this.geom(cid), c = Store.country(cid);
-    if (!g || !c) return;
-    const layer = L.GeoJSON.geometryToLayer({ type: 'Feature', geometry: g }, { renderer: this.renderer, pane: 'silhouettePane', ...this.style(c) });
+    const g = this.geom(cid);
+    if (!g || !Store.country(cid)) return;
+    const layer = L.GeoJSON.geometryToLayer({ type: 'Feature', geometry: g }, { renderer: this.renderer, pane: 'silhouettePane', ...this.style(cid) });
     this.layers.set(cid, layer);
     this.group.addLayer(layer);
+  },
+};
+
+/** Реальная площадь геометрии в км² (сферическая, turf.area). */
+function geoAreaKm2(g) {
+  if (!g || !hasTurf()) return 0;
+  try { return Math.round(turf.area(g) / 1e6); } catch { return 0; }
+}
+
+/* ───────────────────────────── ЛИНЕЙКА ───────────────────────────── */
+/** Точки дуги большого круга между a и b — линия на карте совпадает с измеренным расстоянием. */
+function greatCirclePath(a, b) {
+  const R = Math.PI / 180, la1 = a.lat * R, lo1 = a.lng * R, la2 = b.lat * R, lo2 = b.lng * R;
+  const d = 2 * Math.asin(Math.sqrt(Math.sin((la2 - la1) / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin((lo2 - lo1) / 2) ** 2));
+  const n = Math.min(96, Math.ceil(a.distanceTo(b) / 50_000));          // точка каждые ~50 км
+  if (d < 1e-9 || n < 2) return [a, b];
+  const out = [];
+  let prev = a.lng;
+  for (let i = 0; i <= n; i++) {
+    const f = i / n, A = Math.sin((1 - f) * d) / Math.sin(d), B = Math.sin(f * d) / Math.sin(d);
+    const x = A * Math.cos(la1) * Math.cos(lo1) + B * Math.cos(la2) * Math.cos(lo2);
+    const y = A * Math.cos(la1) * Math.sin(lo1) + B * Math.cos(la2) * Math.sin(lo2);
+    const z = A * Math.sin(la1) + B * Math.sin(la2);
+    let lng = Math.atan2(y, x) / R;
+    while (lng - prev > 180) lng -= 360;
+    while (prev - lng > 180) lng += 360;
+    prev = lng;
+    out.push(L.latLng(Math.atan2(z, Math.hypot(x, y)) / R, lng));
+  }
+  return out;
+}
+
+const Ruler = {
+  active: false,
+  points: [],
+  finished: false,
+  cursor: null,
+  group: null,
+  rubber: null,
+  live: null,
+
+  init() { this.group = L.layerGroup().addTo(MapView.map); },
+
+  toggle(on = !this.active) {
+    if (on === this.active) { if (!on) this.clear(); return; }
+    this.active = on;
+    if (on) {
+      if (App.modMode) { Tools.cancelDraw(); Tools.stopEdit(); Tools.set('select'); }
+      MapView.setHover(null);
+      toast('Линейка: клики ставят точки · двойной клик или Enter — завершить · Esc — очистить', 'info', 4500);
+    } else {
+      this.clear();
+    }
+    document.body.classList.toggle('ruler-on', on);
+    $('#btn-ruler').setAttribute('aria-pressed', String(on));
+    Tools.sync();
+  },
+  clear() {
+    this.points = [];
+    this.finished = false;
+    this.cursor = null;
+    this.group?.clearLayers();
+    this.rubber = null;
+    this.live = null;
+  },
+  total(pts = this.points) { let s = 0; for (let i = 1; i < pts.length; i++) s += pts[i - 1].distanceTo(pts[i]); return s / 1000; },
+
+  addPoint(ll) {
+    if (this.finished) this.clear();
+    const last = this.points[this.points.length - 1], map = MapView.map;
+    if (last && map.latLngToContainerPoint(last).distanceTo(map.latLngToContainerPoint(ll)) < 4) return;
+    this.points.push(ll);
+    this.render();
+  },
+  undoPoint() { if (!this.finished) { this.points.pop(); this.render(); } },
+  finish() {
+    if (this.points.length < 2) { this.clear(); return; }
+    this.finished = true;
+    this.cursor = null;
+    this.render();
+  },
+  onMove(ll) {
+    if (!this.active || this.finished || !this.points.length) return;
+    this.cursor = ll;
+    this.updateLive();
+  },
+
+  _label(ll, html, cls = '') {
+    return L.marker(ll, {
+      icon: L.divIcon({ className: `ruler-label ${cls}`, html: `<span>${html}</span>`, iconSize: null }),
+      interactive: false, keyboard: false, pane: 'editPane',
+    });
+  },
+  render() {
+    const g = this.group, pts = this.points;
+    g.clearLayers();
+    this.rubber = null; this.live = null;
+    if (!pts.length) return;
+    const o = { renderer: MapView.overlayRenderer, pane: 'draftPane', interactive: false };
+    const path = [];
+    for (let i = 1; i < pts.length; i++) path.push(...greatCirclePath(pts[i - 1], pts[i]));
+    if (path.length) {
+      L.polyline(path, { ...o, color: '#1b1813', weight: 5, opacity: 0.35 }).addTo(g);
+      L.polyline(path, { ...o, color: '#ffffff', weight: 2.5, dashArray: '8 6', opacity: 1 }).addTo(g);
+    }
+    let sum = 0;
+    pts.forEach((p, i) => {
+      L.circleMarker(p, { ...o, radius: i === 0 || (this.finished && i === pts.length - 1) ? 5.5 : 4, color: '#1b1813', weight: 2, fillColor: '#ffffff', fillOpacity: 1 }).addTo(g);
+      if (i === 0) { this._label(p, 'Старт', 'start').addTo(g); return; }
+      const seg = pts[i - 1].distanceTo(p) / 1000;
+      sum += seg;
+      const isLast = this.finished && i === pts.length - 1;
+      this._label(p, isLast
+        ? `<b>Итого: ${fmtKm(sum)}</b><small>+${fmtKm(seg)}</small>`
+        : `+${fmtKm(seg)}<small>Σ ${fmtKm(sum)}</small>`, isLast ? 'total' : '').addTo(g);
+    });
+    this.rubber = L.polyline([], { ...o, color: '#ffffff', weight: 2, dashArray: '3 6', opacity: 0.85 }).addTo(g);
+    this.updateLive();
+  },
+  updateLive() {
+    if (!this.rubber) return;
+    const last = this.points[this.points.length - 1];
+    if (this.finished || !this.cursor || !last) {
+      this.rubber.setLatLngs([]);
+      if (this.live) { this.group.removeLayer(this.live); this.live = null; }
+      return;
+    }
+    this.rubber.setLatLngs(greatCirclePath(last, this.cursor));
+    const seg = last.distanceTo(this.cursor) / 1000, html = `+${fmtKm(seg)}<small>Σ ${fmtKm(this.total() + seg)}</small>`;
+    if (!this.live) this.live = this._label(this.cursor, html, 'live').addTo(this.group);
+    else { this.live.setLatLng(this.cursor); this.live.getElement().firstChild.innerHTML = html; }
   },
 };
 
@@ -1111,7 +1362,8 @@ const savePrefs = () => kv.set(LS, CONFIG.keys.ui, Prefs);
 
 /*
  * Слои снизу вверх:
- *   silhouettePane 390 — силуэты стран (вся заливка и внешний контур), неинтерактивно
+ *   silhouettePane 390 — силуэты стран (заливка и контур), неинтерактивно
+ *   blocPane       395 — общий внешний контур «сюзерен + вассалы»
  *   provincesPane  400 — провинции и особые зоны: прозрачные, но ловят мышь (тултипы, кисть, клики);
  *                        при включённой сетке рисуют тонкие линии провинций
  *   draftPane      450 — черновик полигона, контур редактируемой зоны, неинтерактивно
@@ -1150,6 +1402,7 @@ const MapView = {
 
     const pane = (name, z, events) => { const p = map.createPane(name); p.style.zIndex = z; if (!events) p.style.pointerEvents = 'none'; return p; };
     pane('silhouettePane', 390, false);
+    pane('blocPane', 395, false);
     pane('provincesPane', 400, true);
     pane('draftPane', 450, false);
     pane('labelsPane', 550, false);
@@ -1184,7 +1437,7 @@ const MapView = {
 
   _bindGroup(group) {
     const L_ = (e) => e.propagatedFrom || e.layer;
-    group.on('mouseover', (e) => { this.setHover(L_(e), e.latlng); Tools.onHover(L_(e)); });
+    group.on('mouseover', (e) => { if (!Ruler.active) this.setHover(L_(e), e.latlng); Tools.onHover(L_(e)); });
     group.on('mouseout',  (e) => { if (this.hoverLayer === L_(e)) this.setHover(null); });
     group.on('mousemove', (e) => { if (this.hoverLayer) this.tip.setLatLng(e.latlng); });
     group.on('click',     (e) => Tools.onPointer(e, L_(e)));
@@ -1197,7 +1450,7 @@ const MapView = {
     const c = Store.country(Store.owner(fid));
     return {
       stroke: Prefs.grid,
-      color: c ? shade(c.color, -0.45) : '#3b3b3b',
+      color: c ? shade(countryColor(c), -0.45) : '#3b3b3b',
       weight: c ? 0.6 : 0.5,
       opacity: c ? 0.55 : 0.4,
       fill: true,
@@ -1210,10 +1463,10 @@ const MapView = {
     const noTurf = !hasTurf();                       // без Turf — запасной режим: зона красится сама
     return {
       stroke: App.modMode,                           // игрок видит только силуэт страны
-      color: c ? shade(c.color, -0.6) : '#ffffff',
+      color: c ? shade(countryColor(c), -0.6) : '#ffffff',
       weight: 1.3, opacity: 0.9, dashArray: '5 4',
       fill: true,
-      fillColor: c ? c.color : '#ffffff',
+      fillColor: c ? countryColor(c) : '#ffffff',
       fillOpacity: noTurf && c ? 0.55 : 0,
     };
   },
@@ -1275,10 +1528,13 @@ const MapView = {
       if (App.modMode) zone = owner ? 'особая зона' : 'нейтральная зона';
     }
     const head = owner
-      ? `<span class="dot" style="background:${owner.color}"></span><b>${esc(owner.name)}</b>`
+      ? `<span class="dot" style="background:${countryColor(owner)}"></span><b>${esc(owner.name)}</b>`
       : '<span class="dot neutral"></span><b>Ничейная земля</b>';
+    const lord = owner && Store.country(owner.overlordId);
     const sub = [region, base].filter(Boolean).map(esc).join(' · ');
-    return `<div class="tt-head">${head}</div>` + (sub ? `<div class="tt-region">${sub}</div>` : '') +
+    return `<div class="tt-head">${head}</div>` +
+      (lord ? `<div class="tt-dep">${esc(depLabel(owner))} · ${esc(lord.name)}</div>` : '') +
+      (sub ? `<div class="tt-region">${sub}</div>` : '') +
       (zone ? `<div class="tt-zone">${zone}</div>` : '');
   },
 
@@ -1330,7 +1586,7 @@ const MapView = {
       if (!cap || !Number.isFinite(cap.lat) || !Number.isFinite(cap.lng)) continue;
       const icon = L.divIcon({
         className: 'capital-marker',
-        html: `<span class="cap" style="--c:${c.color}"><i class="fa-solid fa-star"></i></span>`,
+        html: `<span class="cap" style="--c:${countryColor(c)}"><i class="fa-solid fa-star"></i></span>`,
         iconSize: [22, 22], iconAnchor: [11, 11],
       });
       L.marker([cap.lat, cap.lng], { icon, keyboard: false, riseOnHover: true })
@@ -1446,6 +1702,7 @@ const Tools = {
 
   set(tool) {
     if (!App.modMode && tool !== 'select') return;
+    if (tool !== 'select' && Ruler.active) Ruler.toggle(false);
     if (this.tool === 'draw' && tool !== 'draw') this.cancelDraw();
     if (tool !== 'select') this.stopEdit();
     if (this.tool === 'capital' && tool !== 'capital') this._capital = null;
@@ -1454,10 +1711,10 @@ const Tools = {
   },
   sync() {
     const m = MapView.map;
-    const brushing = this.dragBrush && (this.tool === 'paint' || this.tool === 'erase');
+    const brushing = this.dragBrush && (this.tool === 'paint' || this.tool === 'erase') && !Ruler.active;
     const drawing = this.tool === 'draw';
     brushing ? m.dragging.disable() : m.dragging.enable();
-    drawing ? m.doubleClickZoom.disable() : m.doubleClickZoom.enable();
+    drawing || Ruler.active ? m.doubleClickZoom.disable() : m.doubleClickZoom.enable();
     drawing ? m.boxZoom.disable() : m.boxZoom.enable();          // Shift+тянуть — наше лассо, а не зум-рамка
     if (!drawing && !this.editing) this.hideSnap();
     m.getContainer().dataset.tool = this.tool;
@@ -1473,7 +1730,8 @@ const Tools = {
   activeOwnerId() { return this.activeCountry === NEUTRAL ? null : this.activeCountry; },
   activeColor() {
     if (this.activeCountry === NEUTRAL) return '#ffffff';
-    return Store.country(this.activeCountry)?.color || '#f0c36d';
+    const c = Store.country(this.activeCountry);
+    return c ? countryColor(c) : '#f0c36d';
   },
   toggleSnap(v = !this.snapOn) {
     this.snapOn = v;
@@ -1485,6 +1743,7 @@ const Tools = {
   /* — события указателя (Leaflet) — */
   onPointer(e, layer) {
     if (this._suppressClick) { this._suppressClick = false; return; }
+    if (Ruler.active) { Ruler.addPoint(e.latlng); return; }      // линейка: клики не открывают карточки
     const r = layer?._rp;
     switch (this.tool) {
       case 'select':
@@ -1510,6 +1769,7 @@ const Tools = {
     }
   },
   onPointerDown(e, layer) {
+    if (Ruler.active) return;
     if (!this.dragBrush || (this.tool !== 'paint' && this.tool !== 'erase')) return;
     if (e.originalEvent && e.originalEvent.button !== 0) return;
     if (layer?._rp.kind === 'custom' && this.tool === 'erase') { this.apply(layer); return; }
@@ -1519,7 +1779,10 @@ const Tools = {
   },
   onHover(layer) { if (this.stroking && layer) this.apply(layer); },
   endStroke() { if (this.stroking) { this.stroking = false; Store.endBatch(); } },
-  onDblClick() { if (this.tool === 'draw') this.finishDraw(); },
+  onDblClick() {
+    if (Ruler.active) Ruler.finish();
+    else if (this.tool === 'draw') this.finishDraw();
+  },
 
   apply(layer) {
     const { kind, id } = layer._rp;
@@ -1539,7 +1802,9 @@ const Tools = {
 
   /* — нативные события мыши: привязка, лассо — */
   onMove(ev) {
-    if (this.tool !== 'draw' || !ev) return;
+    if (!ev) return;
+    if (Ruler.active) { Ruler.onMove(MapView.map.mouseEventToLatLng(ev)); return; }
+    if (this.tool !== 'draw') return;
     const map = MapView.map, ll = map.mouseEventToLatLng(ev);
     const fh = this.draw.freehand;
     if (fh) {
@@ -1742,7 +2007,8 @@ const Tools = {
     const ed = this.editing;
     if (!ed) return;
     ed.group.clearLayers();
-    const color = Store.country(Store.findCustom(ed.id)?.properties.countryId)?.color || '#ffffff';
+    const zc = Store.country(Store.findCustom(ed.id)?.properties.countryId);
+    const color = zc ? countryColor(zc) : '#ffffff';
     ed.preview = L.polygon(this.editLatLngs(), {
       renderer: MapView.overlayRenderer, pane: 'draftPane', interactive: false,
       color: '#ffffff', weight: 2, dashArray: '6 4', fillColor: color, fillOpacity: 0.18,
@@ -1921,6 +2187,9 @@ const UI = {
     $('#btn-save').addEventListener('click', () => App.saveToGitHub());
     $('#btn-close-info').addEventListener('click', () => this.closeInfo());
     $('#country-filter').addEventListener('input', () => this.renderCountryList());
+    $('#country-sort').value = Prefs.sort || 'name';
+    $('#country-sort').addEventListener('change', (e) => { Prefs.sort = e.target.value; savePrefs(); this.renderCountryList(); });
+    $('#btn-ruler').addEventListener('click', () => Ruler.toggle());
 
     this.initSearch();
     this.initEditor();
@@ -1962,29 +2231,39 @@ const UI = {
   /* — список государств — */
   renderCountryList() {
     const q = $('#country-filter').value.trim().toLowerCase();
+    const sort = Prefs.sort || 'name';
     const counts = Store.provinceCounts();
     const list = $('#country-list');
     const items = Store.countryList().filter((c) => !q || c.name.toLowerCase().includes(q));
-    list.replaceChildren(...items.map((c) => h('li', {
-      class: 'country-item' + (c.id === MapView.selected ? ' active' : ''),
-      dataset: { id: c.id },
-      tabindex: 0,
-      onclick: () => this.openCountry(c.id, { fly: true }),
-      onkeydown: (e) => { if (e.key === 'Enter') this.openCountry(c.id, { fly: true }); },
-    },
-    h('span', { class: 'swatch', style: { background: c.color } }),
-    this.flagImg(c, 'mini-flag'),
-    h('span', { class: 'ci-name' }, c.name),
-    h('span', { class: 'ci-count', title: 'Провинций' }, String(counts.get(c.id) || 0)))));
+    if (sort === 'area') items.sort((a, b) => Silhouettes.area(b.id) - Silhouettes.area(a.id) || a.name.localeCompare(b.name, 'ru'));
+    if (sort === 'provinces') items.sort((a, b) => (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, 'ru'));
+    list.replaceChildren(...items.map((c) => {
+      const lord = Store.country(c.overlordId), area = Silhouettes.area(c.id);
+      return h('li', {
+        class: 'country-item' + (c.id === MapView.selected ? ' active' : ''),
+        dataset: { id: c.id },
+        tabindex: 0,
+        onclick: () => this.openCountry(c.id, { fly: true }),
+        onkeydown: (e) => { if (e.key === 'Enter') this.openCountry(c.id, { fly: true }); },
+      },
+      h('span', { class: 'swatch', style: { background: countryColor(c) } }),
+      this.flagImg(c, 'mini-flag'),
+      h('span', { class: 'ci-main' },
+        h('span', { class: 'ci-name' }, c.name),
+        lord ? h('span', { class: 'ci-sub' }, `${depLabel(c)} · ${lord.name}`) : null),
+      h('span', { class: 'ci-area', title: `Провинций: ${counts.get(c.id) || 0}` },
+        sort === 'provinces' ? `${counts.get(c.id) || 0} пр.` : area ? fmtArea(area) : '—'));
+    }));
     if (!items.length) {
       list.append(h('li', { class: 'empty' }, q ? 'Ничего не найдено'
         : App.modMode ? 'Государств пока нет — создайте первое во вкладке «Редактор».' : 'Государств пока нет.'));
     }
     const total = MapView.layerById.size;
-    let owned = 0;
+    let owned = 0, area = 0;
     counts.forEach((n) => (owned += n));
+    for (const id of Object.keys(Store.state.countries)) area += Silhouettes.area(id);
     $('#world-stats').textContent = total
-      ? `Государств: ${Object.keys(Store.state.countries).length} · провинций распределено: ${owned} из ${total} (${Math.round(owned / total * 100)}%)`
+      ? `Государств: ${Object.keys(Store.state.countries).length} · общая площадь: ${fmtArea(area)} · провинций распределено: ${owned} из ${total} (${Math.round(owned / total * 100)}%)`
       : '';
   },
 
@@ -2025,18 +2304,42 @@ const UI = {
 
   countryCard(c, context) {
     const n = Store.provinceCounts().get(c.id) || 0;
+    const own = Silhouettes.area(c.id), deps = Store.allVassals(c.id);
+    const areaVal = own || deps.size
+      ? [own ? fmtArea(own) : '—', deps.size ? h('span', { class: 'dd-sub' }, `(с зависимыми: ${fmtArea(Silhouettes.totalArea(c.id))})`) : null]
+      : null;
     const stats = [
       ['Столица', c.capital?.name], ['Население', c.population], ['ВВП', c.gdp],
-      ['Провинций', `${n}`],
+      ['Площадь', areaVal], ['Провинций', `${n}`],
     ].filter(([, v]) => v);
     const hasCap = c.capital && Number.isFinite(c.capital.lat);
+    const lord = Store.country(c.overlordId), vassals = Store.vassals(c.id);
     return h('div', { class: 'card' },
-      h('div', { class: 'info-hero', style: { '--c': c.color } },
+      h('div', { class: 'info-hero', style: { '--c': countryColor(c) } },
         this.flagImg(c, 'info-flag') || h('div', { class: 'info-flag placeholder' }, ic('fa-solid fa-flag')),
         h('div', { class: 'hero-text' },
           h('h2', null, c.name),
           context ? h('div', { class: 'muted small' }, ic('fa-solid fa-location-dot'), ' ', context) : null)),
+      lord ? h('button', {
+        class: 'overlord-badge', style: { '--oc': countryColor(lord) }, title: 'Открыть карточку сюзерена',
+        onclick: () => this.openCountry(lord.id, { fly: true }),
+      },
+      ic('fa-solid fa-crown'),
+      h('span', { class: 'ob-type' }, `${depLabel(c)} державы:`),
+      this.flagImg(lord, 'ob-flag') || h('span', { class: 'swatch', style: { background: countryColor(lord) } }),
+      h('b', null, lord.name),
+      ic('fa-solid fa-chevron-right ob-arrow')) : null,
       h('dl', { class: 'stats' }, stats.map(([k, v]) => [h('dt', null, k), h('dd', null, v)])),
+      vassals.length ? h('div', { class: 'block' },
+        h('h3', null, ic('fa-solid fa-sitemap'), ` Зависимые территории · ${vassals.length}`),
+        h('ul', { class: 'vassal-list' }, vassals.map((v) => h('li', {
+          tabindex: 0,
+          onclick: () => this.openCountry(v.id, { fly: true }),
+          onkeydown: (e) => { if (e.key === 'Enter') this.openCountry(v.id, { fly: true }); },
+        },
+        this.flagImg(v, 'mini-flag') || h('span', { class: 'swatch', style: { background: countryColor(v) } }),
+        h('span', { class: 'vl-main' }, h('span', { class: 'vl-name' }, v.name), h('span', { class: 'vl-type' }, depLabel(v))),
+        h('span', { class: 'vl-area' }, Silhouettes.area(v.id) ? fmtArea(Silhouettes.area(v.id)) : ''))))) : null,
       c.cities.length ? h('div', { class: 'block' },
         h('h3', null, ic('fa-solid fa-city'), ' Крупные города'),
         h('div', { class: 'chips' }, c.cities.map((x) => h('span', { class: 'chip' }, x)))) : null,
@@ -2134,7 +2437,7 @@ const UI = {
           const hit = c.name.toLowerCase().includes(q) ? null
             : (c.capital?.name || '').toLowerCase().includes(q) ? `столица: ${c.capital.name}`
             : c.cities.find((x) => x.toLowerCase().includes(q));
-          if (hit === null || hit) results.push({ type: 'country', id: c.id, label: c.name, sub: hit ? (hit.startsWith('столица') ? hit : `город: ${hit}`) : '', color: c.color });
+          if (hit === null || hit) results.push({ type: 'country', id: c.id, label: c.name, sub: hit ? (hit.startsWith('столица') ? hit : `город: ${hit}`) : '', color: countryColor(c) });
         }
         if (q.length >= 2) {
           for (const f of Geo.features) {
@@ -2142,7 +2445,7 @@ const UI = {
             if (n && n.toLowerCase().includes(q)) {
               const o = Store.country(Store.owner(f.properties.__fid));
               const base = provinceCountry(f);
-              results.push({ type: 'province', id: f.properties.__fid, label: n, sub: [base, o ? o.name : 'ничья'].filter(Boolean).join(' · '), color: o?.color });
+              results.push({ type: 'province', id: f.properties.__fid, label: n, sub: [base, o ? o.name : 'ничья'].filter(Boolean).join(' · '), color: o ? countryColor(o) : null });
               if (results.length >= 30) break;
             }
           }
@@ -2172,6 +2475,8 @@ const UI = {
     F('flagUrl').addEventListener('input', debounce(() => this.updateFlagPreview(), 300));
     $('#editor-select').addEventListener('change', (e) => this.fillForm(Store.country(e.target.value)));
     $('#btn-new-country').addEventListener('click', () => this.fillForm(null));
+    $('#dep-types').replaceChildren(...DEPENDENCY_TYPES.map((t) => h('option', { value: t })));
+    F('overlordId').addEventListener('change', () => this.syncDependencyFields());
     $('#btn-pick-capital').addEventListener('click', () => {
       Tools.startCapitalPick((ll) => {
         F('capLat').value = round6(ll.lat).toFixed(4);
@@ -2211,10 +2516,26 @@ const UI = {
     F('cities').value = (c?.cities || []).join('\n');
     F('tgLink').value = c?.tgLink || '';
     F('description').value = c?.description || '';
+    // сюзерен: без самой страны и без её вассалов (иначе цикл)
+    const banned = c ? Store.allVassals(c.id).add(c.id) : new Set();
+    F('overlordId').replaceChildren(
+      h('option', { value: '' }, '— независимое государство —'),
+      ...Store.countryList().filter((x) => !banned.has(x.id)).map((x) => h('option', { value: x.id }, x.name)));
+    F('overlordId').value = c?.overlordId && !banned.has(c.overlordId) ? c.overlordId : '';
+    F('dependencyType').value = c?.overlordId ? depLabel(c) : '';
+    F('inheritOverlordColor').checked = c ? c.inheritOverlordColor !== false : true;
+    this.syncDependencyFields();
     $('#editor-title').textContent = c ? `Редактирование: ${c.name}` : 'Новое государство';
     $('#btn-delete-country').hidden = !c;
     $('#editor-select').value = c?.id || '';
     this.updateFlagPreview();
+  },
+  syncDependencyFields() {
+    const form = $('#country-form'), dep = !!form.elements.namedItem('overlordId').value;
+    form.elements.namedItem('dependencyType').disabled = !dep;
+    form.elements.namedItem('inheritOverlordColor').disabled = !dep;
+    $('#dep-fields').classList.toggle('is-disabled', !dep);
+    if (dep && !form.elements.namedItem('dependencyType').value) form.elements.namedItem('dependencyType').value = DEPENDENCY_TYPES[0];
   },
   updateFlagPreview() {
     const img = $('#flag-preview'), src = safeHttpUrl($('#country-form').elements.namedItem('flagUrl').value, true);
@@ -2235,6 +2556,9 @@ const UI = {
       toast('Координаты столицы должны быть числами', 'warn'); return;
     }
     if (F('tgLink') && !cleanTgLink(F('tgLink'))) { toast('Ссылка Telegram не распознана (нужно https://t.me/… или @name)', 'warn'); return; }
+    const overlordId = F('overlordId') || null;
+    if (overlordId && overlordId === id) { toast('Государство не может зависеть само от себя', 'warn'); return; }
+    if (overlordId && Store.wouldCycle(id, overlordId)) { toast('Нельзя: получится цикл зависимостей (сюзерен сам зависит от этой страны)', 'warn'); return; }
     const prev = Store.country(this.editingId) || {};
     const c = Store.upsertCountry({
       ...prev,
@@ -2243,6 +2567,9 @@ const UI = {
       capital: { name: F('capName'), lat, lng },
       population: F('population'), gdp: F('gdp'),
       cities: F('cities'), tgLink: F('tgLink'), description: form.elements.namedItem('description').value,
+      overlordId,
+      dependencyType: overlordId ? F('dependencyType') || DEPENDENCY_TYPES[0] : '',
+      inheritOverlordColor: form.elements.namedItem('inheritOverlordColor').checked,
     });
     const isNew = !this.editingId;
     this.fillForm(c);
@@ -2392,7 +2719,7 @@ const UI = {
   syncToolbar() {
     $$('#toolbar [data-tool]').forEach((b) => b.classList.toggle('active', b.dataset.tool === Tools.tool));
     const c = Store.country(Tools.activeCountry), neutral = Tools.activeCountry === NEUTRAL;
-    $('#active-swatch').style.background = c ? c.color : '';
+    $('#active-swatch').style.background = c ? countryColor(c) : '';
     $('#active-swatch').classList.toggle('empty', !c && !neutral);
     $('#active-swatch').classList.toggle('neutral', neutral);
     $('#active-country').value = c ? c.id : neutral ? NEUTRAL : '';
@@ -2447,13 +2774,14 @@ const App = {
     if (!window.L) { setLoader('Не удалось загрузить Leaflet (проверьте подключение к CDN)'); return; }
     MapView.init();
     Tools.init();
+    Ruler.init();
     GitHub.load();
     UI.init();
     Store.on('replaced', () => { MapView.refreshAll(); UI.renderGhStatus(); });
     Store.on('owners', (fids) => { MapView.restyleProvinces(fids); Silhouettes.schedule(); });
     Store.on('countries', () => {
       MapView.restyleProvinces(null); MapView.renderCustom(); MapView.renderCapitals();
-      Silhouettes.restyle(); Silhouettes.schedule(); MapView.renderLabels();
+      Silhouettes.refreshVisuals(); Silhouettes.schedule(); MapView.renderLabels();
     });
     Store.on('custom', () => { MapView.renderCustom(); Silhouettes.schedule(); Tools.onCustomChanged(); });
     this.bindGlobalEvents();
@@ -2511,6 +2839,12 @@ const App = {
       const mod = e.ctrlKey || e.metaKey;
       if (mod && e.code === 'KeyS') { if (this.modMode) { e.preventDefault(); this.saveToGitHub(); } return; }
       if (typing) { if (e.key === 'Escape') t.blur(); return; }
+      if (Ruler.active) {
+        if (e.key === 'Escape') { e.preventDefault(); Ruler.points.length ? Ruler.clear() : Ruler.toggle(false); return; }
+        if (e.key === 'Enter') { e.preventDefault(); Ruler.finish(); return; }
+        if (e.key === 'Backspace') { e.preventDefault(); Ruler.undoPoint(); return; }
+      }
+      if (e.code === 'KeyR' && !mod && !e.altKey) { Ruler.toggle(); return; }
       if (e.key === 'Escape') {
         if (Tools.tool === 'draw' && Tools.draw.points.length) Tools.cancelDraw();
         else if (Tools.editing) Tools.stopEdit();
@@ -2654,7 +2988,7 @@ const App = {
 };
 
 // Отладка из консоли: window.RPMap.Store.state и т.п.
-window.RPMap = { CONFIG, Store, Geo, Silhouettes, MapView, Tools, GitHub, UI, App };
+window.RPMap = { CONFIG, Store, Geo, Silhouettes, Ruler, MapView, Tools, GitHub, UI, App };
 App.init().catch((e) => { console.error(e); setLoader(`Ошибка инициализации: ${e.message}`); });
 
 })();
