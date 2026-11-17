@@ -4,7 +4,7 @@
       "id": "country_1",
       "name": "Латинська Республіка",
       "color": "#3792e6",
-      "flagUrl": "https://postimg.cc/QHWBQDy9",
+      "flagUrl": "flags/lr.png",
       "capital": {
         "name": "Мілан",
         "lat": 45.4831,
@@ -18,13 +18,13 @@
       "overlordId": null,
       "dependencyType": "",
       "inheritOverlordColor": true,
-      "hideMapLabel": false
+      "hideMapLabel": true
     },
     "country_2": {
       "id": "country_2",
       "name": "Римська Колоніальна Компанія",
       "color": "#6c33c1",
-      "flagUrl": "",
+      "flagUrl": "flags/rkk.png",
       "capital": {
         "name": "Тінгіс",
         "lat": 35.7842,
@@ -44,7 +44,7 @@
       "id": "country_3",
       "name": "ДВАК",
       "color": "#b8c133",
-      "flagUrl": "",
+      "flagUrl": "flags/dw.png",
       "capital": {
         "name": "Фуншал",
         "lat": 32.6781,
@@ -64,7 +64,7 @@
       "id": "country_4",
       "name": "Індійська Компанія",
       "color": "#44c133",
-      "flagUrl": "",
+      "flagUrl": "flags/ik.png",
       "capital": {
         "name": "Калькутта",
         "lat": 22.4434,
@@ -84,7 +84,7 @@
       "id": "country_5",
       "name": "Німецька Імперія",
       "color": "#565867",
-      "flagUrl": "",
+      "flagUrl": "flags/de.png",
       "capital": {
         "name": "Берлін",
         "lat": 52.5273,
@@ -104,7 +104,7 @@
       "id": "country_6",
       "name": "Іудея",
       "color": "#90a286",
-      "flagUrl": "",
+      "flagUrl": "flags/isr.png",
       "capital": {
         "name": "Єрусалим",
         "lat": 31.759,
@@ -124,7 +124,7 @@
       "id": "country_7",
       "name": "Латинський Радж",
       "color": "#8133c1",
-      "flagUrl": "",
+      "flagUrl": "flags/ind.png",
       "capital": {
         "name": "Панаджи",
         "lat": 15.264,
@@ -164,7 +164,7 @@
       "id": "country_9",
       "name": "Федерація Фрейхейт",
       "color": "#a61c9a",
-      "flagUrl": "",
+      "flagUrl": "flags/ff.png",
       "capital": {
         "name": "Мис Уолстенхолм",
         "lat": -37.8423,
@@ -204,7 +204,7 @@
       "id": "country_11",
       "name": "Слов'янський Союз",
       "color": "#4f268c",
-      "flagUrl": "",
+      "flagUrl": "flags/su.png",
       "capital": {
         "name": "Новгород",
         "lat": 58.5097,
@@ -224,7 +224,7 @@
       "id": "country_12",
       "name": "Держава Ромеїв",
       "color": "#481d4e",
-      "flagUrl": "",
+      "flagUrl": "flags/rs.png",
       "capital": {
         "name": "Константинополь",
         "lat": 41.07,
@@ -244,7 +244,7 @@
       "id": "country_13",
       "name": "Боспорське Царство",
       "color": "#caa8dc",
-      "flagUrl": "",
+      "flagUrl": "flags/bp.png",
       "capital": {
         "name": "Херсонес",
         "lat": 44.6206,
@@ -264,7 +264,7 @@
       "id": "country_14",
       "name": "Королівство Франція",
       "color": "#e85ecf",
-      "flagUrl": "",
+      "flagUrl": "flags/fr.png",
       "capital": {
         "name": "Париж",
         "lat": 48.8602,
