@@ -90,10 +90,59 @@
         "lat": 52.5273,
         "lng": 13.4025
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
-      "tgLink": "",
+      "population": 183295.45,
+      "gdp": 12222,
+      "cities": [
+        {
+          "id": "city_mwl10sb5va99",
+          "name": "Відень",
+          "lat": 48.222534,
+          "lng": 16.389141
+        },
+        {
+          "id": "city_mwl118uh6msh",
+          "name": "Гамбург",
+          "lat": 53.542993,
+          "lng": 10.056242
+        },
+        {
+          "id": "city_mwl11qxdaekt",
+          "name": "Франкфурт-на-Майні",
+          "lat": 50.345596,
+          "lng": 8.73074
+        },
+        {
+          "id": "city_mwl135uv52tg",
+          "name": "Мюнхен",
+          "lat": 48.078355,
+          "lng": 11.544196
+        },
+        {
+          "id": "city_mwl144xa9uv1",
+          "name": "Кенінгсберг",
+          "lat": 54.673414,
+          "lng": 20.477979
+        },
+        {
+          "id": "city_mwl1hhekffsx",
+          "name": "Прага",
+          "lat": 50.072099,
+          "lng": 14.449084
+        },
+        {
+          "id": "city_mwl1huzvua3m",
+          "name": "Кельн",
+          "lat": 51.049217,
+          "lng": 6.88204
+        },
+        {
+          "id": "city_mwl1sasalst2",
+          "name": "Амстердам",
+          "lat": 52.321614,
+          "lng": 4.994145
+        }
+      ],
+      "tgLink": "https://t.me/DeutschlandPRP",
       "description": "",
       "overlordId": null,
       "dependencyType": "",
@@ -110,8 +159,8 @@
         "lat": 31.759,
         "lng": 35.1889
       },
-      "population": null,
-      "gdp": null,
+      "population": 14000,
+      "gdp": 307,
       "cities": [],
       "tgLink": "",
       "description": "",
@@ -150,8 +199,8 @@
         "lat": -22.7917,
         "lng": 17.2912
       },
-      "population": null,
-      "gdp": null,
+      "population": 1500,
+      "gdp": 51,
       "cities": [],
       "tgLink": "",
       "description": "",
@@ -279,6 +328,82 @@
       "dependencyType": "",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_15": {
+      "id": "country_15",
+      "name": "Рейхскомісаріат Левант",
+      "color": "#c13360",
+      "flagUrl": "",
+      "capital": {
+        "name": "Дамаск",
+        "lat": 33.5177,
+        "lng": 36.2796
+      },
+      "population": 7300,
+      "gdp": 204,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_5",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_16": {
+      "id": "country_16",
+      "name": "Протекторат Месопотамія",
+      "color": "#3394c1",
+      "flagUrl": "",
+      "capital": {
+        "name": "Новий Вавилон",
+        "lat": 33.3,
+        "lng": 44.3628
+      },
+      "population": 15950,
+      "gdp": 127,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_5",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_17": {
+      "id": "country_17",
+      "name": "Рейхскомісаріат Західна Африка",
+      "color": "#c133b6",
+      "flagUrl": "",
+      "capital": {
+        "name": "Дахла",
+        "lat": 23.7434,
+        "lng": -15.9329
+      },
+      "population": 350,
+      "gdp": 25,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_5",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_18": {
+      "id": "country_18",
+      "name": "НТК",
+      "color": "#3346c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": 1,
+      "gdp": 6,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_5",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -313,6 +438,7 @@
     "AUS-2657": "country_9",
     "AUS-2660": "country_9",
     "AUT-2320": "country_5",
+    "AUT-2322": "country_5",
     "AUT-2323": "country_5",
     "AUT-2325": "country_5",
     "AUT-2326": "country_5",
@@ -763,6 +889,7 @@
     "HRV-1584": "country_1",
     "HRV-1586": "country_1",
     "HRV-1592": "country_1",
+    "HUN-4904": "country_5",
     "IDN-381": "country_9",
     "IDN-492": "country_9",
     "IDN-513": "country_9",
@@ -815,29 +942,30 @@
     "IND-3300": "country_7",
     "IND-3301": "country_7",
     "IND-20011": "country_7",
-    "IRN-3209": "country_5",
+    "IRN-3209": "country_16",
     "IRN-3210": "country_1",
     "IRN-3212": "country_1",
-    "IRN-3218": "country_5",
-    "IRN-3219": "country_5",
+    "IRN-3218": "country_16",
+    "IRN-3219": "country_16",
     "IRN-3228": "country_1",
-    "IRQ-3049": "country_5",
-    "IRQ-3050": "country_5",
-    "IRQ-3051": "country_5",
-    "IRQ-3052": "country_5",
-    "IRQ-3061": "country_5",
-    "IRQ-3062": "country_5",
+    "IRQ-3046": "country_16",
+    "IRQ-3049": "country_16",
+    "IRQ-3050": "country_16",
+    "IRQ-3051": "country_16",
+    "IRQ-3052": "country_16",
+    "IRQ-3061": "country_16",
+    "IRQ-3062": "country_16",
     "IRQ-3063": "country_5",
-    "IRQ-3222": "country_5",
-    "IRQ-3223": "country_5",
-    "IRQ-3224": "country_5",
-    "IRQ-3225": "country_5",
-    "IRQ-3226": "country_5",
-    "IRQ-3227": "country_5",
-    "IRQ-3242": "country_5",
-    "IRQ-3243": "country_5",
-    "IRQ-3471": "country_5",
-    "IRQ-3472": "country_5",
+    "IRQ-3222": "country_16",
+    "IRQ-3223": "country_16",
+    "IRQ-3224": "country_16",
+    "IRQ-3225": "country_16",
+    "IRQ-3226": "country_16",
+    "IRQ-3227": "country_16",
+    "IRQ-3242": "country_16",
+    "IRQ-3243": "country_16",
+    "IRQ-3471": "country_16",
+    "IRQ-3472": "country_16",
     "ISR-3053": "country_6",
     "ISR-3054": "country_6",
     "ISR-3055": "country_6",
@@ -1186,9 +1314,9 @@
     "MAR-1455": "country_2",
     "MAR-1456": "country_2",
     "MAR-1457": "country_2",
-    "MAR-3456": "country_5",
+    "MAR-3456": "country_17",
     "MAR-3457": "country_2",
-    "MAR-3469": "country_5",
+    "MAR-3469": "country_17",
     "MDV-5223": "country_9",
     "MDV-5224": "country_9",
     "MDV-5225": "country_9",
@@ -1294,10 +1422,10 @@
     "MMR-3273": "country_7",
     "MMR-3274": "country_7",
     "MMR-3275": "country_7",
-    "MRT-2785": "country_5",
-    "MRT-2786": "country_5",
-    "MRT-2787": "country_5",
-    "MRT-2788": "country_5",
+    "MRT-2785": "country_17",
+    "MRT-2786": "country_17",
+    "MRT-2787": "country_17",
+    "MRT-2788": "country_17",
     "MUS-5181": "country_9",
     "MUS-5183": "country_9",
     "MUS-5184": "country_9",
@@ -1388,6 +1516,7 @@
     "NLD-3484": "country_5",
     "NLD-3485": "country_5",
     "NLD-3486": "country_5",
+    "NOR-901": "country_18",
     "NZL-3334": "country_9",
     "NZL-3396": "country_9",
     "NZL-3397": "country_9",
@@ -1656,7 +1785,7 @@
     "RUS-2613": "country_11",
     "RUS-3200": "country_11",
     "RUS-5482": "country_13",
-    "SAH+00?": "country_5",
+    "SAH+00?": "country_17",
     "SAU-1098": "country_1",
     "SGP-4871": "country_4",
     "SGP-4872": "country_4",
@@ -1893,20 +2022,20 @@
     "SYC-5220": "country_9",
     "SYC-5221": "country_9",
     "SYC-5222": "country_9",
-    "SYR-134": "country_5",
-    "SYR-135": "country_5",
-    "SYR-136": "country_5",
-    "SYR-137": "country_5",
-    "SYR-138": "country_5",
-    "SYR-139": "country_5",
-    "SYR-140": "country_5",
-    "SYR-141": "country_5",
-    "SYR-142": "country_5",
-    "SYR-143": "country_5",
-    "SYR-144": "country_5",
+    "SYR-134": "country_15",
+    "SYR-135": "country_15",
+    "SYR-136": "country_15",
+    "SYR-137": "country_15",
+    "SYR-138": "country_15",
+    "SYR-139": "country_15",
+    "SYR-140": "country_15",
+    "SYR-141": "country_15",
+    "SYR-142": "country_15",
+    "SYR-143": "country_15",
+    "SYR-144": "country_15",
     "SYR-145": "country_6",
-    "SYR-146": "country_5",
-    "SYR-4843": "country_5",
+    "SYR-146": "country_15",
+    "SYR-4843": "country_15",
     "SYR-5261": "country_6",
     "TGO-86": "country_3",
     "TGO-87": "country_3",
@@ -2853,28 +2982,32 @@
         "coordinates": [
           [
             [
-              16.179,
-              46.858
+              16.303,
+              46.822
             ],
             [
-              16.171715,
-              46.911218
+              16.486,
+              46.999
             ],
             [
-              16.136,
-              47.025
+              16.275,
+              47.004
             ],
             [
-              16.019,
-              46.923
+              16.231,
+              46.948
             ],
             [
-              16.028,
-              46.837
+              16.155501,
+              46.901157
             ],
             [
-              16.053,
-              46.846
+              16.091194,
+              46.869363
+            ],
+            [
+              16.089821,
+              46.865365
             ],
             [
               16.094,
@@ -2885,8 +3018,8 @@
               46.857
             ],
             [
-              16.179,
-              46.858
+              16.303,
+              46.822
             ]
           ]
         ]
@@ -3013,8 +3146,16 @@
         "coordinates": [
           [
             [
-              16.52711,
-              52.449962
+              16.554237,
+              52.450989
+            ],
+            [
+              16.596699,
+              52.528566
+            ],
+            [
+              16.776343,
+              52.613444
             ],
             [
               17.127564,
@@ -3205,8 +3346,8 @@
               52.433
             ],
             [
-              16.52711,
-              52.449962
+              16.554237,
+              52.450989
             ]
           ]
         ]
@@ -3233,8 +3374,8 @@
               51.985839
             ],
             [
-              16.52711,
-              52.449962
+              16.554237,
+              52.450989
             ],
             [
               15.885,
@@ -3341,12 +3482,32 @@
               51.325
             ],
             [
+              17.917285,
+              51.465911
+            ],
+            [
+              17.787598,
+              51.611274
+            ],
+            [
+              17.602831,
+              51.737303
+            ],
+            [
+              17.451552,
+              51.871581
+            ],
+            [
+              17.289881,
+              52.099139
+            ],
+            [
               16.995207,
               52.296449
             ],
             [
-              16.52711,
-              52.449962
+              16.554237,
+              52.450989
             ],
             [
               16.66592,
@@ -3793,7 +3954,7 @@
       "id": "poly_mwksswinc2ud",
       "properties": {
         "name": "",
-        "countryId": "country_5",
+        "countryId": "country_17",
         "neutral": false
       },
       "geometry": {
@@ -3981,7 +4142,7 @@
       "id": "poly_mwkstwlc063f",
       "properties": {
         "name": "",
-        "countryId": "country_5",
+        "countryId": "country_17",
         "neutral": false
       },
       "geometry": {
@@ -5547,6 +5708,158 @@
             [
               13.133,
               2.285
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwkzvdl9slrc",
+      "properties": {
+        "name": "Læsø",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.936896,
+              57.235348
+            ],
+            [
+              10.855,
+              57.265
+            ],
+            [
+              10.947,
+              57.305
+            ],
+            [
+              11.142,
+              57.332
+            ],
+            [
+              11.189,
+              57.294
+            ],
+            [
+              11.029,
+              57.202
+            ],
+            [
+              10.936896,
+              57.235348
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwl08kx62n3x",
+      "properties": {
+        "name": "Malta",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              14.21,
+              36.023
+            ],
+            [
+              14.322,
+              35.973
+            ],
+            [
+              14.327263,
+              35.873504
+            ],
+            [
+              14.429,
+              35.823
+            ],
+            [
+              14.535071,
+              35.796314
+            ],
+            [
+              14.564015,
+              35.854309
+            ],
+            [
+              14.51,
+              35.925
+            ],
+            [
+              14.383939,
+              35.969313
+            ],
+            [
+              14.289,
+              36.064
+            ],
+            [
+              14.21,
+              36.023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwl0qvms0b0w",
+      "properties": {
+        "name": "",
+        "countryId": "country_16",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              46.928939,
+              32.589188
+            ],
+            [
+              47.438583,
+              32.648024
+            ],
+            [
+              47.842427,
+              32.490314
+            ],
+            [
+              47.747,
+              32.22
+            ],
+            [
+              47.712,
+              32.171
+            ],
+            [
+              47.58,
+              32.103
+            ],
+            [
+              47.491,
+              32.149
+            ],
+            [
+              47.444458,
+              32.18599
+            ],
+            [
+              46.928939,
+              32.589188
             ]
           ]
         ]
