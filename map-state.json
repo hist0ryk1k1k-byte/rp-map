@@ -125,7 +125,7 @@
         },
         {
           "id": "city_mwl1hhekffsx",
-          "name": "Прага",
+          "name": "Праг",
           "lat": 50.072099,
           "lng": 14.449084
         },
@@ -140,6 +140,150 @@
           "name": "Амстердам",
           "lat": 52.321614,
           "lng": 4.994145
+        },
+        {
+          "id": "city_mwl28h1o2vi7",
+          "name": "Брюссель",
+          "lat": 50.838436,
+          "lng": 4.353959
+        },
+        {
+          "id": "city_mwl293josi51",
+          "name": "Штутгарт",
+          "lat": 48.81266,
+          "lng": 9.173978
+        },
+        {
+          "id": "city_mwl2a7iyq0is",
+          "name": "Ганновер",
+          "lat": 52.447089,
+          "lng": 10.025453
+        },
+        {
+          "id": "city_mwl2b5zuac5y",
+          "name": "Бремен",
+          "lat": 53.109997,
+          "lng": 8.782491
+        },
+        {
+          "id": "city_mwl2bm9cfs10",
+          "name": "Лейпциг",
+          "lat": 51.301443,
+          "lng": 12.403564
+        },
+        {
+          "id": "city_mwl2c3q1rge9",
+          "name": "Рига",
+          "lat": 56.992569,
+          "lng": 24.104004
+        },
+        {
+          "id": "city_mwl2d68z80hw",
+          "name": "Ессен",
+          "lat": 51.460259,
+          "lng": 6.987966
+        },
+        {
+          "id": "city_mwl2dtxs990q",
+          "name": "Дюссельдорф",
+          "lat": 51.245062,
+          "lng": 6.815886
+        },
+        {
+          "id": "city_mwl2eqfz66wu",
+          "name": "Данциг",
+          "lat": 54.315896,
+          "lng": 18.912625
+        },
+        {
+          "id": "city_mwl2f3zjtghq",
+          "name": "Бреслау",
+          "lat": 50.975114,
+          "lng": 17.089233
+        },
+        {
+          "id": "city_mwl2fs7z6hii",
+          "name": "Нюрнберг",
+          "lat": 49.521739,
+          "lng": 11.052246
+        },
+        {
+          "id": "city_mwl2gethvioh",
+          "name": "Магдебург",
+          "lat": 52.145018,
+          "lng": 11.689453
+        },
+        {
+          "id": "city_mwl2gzkuu9wv",
+          "name": "Дрезден",
+          "lat": 51.007146,
+          "lng": 13.876306
+        },
+        {
+          "id": "city_mwl2hie6pcg7",
+          "name": "Страсбург",
+          "lat": 48.517719,
+          "lng": 7.764817
+        },
+        {
+          "id": "city_mwl2jan7hwp8",
+          "name": "Мангайм",
+          "lat": 49.537148,
+          "lng": 8.434851
+        },
+        {
+          "id": "city_mwl2ksoauvhk",
+          "name": "Майнц",
+          "lat": 50.011217,
+          "lng": 8.182374
+        },
+        {
+          "id": "city_mwl2l7xdlhco",
+          "name": "Грац",
+          "lat": 47.121742,
+          "lng": 15.442208
+        },
+        {
+          "id": "city_mwl2m0g804g1",
+          "name": "Брюнн",
+          "lat": 49.163924,
+          "lng": 16.620915
+        },
+        {
+          "id": "city_mwl2mj9bbczc",
+          "name": "Копенгаген",
+          "lat": 55.783787,
+          "lng": 12.54246
+        },
+        {
+          "id": "city_mwl2o3y7iudk",
+          "name": "Вільна",
+          "lat": 54.609334,
+          "lng": 25.339966
+        },
+        {
+          "id": "city_mwl2ovvinl3d",
+          "name": "Реваль",
+          "lat": 59.445178,
+          "lng": 24.7895
+        },
+        {
+          "id": "city_mwl2qnos4oz3",
+          "name": "Кауен",
+          "lat": 54.93894,
+          "lng": 23.892238
+        },
+        {
+          "id": "city_mwl2rfo3taam",
+          "name": "Зальцбург",
+          "lat": 47.609405,
+          "lng": 13.123853
+        },
+        {
+          "id": "city_mwl2vtgwu02c",
+          "name": "Штеттін",
+          "lat": 53.395962,
+          "lng": 14.67859
         }
       ],
       "tgLink": "https://t.me/DeutschlandPRP",
@@ -161,7 +305,26 @@
       },
       "population": 14000,
       "gdp": 307,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwl2yyly949p",
+          "name": "Тель Авів",
+          "lat": 32.091543,
+          "lng": 34.799194
+        },
+        {
+          "id": "city_mwl2zn6soxr4",
+          "name": "Хайфа",
+          "lat": 32.801816,
+          "lng": 34.985666
+        },
+        {
+          "id": "city_mwl31s960r77",
+          "name": "Бейрут",
+          "lat": 33.885556,
+          "lng": 35.494077
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_5",
@@ -201,7 +364,20 @@
       },
       "population": 1500,
       "gdp": 51,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwl35w4nantz",
+          "name": "Людерітц",
+          "lat": -26.666698,
+          "lng": 15.161133
+        },
+        {
+          "id": "city_mwl37o3ajptc",
+          "name": "Вальфішбухт",
+          "lat": -23.003584,
+          "lng": 14.476807
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_5",
@@ -341,7 +517,26 @@
       },
       "population": 7300,
       "gdp": 204,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwl308l9mhj9",
+          "name": "Алеппо",
+          "lat": 36.18788,
+          "lng": 37.360227
+        },
+        {
+          "id": "city_mwl30otg48yv",
+          "name": "Хомс",
+          "lat": 34.643733,
+          "lng": 36.787448
+        },
+        {
+          "id": "city_mwl316c4wg0b",
+          "name": "Латакія",
+          "lat": 35.558737,
+          "lng": 35.789705
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_5",
@@ -361,7 +556,26 @@
       },
       "population": 15950,
       "gdp": 127,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwl337blbwpx",
+          "name": "Кіркук",
+          "lat": 35.235773,
+          "lng": 44.074819
+        },
+        {
+          "id": "city_mwl345ohluqc",
+          "name": "Барса",
+          "lat": 30.683328,
+          "lng": 47.599173
+        },
+        {
+          "id": "city_mwl34fv5rrid",
+          "name": "Насірія",
+          "lat": 30.915876,
+          "lng": 46.580114
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_5",
@@ -1109,6 +1323,7 @@
     "KWT-3506": "country_1",
     "LBN-3022": "country_6",
     "LBN-3023": "country_6",
+    "LBN-3024": "country_6",
     "LBN-3025": "country_6",
     "LBN-3059": "country_6",
     "LBN-3060": "country_6",
