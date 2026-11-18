@@ -10,8 +10,8 @@
         "lat": 45.4831,
         "lng": 9.1091
       },
-      "population": 129600,
-      "gdp": 9455,
+      "population": 140200,
+      "gdp": 9587,
       "cities": [
         {
           "id": "city_mwm3w0pilv23",
@@ -168,6 +168,24 @@
           "name": "Картаген",
           "lat": 36.760028,
           "lng": 10.180957
+        },
+        {
+          "id": "city_mwm5vqm3v4ss",
+          "name": "Нова-Равена",
+          "lat": 25.26765,
+          "lng": 55.326873
+        },
+        {
+          "id": "city_mwm5xfphfw7y",
+          "name": "Абу-Дабі",
+          "lat": 24.421985,
+          "lng": 54.59071
+        },
+        {
+          "id": "city_mwm5xwe0ssb1",
+          "name": "Ель-Кувейт",
+          "lat": 29.295337,
+          "lng": 47.982378
         }
       ],
       "tgLink": "https://t.me/dunajreprp",
@@ -187,9 +205,16 @@
         "lat": 35.7842,
         "lng": -5.8616
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
+      "population": 49000,
+      "gdp": 214,
+      "cities": [
+        {
+          "id": "city_mwm5pqh0lahp",
+          "name": "Ікозіум",
+          "lat": 36.711214,
+          "lng": 3.094002
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_1",
@@ -207,8 +232,8 @@
         "lat": 32.6781,
         "lng": -16.8875
       },
-      "population": null,
-      "gdp": null,
+      "population": 42300,
+      "gdp": 341,
       "cities": [],
       "tgLink": "",
       "description": "",
@@ -227,9 +252,40 @@
         "lat": 22.4434,
         "lng": 88.1156
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
+      "population": 24500,
+      "gdp": 101,
+      "cities": [
+        {
+          "id": "city_mwm6092c56qx",
+          "name": "Нова-Рома",
+          "lat": 31.706682,
+          "lng": 121.415481
+        },
+        {
+          "id": "city_mwm60p5zzj8t",
+          "name": "Сінгапур",
+          "lat": 1.339957,
+          "lng": 103.858969
+        },
+        {
+          "id": "city_mwm60zxb6u7d",
+          "name": "Гонконг",
+          "lat": 22.40465,
+          "lng": 114.170059
+        },
+        {
+          "id": "city_mwm61981adeo",
+          "name": "Ціндао",
+          "lat": 36.109442,
+          "lng": 120.385403
+        },
+        {
+          "id": "city_mwm62yojqz79",
+          "name": "Порт-Артур",
+          "lat": 38.8044,
+          "lng": 121.232071
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_1",
@@ -499,8 +555,8 @@
         "lat": 15.264,
         "lng": 73.9439
       },
-      "population": null,
-      "gdp": null,
+      "population": 200000,
+      "gdp": 224,
       "cities": [],
       "tgLink": "",
       "description": "",
