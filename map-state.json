@@ -738,6 +738,66 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_p": {
+      "id": "country_p",
+      "name": "Республіка Польща",
+      "color": "#702400",
+      "flagUrl": "",
+      "capital": {
+        "name": "Варшава",
+        "lat": 52.3722,
+        "lng": 20.9207
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_25": {
+      "id": "country_25",
+      "name": "ХНР",
+      "color": "#c13346",
+      "flagUrl": "",
+      "capital": {
+        "name": "Холм",
+        "lat": 50.999,
+        "lng": 23.7065
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_10",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": true
+    },
+    "country_26": {
+      "id": "country_26",
+      "name": "БНР",
+      "color": "#890000",
+      "flagUrl": "",
+      "capital": {
+        "name": "Берестя",
+        "lat": 51.8708,
+        "lng": 23.6746
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_10",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -865,6 +925,7 @@
     "BIH-4806": "country_23",
     "BIH-4807": "country_23",
     "BIH-4808": "country_23",
+    "BLR-2338": "country_26",
     "BLR-2339": "country_11",
     "BLR-2340": "country_11",
     "BLR-2341": "country_11",
@@ -1961,6 +2022,7 @@
     "MAR-1447": "country_2",
     "MAR-1448": "country_2",
     "MAR-1449": "country_2",
+    "MAR-1450": "country_3",
     "MAR-1451": "country_2",
     "MAR-1452": "country_2",
     "MAR-1453": "country_2",
@@ -2398,8 +2460,17 @@
     "POL-3141": "country_5",
     "POL-3142": "country_5",
     "POL-3143": "country_5",
+    "POL-3144": "country_p",
+    "POL-3145": "country_p",
+    "POL-3146": "country_p",
+    "POL-3147": "country_p",
+    "POL-3148": "country_p",
+    "POL-3149": "country_p",
     "POL-3150": "country_11",
+    "POL-3151": "country_p",
+    "POL-3152": "country_p",
     "POL-3167": "country_5",
+    "POL-3170": "country_p",
     "PRT-736": "country_3",
     "PRT-739": "country_9",
     "PRT-740": "country_9",
@@ -9590,6 +9661,174 @@
             [
               -55.623,
               50.912
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlz7v3map2m",
+      "properties": {
+        "name": "",
+        "countryId": "country_p",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              23.637,
+              52.084
+            ],
+            [
+              23.844443,
+              52.246008
+            ],
+            [
+              23.176,
+              52.285
+            ],
+            [
+              23.212,
+              52.232
+            ],
+            [
+              23.45,
+              52.186
+            ],
+            [
+              23.512,
+              52.124
+            ],
+            [
+              23.579,
+              52.122
+            ],
+            [
+              23.637,
+              52.084
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlz8llhlwmp",
+      "properties": {
+        "name": "",
+        "countryId": "country_25",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              23.635574,
+              50.636974
+            ],
+            [
+              23.520342,
+              50.926286
+            ],
+            [
+              23.367864,
+              51.193885
+            ],
+            [
+              23.185304,
+              51.329999
+            ],
+            [
+              23.153687,
+              51.407202
+            ],
+            [
+              23.326721,
+              51.499624
+            ],
+            [
+              23.54,
+              51.607
+            ],
+            [
+              23.606,
+              51.517
+            ],
+            [
+              23.663,
+              51.48
+            ],
+            [
+              23.698,
+              51.404
+            ],
+            [
+              23.634,
+              51.339
+            ],
+            [
+              23.743,
+              51.216
+            ],
+            [
+              23.875,
+              51.136
+            ],
+            [
+              23.912,
+              51.007
+            ],
+            [
+              23.979,
+              50.938
+            ],
+            [
+              24.13,
+              50.869
+            ],
+            [
+              24.131,
+              50.839
+            ],
+            [
+              23.97,
+              50.825
+            ],
+            [
+              23.959,
+              50.789
+            ],
+            [
+              24.026,
+              50.767
+            ],
+            [
+              24.027,
+              50.728
+            ],
+            [
+              24.081,
+              50.713
+            ],
+            [
+              24.108,
+              50.63
+            ],
+            [
+              24.085,
+              50.604
+            ],
+            [
+              23.651796,
+              50.635784
+            ],
+            [
+              23.635574,
+              50.636974
             ]
           ]
         ]
