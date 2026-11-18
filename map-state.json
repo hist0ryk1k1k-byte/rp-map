@@ -10,9 +10,166 @@
         "lat": 45.4831,
         "lng": 9.1091
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
+      "population": 129600,
+      "gdp": 9455,
+      "cities": [
+        {
+          "id": "city_mwm3w0pilv23",
+          "name": "Турин",
+          "lat": 45.045712,
+          "lng": 7.636414
+        },
+        {
+          "id": "city_mwm3xpe8rn4e",
+          "name": "Рієка",
+          "lat": 45.340019,
+          "lng": 14.420809
+        },
+        {
+          "id": "city_mwm3y12w0xm5",
+          "name": "Рим",
+          "lat": 41.871574,
+          "lng": 12.479003
+        },
+        {
+          "id": "city_mwm40rkozpv3",
+          "name": "Неаполь",
+          "lat": 40.850367,
+          "lng": 14.322842
+        },
+        {
+          "id": "city_mwm41qjxspkn",
+          "name": "Палермо",
+          "lat": 38.08768,
+          "lng": 13.3672
+        },
+        {
+          "id": "city_mwm440fgjgvg",
+          "name": "Марсель",
+          "lat": 43.337399,
+          "lng": 5.375471
+        },
+        {
+          "id": "city_mwm4721u390j",
+          "name": "Ніцца",
+          "lat": 43.719654,
+          "lng": 7.262651
+        },
+        {
+          "id": "city_mwm4927fg7s5",
+          "name": "Венеція",
+          "lat": 45.461522,
+          "lng": 12.288452
+        },
+        {
+          "id": "city_mwm4c8qsj6na",
+          "name": "Болонья",
+          "lat": 44.512222,
+          "lng": 11.360336
+        },
+        {
+          "id": "city_mwm4j82e6hyh",
+          "name": "Барі",
+          "lat": 41.096257,
+          "lng": 16.87294
+        },
+        {
+          "id": "city_mwm4krrk2gc4",
+          "name": "Флоренція",
+          "lat": 43.766139,
+          "lng": 11.269061
+        },
+        {
+          "id": "city_mwm4m0i0et5r",
+          "name": "Женева",
+          "lat": 46.208515,
+          "lng": 6.111076
+        },
+        {
+          "id": "city_mwm4uuaihbez",
+          "name": "Цюрих",
+          "lat": 47.36731,
+          "lng": 8.54233
+        },
+        {
+          "id": "city_mwm4wjb9fnq4",
+          "name": "Базель",
+          "lat": 47.557964,
+          "lng": 7.615967
+        },
+        {
+          "id": "city_mwm4xpjouqmp",
+          "name": "Берн",
+          "lat": 46.986006,
+          "lng": 7.508617
+        },
+        {
+          "id": "city_mwm50hqywrii",
+          "name": "Трієст",
+          "lat": 45.621722,
+          "lng": 13.819722
+        },
+        {
+          "id": "city_mwm50zcf9le6",
+          "name": "Катанія",
+          "lat": 37.469722,
+          "lng": 15.048442
+        },
+        {
+          "id": "city_mwm51xg99v1u",
+          "name": "Мадрид",
+          "lat": 40.530502,
+          "lng": -3.751831
+        },
+        {
+          "id": "city_mwm52atyjz85",
+          "name": "Толедо",
+          "lat": 39.882678,
+          "lng": -3.92321
+        },
+        {
+          "id": "city_mwm536uwjru3",
+          "name": "Сарагоса",
+          "lat": 41.735637,
+          "lng": -0.934241
+        },
+        {
+          "id": "city_mwm53kosol8g",
+          "name": "Барселона",
+          "lat": 41.386858,
+          "lng": 2.144302
+        },
+        {
+          "id": "city_mwm54btivqj7",
+          "name": "Валенсія",
+          "lat": 39.48019,
+          "lng": -0.360244
+        },
+        {
+          "id": "city_mwm54u4r1m4i",
+          "name": "Мурсія",
+          "lat": 37.840346,
+          "lng": -0.962868
+        },
+        {
+          "id": "city_mwm5622scrbp",
+          "name": "Севілья",
+          "lat": 37.388024,
+          "lng": -6.006516
+        },
+        {
+          "id": "city_mwm56mpmfvjg",
+          "name": "Малага",
+          "lat": 36.722112,
+          "lng": -4.452131
+        },
+        {
+          "id": "city_mwm57fh0w5wc",
+          "name": "Картаген",
+          "lat": 36.760028,
+          "lng": 10.180957
+        }
+      ],
       "tgLink": "https://t.me/dunajreprp",
       "description": "",
       "overlordId": null,
@@ -3596,8 +3753,8 @@
               36.483
             ],
             [
-              10.271915,
-              36.448526
+              10.258,
+              36.444
             ],
             [
               10.341,
@@ -10122,6 +10279,54 @@
             [
               23.635574,
               50.636974
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwm48rl6qmn5",
+      "properties": {
+        "name": "",
+        "countryId": "country_1",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              12.259,
+              45.395
+            ],
+            [
+              12.273,
+              45.464
+            ],
+            [
+              12.442,
+              45.53
+            ],
+            [
+              12.507,
+              45.573
+            ],
+            [
+              12.537,
+              45.536
+            ],
+            [
+              12.41,
+              45.436
+            ],
+            [
+              12.326821,
+              45.424969
+            ],
+            [
+              12.259,
+              45.395
             ]
           ]
         ]
