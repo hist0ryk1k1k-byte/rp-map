@@ -18,7 +18,7 @@
       "overlordId": null,
       "dependencyType": "",
       "inheritOverlordColor": true,
-      "hideMapLabel": true
+      "hideMapLabel": false
     },
     "country_2": {
       "id": "country_2",
@@ -388,7 +388,7 @@
     "country_9": {
       "id": "country_9",
       "name": "Федерація Фрейхейт",
-      "color": "#a61c9a",
+      "color": "#880078",
       "flagUrl": "flags/ff.png",
       "capital": {
         "name": "Мис Уолстенхолм",
@@ -428,7 +428,7 @@
     "country_11": {
       "id": "country_11",
       "name": "Слов'янський Союз",
-      "color": "#4f268c",
+      "color": "#001a72",
       "flagUrl": "flags/su.png",
       "capital": {
         "name": "Новгород",
@@ -448,7 +448,7 @@
     "country_12": {
       "id": "country_12",
       "name": "Держава Ромеїв",
-      "color": "#481d4e",
+      "color": "#38005e",
       "flagUrl": "flags/rs.png",
       "capital": {
         "name": "Константинополь",
@@ -542,7 +542,7 @@
       "overlordId": "country_5",
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
-      "hideMapLabel": false
+      "hideMapLabel": true
     },
     "country_16": {
       "id": "country_16",
@@ -581,7 +581,7 @@
       "overlordId": "country_5",
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
-      "hideMapLabel": false
+      "hideMapLabel": true
     },
     "country_17": {
       "id": "country_17",
@@ -601,7 +601,7 @@
       "overlordId": "country_5",
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
-      "hideMapLabel": false
+      "hideMapLabel": true
     },
     "country_18": {
       "id": "country_18",
@@ -618,13 +618,141 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_19": {
+      "id": "country_19",
+      "name": "Грузія",
+      "color": "#8f6bff",
+      "flagUrl": "",
+      "capital": {
+        "name": "Тбілісі",
+        "lat": 41.7153,
+        "lng": 44.848
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_12",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": false,
+      "hideMapLabel": false
+    },
+    "country_20": {
+      "id": "country_20",
+      "name": "Дакія",
+      "color": "#f09b00",
+      "flagUrl": "",
+      "capital": {
+        "name": "Бухарест",
+        "lat": 44.4601,
+        "lng": 26.0709
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_21": {
+      "id": "country_21",
+      "name": "Квебек",
+      "color": "#c13399",
+      "flagUrl": "",
+      "capital": {
+        "name": "Монреаль",
+        "lat": 45.7894,
+        "lng": -73.4852
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_14",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_22": {
+      "id": "country_22",
+      "name": "Сполучене Королівство",
+      "color": "#af1500",
+      "flagUrl": "",
+      "capital": {
+        "name": "Лондон",
+        "lat": 51.5167,
+        "lng": -0.0908
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_23": {
+      "id": "country_23",
+      "name": "Королівство Югославія",
+      "color": "#89b500",
+      "flagUrl": "",
+      "capital": {
+        "name": "Белград",
+        "lat": 44.7605,
+        "lng": 20.5013
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_24": {
+      "id": "country_24",
+      "name": "Протекторат Албанія",
+      "color": "#3363c1",
+      "flagUrl": "",
+      "capital": {
+        "name": "Тірана",
+        "lat": 41.3102,
+        "lng": 19.8512
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_23",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
+    "ALB-1494": "country_24",
+    "ALB-1495": "country_24",
+    "ALB-1498": "country_24",
+    "ALB-1502": "country_24",
     "ALB-1504": "country_12",
     "ALB-1521": "country_12",
     "ALB-1523": "country_12",
+    "ALB-1524": "country_24",
     "ALB-1525": "country_12",
+    "ALB-1526": "country_24",
+    "ALB-1528": "country_24",
+    "ALB-1529": "country_24",
     "AND-4876": "country_1",
     "AND-4877": "country_1",
     "AND-4878": "country_1",
@@ -641,7 +769,29 @@
     "ARE-348": "country_1",
     "ARE-349": "country_1",
     "ARE-350": "country_1",
+    "ARG-1271": "country_9",
     "ARG-1272": "country_9",
+    "ARG-1273": "country_9",
+    "ARG-1274": "country_9",
+    "ARG-1275": "country_9",
+    "ARG-1276": "country_9",
+    "ARG-1295": "country_9",
+    "ARG-1296": "country_9",
+    "ARG-1297": "country_9",
+    "ARG-1298": "country_9",
+    "ARG-1299": "country_9",
+    "ARG-1300": "country_9",
+    "ARG-1301": "country_9",
+    "ARG-1302": "country_9",
+    "ARG-1303": "country_9",
+    "ARG-1304": "country_9",
+    "ARG-1305": "country_9",
+    "ARG-1306": "country_9",
+    "ARG-1307": "country_9",
+    "ARG-1308": "country_9",
+    "ARG-1309": "country_9",
+    "ARG-1310": "country_9",
+    "ARG-1312": "country_9",
     "ATF-5916": "country_9",
     "AUS-2650": "country_9",
     "AUS-2651": "country_9",
@@ -686,10 +836,35 @@
     "BGD-2476": "country_7",
     "BGD-2488": "country_7",
     "BGD-3255": "country_7",
+    "BGR-2243": "country_23",
+    "BGR-2244": "country_23",
+    "BGR-2245": "country_23",
+    "BGR-2250": "country_23",
+    "BGR-2251": "country_23",
+    "BGR-2252": "country_23",
+    "BGR-2253": "country_23",
     "BHR-4926": "country_1",
     "BHR-4927": "country_1",
     "BHR-4928": "country_1",
     "BHR-4930": "country_1",
+    "BIH-2224": "country_23",
+    "BIH-2225": "country_23",
+    "BIH-2226": "country_23",
+    "BIH-2227": "country_23",
+    "BIH-2228": "country_23",
+    "BIH-2887": "country_23",
+    "BIH-2889": "country_23",
+    "BIH-2890": "country_23",
+    "BIH-2891": "country_23",
+    "BIH-3153": "country_23",
+    "BIH-4801": "country_23",
+    "BIH-4802": "country_23",
+    "BIH-4803": "country_23",
+    "BIH-4804": "country_23",
+    "BIH-4805": "country_23",
+    "BIH-4806": "country_23",
+    "BIH-4807": "country_23",
+    "BIH-4808": "country_23",
     "BLR-2339": "country_11",
     "BLR-2340": "country_11",
     "BLR-2341": "country_11",
@@ -700,8 +875,9 @@
     "BRN-1182": "country_9",
     "BRN-1183": "country_9",
     "BRN-1184": "country_9",
-    "CAN-683": "country_14",
-    "CAN-686": "country_14",
+    "CAN-683": "country_21",
+    "CAN-686": "country_21",
+    "CAN-687": "country_21",
     "CHE-159": "country_1",
     "CHE-160": "country_1",
     "CHE-161": "country_1",
@@ -1051,6 +1227,222 @@
     "GAB-2627": "country_11",
     "GAB-2628": "country_11",
     "GAZ+00?": "country_6",
+    "GBR-2001": "country_22",
+    "GBR-2002": "country_22",
+    "GBR-2003": "country_22",
+    "GBR-2004": "country_22",
+    "GBR-2005": "country_22",
+    "GBR-2006": "country_22",
+    "GBR-2007": "country_22",
+    "GBR-2008": "country_22",
+    "GBR-2009": "country_22",
+    "GBR-2010": "country_22",
+    "GBR-2011": "country_22",
+    "GBR-2012": "country_22",
+    "GBR-2013": "country_22",
+    "GBR-2014": "country_22",
+    "GBR-2015": "country_22",
+    "GBR-2016": "country_22",
+    "GBR-2017": "country_22",
+    "GBR-2018": "country_22",
+    "GBR-2019": "country_22",
+    "GBR-2021": "country_22",
+    "GBR-2022": "country_22",
+    "GBR-2023": "country_22",
+    "GBR-2024": "country_22",
+    "GBR-2025": "country_22",
+    "GBR-2026": "country_22",
+    "GBR-2028": "country_22",
+    "GBR-2029": "country_22",
+    "GBR-2030": "country_22",
+    "GBR-2031": "country_22",
+    "GBR-2032": "country_22",
+    "GBR-2033": "country_22",
+    "GBR-2034": "country_22",
+    "GBR-2035": "country_22",
+    "GBR-2036": "country_22",
+    "GBR-2038": "country_22",
+    "GBR-2039": "country_22",
+    "GBR-2040": "country_22",
+    "GBR-2042": "country_22",
+    "GBR-2043": "country_22",
+    "GBR-2044": "country_22",
+    "GBR-2045": "country_22",
+    "GBR-2046": "country_22",
+    "GBR-2047": "country_22",
+    "GBR-2048": "country_22",
+    "GBR-2050": "country_22",
+    "GBR-2051": "country_22",
+    "GBR-2052": "country_22",
+    "GBR-2053": "country_22",
+    "GBR-2054": "country_22",
+    "GBR-2055": "country_22",
+    "GBR-2056": "country_22",
+    "GBR-2057": "country_22",
+    "GBR-2058": "country_22",
+    "GBR-2059": "country_22",
+    "GBR-2060": "country_22",
+    "GBR-2061": "country_22",
+    "GBR-2062": "country_22",
+    "GBR-2063": "country_22",
+    "GBR-2064": "country_22",
+    "GBR-2065": "country_22",
+    "GBR-2066": "country_22",
+    "GBR-2067": "country_22",
+    "GBR-2068": "country_22",
+    "GBR-2069": "country_22",
+    "GBR-2070": "country_22",
+    "GBR-2071": "country_22",
+    "GBR-2072": "country_22",
+    "GBR-2073": "country_22",
+    "GBR-2074": "country_22",
+    "GBR-2075": "country_22",
+    "GBR-2076": "country_22",
+    "GBR-2077": "country_22",
+    "GBR-2078": "country_22",
+    "GBR-2079": "country_22",
+    "GBR-2080": "country_22",
+    "GBR-2081": "country_22",
+    "GBR-2104": "country_22",
+    "GBR-2105": "country_22",
+    "GBR-2106": "country_22",
+    "GBR-2108": "country_22",
+    "GBR-2110": "country_22",
+    "GBR-2111": "country_22",
+    "GBR-2112": "country_22",
+    "GBR-2113": "country_22",
+    "GBR-2114": "country_22",
+    "GBR-2115": "country_22",
+    "GBR-2116": "country_22",
+    "GBR-2117": "country_22",
+    "GBR-2118": "country_22",
+    "GBR-2119": "country_22",
+    "GBR-2120": "country_22",
+    "GBR-2121": "country_22",
+    "GBR-2122": "country_22",
+    "GBR-2123": "country_22",
+    "GBR-2124": "country_22",
+    "GBR-2125": "country_22",
+    "GBR-2126": "country_22",
+    "GBR-2127": "country_22",
+    "GBR-2128": "country_22",
+    "GBR-2129": "country_22",
+    "GBR-2130": "country_22",
+    "GBR-2131": "country_22",
+    "GBR-2132": "country_22",
+    "GBR-2133": "country_22",
+    "GBR-2134": "country_22",
+    "GBR-2138": "country_22",
+    "GBR-2139": "country_22",
+    "GBR-2140": "country_22",
+    "GBR-2141": "country_22",
+    "GBR-2142": "country_22",
+    "GBR-2317": "country_22",
+    "GBR-2318": "country_22",
+    "GBR-2319": "country_22",
+    "GBR-2674": "country_22",
+    "GBR-2675": "country_22",
+    "GBR-2676": "country_22",
+    "GBR-2677": "country_22",
+    "GBR-2678": "country_22",
+    "GBR-2679": "country_22",
+    "GBR-2744": "country_22",
+    "GBR-2745": "country_22",
+    "GBR-2746": "country_22",
+    "GBR-2747": "country_22",
+    "GBR-2748": "country_22",
+    "GBR-2749": "country_22",
+    "GBR-2750": "country_22",
+    "GBR-2751": "country_22",
+    "GBR-2752": "country_22",
+    "GBR-2753": "country_22",
+    "GBR-2754": "country_22",
+    "GBR-2755": "country_22",
+    "GBR-2756": "country_22",
+    "GBR-2757": "country_22",
+    "GBR-2758": "country_22",
+    "GBR-2759": "country_22",
+    "GBR-2760": "country_22",
+    "GBR-2761": "country_22",
+    "GBR-2762": "country_22",
+    "GBR-2763": "country_22",
+    "GBR-2764": "country_22",
+    "GBR-2765": "country_22",
+    "GBR-2766": "country_22",
+    "GBR-2767": "country_22",
+    "GBR-2768": "country_22",
+    "GBR-2769": "country_22",
+    "GBR-2770": "country_22",
+    "GBR-2771": "country_22",
+    "GBR-2772": "country_22",
+    "GBR-2774": "country_22",
+    "GBR-2775": "country_22",
+    "GBR-2776": "country_22",
+    "GBR-2777": "country_22",
+    "GBR-2778": "country_22",
+    "GBR-2779": "country_22",
+    "GBR-3409": "country_22",
+    "GBR-4809": "country_22",
+    "GBR-5661": "country_22",
+    "GBR-5662": "country_22",
+    "GBR-5663": "country_22",
+    "GBR-5664": "country_22",
+    "GBR-5665": "country_22",
+    "GBR-5666": "country_22",
+    "GBR-5667": "country_22",
+    "GBR-5668": "country_22",
+    "GBR-5669": "country_22",
+    "GBR-5670": "country_22",
+    "GBR-5671": "country_22",
+    "GBR-5672": "country_22",
+    "GBR-5673": "country_22",
+    "GBR-5674": "country_22",
+    "GBR-5675": "country_22",
+    "GBR-5676": "country_22",
+    "GBR-5677": "country_22",
+    "GBR-5678": "country_22",
+    "GBR-5679": "country_22",
+    "GBR-5680": "country_22",
+    "GBR-5681": "country_22",
+    "GBR-5682": "country_22",
+    "GBR-5683": "country_22",
+    "GBR-5684": "country_22",
+    "GBR-5685": "country_22",
+    "GBR-5686": "country_22",
+    "GBR-5687": "country_22",
+    "GBR-5688": "country_22",
+    "GBR-5689": "country_22",
+    "GBR-5690": "country_22",
+    "GBR-5691": "country_22",
+    "GBR-5692": "country_22",
+    "GBR-5693": "country_22",
+    "GBR-5694": "country_22",
+    "GBR-5695": "country_22",
+    "GBR-5696": "country_22",
+    "GBR-5697": "country_22",
+    "GBR-5698": "country_22",
+    "GBR-5699": "country_22",
+    "GBR-5700": "country_22",
+    "GBR-5701": "country_22",
+    "GBR-5702": "country_22",
+    "GBR-5703": "country_22",
+    "GBR-5704": "country_22",
+    "GBR-5705": "country_22",
+    "GBR-5706": "country_22",
+    "GBR-5707": "country_22",
+    "GBR-5708": "country_22",
+    "GEO-3015": "country_19",
+    "GEO-3027": "country_19",
+    "GEO-3028": "country_19",
+    "GEO-3029": "country_19",
+    "GEO-3030": "country_19",
+    "GEO-3033": "country_19",
+    "GEO-3034": "country_19",
+    "GEO-3035": "country_19",
+    "GEO-3036": "country_19",
+    "GEO-3037": "country_19",
+    "GEO-3038": "country_19",
+    "GEO-3039": "country_19",
     "GGY+00?": "country_14",
     "GHA-2155": "country_3",
     "GHA-2158": "country_3",
@@ -1098,11 +1490,27 @@
     "HKG-5168": "country_4",
     "HKG-5169": "country_4",
     "HKG-5170": "country_4",
+    "HRV-1490": "country_23",
+    "HRV-1491": "country_23",
+    "HRV-1492": "country_23",
     "HRV-1493": "country_1",
+    "HRV-1582": "country_23",
     "HRV-1583": "country_1",
     "HRV-1584": "country_1",
     "HRV-1586": "country_1",
+    "HRV-1587": "country_23",
+    "HRV-1588": "country_23",
+    "HRV-1589": "country_23",
     "HRV-1592": "country_1",
+    "HRV-1602": "country_23",
+    "HRV-1603": "country_23",
+    "HRV-1604": "country_23",
+    "HRV-1605": "country_23",
+    "HRV-1606": "country_23",
+    "HRV-1607": "country_23",
+    "HRV-1608": "country_23",
+    "HRV-1609": "country_23",
+    "HRV-1610": "country_23",
     "HUN-4904": "country_5",
     "IDN-381": "country_9",
     "IDN-492": "country_9",
@@ -1137,6 +1545,7 @@
     "IDN-1930": "country_9",
     "IDN-1931": "country_9",
     "IDN-1933": "country_9",
+    "IMN+00?": "country_22",
     "IND-2441": "country_7",
     "IND-2442": "country_7",
     "IND-2443": "country_9",
@@ -1315,6 +1724,36 @@
     "KAZ-3201": "country_11",
     "KAZ-3204": "country_11",
     "KAZ-3205": "country_11",
+    "KOS-5886": "country_23",
+    "KOS-5887": "country_23",
+    "KOS-5888": "country_23",
+    "KOS-5889": "country_23",
+    "KOS-5890": "country_23",
+    "KOS-5891": "country_23",
+    "KOS-5892": "country_23",
+    "KOS-5893": "country_23",
+    "KOS-5894": "country_23",
+    "KOS-5895": "country_23",
+    "KOS-5896": "country_23",
+    "KOS-5897": "country_23",
+    "KOS-5898": "country_23",
+    "KOS-5899": "country_23",
+    "KOS-5900": "country_23",
+    "KOS-5901": "country_23",
+    "KOS-5902": "country_23",
+    "KOS-5903": "country_23",
+    "KOS-5904": "country_23",
+    "KOS-5905": "country_23",
+    "KOS-5906": "country_23",
+    "KOS-5907": "country_23",
+    "KOS-5908": "country_23",
+    "KOS-5909": "country_23",
+    "KOS-5910": "country_23",
+    "KOS-5911": "country_23",
+    "KOS-5912": "country_23",
+    "KOS-5913": "country_23",
+    "KOS-5914": "country_23",
+    "KOS-5915": "country_23",
     "KWT-1663": "country_1",
     "KWT-1664": "country_1",
     "KWT-1665": "country_1",
@@ -1532,6 +1971,46 @@
     "MAR-3456": "country_17",
     "MAR-3457": "country_2",
     "MAR-3469": "country_17",
+    "MDA-1613": "country_20",
+    "MDA-1614": "country_20",
+    "MDA-1615": "country_20",
+    "MDA-1616": "country_20",
+    "MDA-1617": "country_20",
+    "MDA-1618": "country_20",
+    "MDA-1619": "country_20",
+    "MDA-1620": "country_20",
+    "MDA-1621": "country_20",
+    "MDA-1622": "country_20",
+    "MDA-1623": "country_20",
+    "MDA-1624": "country_20",
+    "MDA-1625": "country_20",
+    "MDA-1626": "country_20",
+    "MDA-1627": "country_20",
+    "MDA-1628": "country_10",
+    "MDA-1629": "country_20",
+    "MDA-1630": "country_20",
+    "MDA-1631": "country_20",
+    "MDA-1632": "country_20",
+    "MDA-1633": "country_20",
+    "MDA-1634": "country_20",
+    "MDA-1635": "country_20",
+    "MDA-1637": "country_10",
+    "MDA-1638": "country_10",
+    "MDA-1639": "country_20",
+    "MDA-1640": "country_20",
+    "MDA-1641": "country_20",
+    "MDA-1642": "country_20",
+    "MDA-1643": "country_20",
+    "MDA-1644": "country_20",
+    "MDA-1645": "country_10",
+    "MDA-1646": "country_20",
+    "MDA-1647": "country_20",
+    "MDA-1648": "country_20",
+    "MDA-1649": "country_10",
+    "MDA-1650": "country_10",
+    "MDA-1651": "country_10",
+    "MDA-1652": "country_20",
+    "MDA-1653": "country_20",
     "MDV-5223": "country_9",
     "MDV-5224": "country_9",
     "MDV-5225": "country_9",
@@ -1637,6 +2116,25 @@
     "MMR-3273": "country_7",
     "MMR-3274": "country_7",
     "MMR-3275": "country_7",
+    "MNE-1496": "country_23",
+    "MNE-1497": "country_23",
+    "MNE-1500": "country_23",
+    "MNE-1501": "country_23",
+    "MNE-1503": "country_23",
+    "MNE-1506": "country_23",
+    "MNE-1507": "country_23",
+    "MNE-1508": "country_23",
+    "MNE-1509": "country_23",
+    "MNE-1510": "country_23",
+    "MNE-1511": "country_23",
+    "MNE-1512": "country_23",
+    "MNE-1513": "country_23",
+    "MNE-1514": "country_23",
+    "MNE-1515": "country_23",
+    "MNE-1516": "country_23",
+    "MNE-1517": "country_23",
+    "MNE-1519": "country_23",
+    "MNE-1520": "country_23",
     "MRT-2785": "country_17",
     "MRT-2786": "country_17",
     "MRT-2787": "country_17",
@@ -1926,6 +2424,48 @@
     "QAT-1106": "country_1",
     "QAT-1107": "country_1",
     "QAT-5487": "country_1",
+    "ROU-122": "country_20",
+    "ROU-123": "country_20",
+    "ROU-124": "country_20",
+    "ROU-126": "country_20",
+    "ROU-127": "country_20",
+    "ROU-128": "country_20",
+    "ROU-129": "country_20",
+    "ROU-130": "country_20",
+    "ROU-131": "country_20",
+    "ROU-132": "country_20",
+    "ROU-133": "country_20",
+    "ROU-276": "country_20",
+    "ROU-277": "country_20",
+    "ROU-278": "country_20",
+    "ROU-280": "country_20",
+    "ROU-287": "country_20",
+    "ROU-294": "country_20",
+    "ROU-295": "country_20",
+    "ROU-296": "country_20",
+    "ROU-297": "country_20",
+    "ROU-298": "country_20",
+    "ROU-299": "country_20",
+    "ROU-300": "country_20",
+    "ROU-301": "country_20",
+    "ROU-302": "country_20",
+    "ROU-303": "country_20",
+    "ROU-304": "country_20",
+    "ROU-305": "country_20",
+    "ROU-306": "country_20",
+    "ROU-307": "country_20",
+    "ROU-308": "country_20",
+    "ROU-309": "country_20",
+    "ROU-310": "country_20",
+    "ROU-311": "country_20",
+    "ROU-312": "country_20",
+    "ROU-313": "country_20",
+    "ROU-314": "country_20",
+    "ROU-315": "country_20",
+    "ROU-316": "country_20",
+    "ROU-317": "country_20",
+    "ROU-4844": "country_20",
+    "ROU-4847": "country_20",
     "RUS-283": "country_13",
     "RUS-2167": "country_11",
     "RUS-2279": "country_11",
@@ -2026,6 +2566,32 @@
     "SMR-4889": "country_1",
     "SMR-4890": "country_1",
     "SMR-4891": "country_1",
+    "SPM-4867": "country_22",
+    "SRB-121": "country_23",
+    "SRB-125": "country_23",
+    "SRB-273": "country_23",
+    "SRB-274": "country_23",
+    "SRB-275": "country_23",
+    "SRB-279": "country_23",
+    "SRB-281": "country_23",
+    "SRB-829": "country_23",
+    "SRB-830": "country_23",
+    "SRB-831": "country_23",
+    "SRB-832": "country_23",
+    "SRB-833": "country_23",
+    "SRB-834": "country_23",
+    "SRB-835": "country_23",
+    "SRB-836": "country_23",
+    "SRB-837": "country_23",
+    "SRB-838": "country_23",
+    "SRB-839": "country_23",
+    "SRB-841": "country_23",
+    "SRB-843": "country_23",
+    "SRB-844": "country_23",
+    "SRB-1059": "country_23",
+    "SRB-1060": "country_23",
+    "SRB-1061": "country_23",
+    "SRB-1505": "country_23",
     "STP-4861": "country_3",
     "STP-4862": "country_3",
     "SVN-196": "country_5",
@@ -2386,6 +2952,25 @@
     "UKR-331": "country_10",
     "UKR-4826": "country_10",
     "UKR-4827": "country_13",
+    "URY-4": "country_9",
+    "URY-5": "country_9",
+    "URY-6": "country_9",
+    "URY-7": "country_9",
+    "URY-8": "country_9",
+    "URY-9": "country_9",
+    "URY-10": "country_9",
+    "URY-11": "country_9",
+    "URY-12": "country_9",
+    "URY-13": "country_9",
+    "URY-14": "country_9",
+    "URY-15": "country_9",
+    "URY-16": "country_9",
+    "URY-17": "country_9",
+    "URY-18": "country_9",
+    "URY-19": "country_9",
+    "URY-20": "country_9",
+    "URY-21": "country_9",
+    "URY-22": "country_9",
     "VEN-27": "country_3",
     "VEN-29": "country_3",
     "VEN-31": "country_3",
@@ -3211,10 +3796,6 @@
             [
               16.231,
               46.948
-            ],
-            [
-              16.155501,
-              46.901157
             ],
             [
               16.091194,
@@ -4757,8 +5338,16 @@
               47.481
             ],
             [
+              33.902,
+              47.514
+            ],
+            [
               33.589,
               47.56
+            ],
+            [
+              33.503,
+              47.567
             ],
             [
               33.089,
@@ -5117,8 +5706,8 @@
               52.237
             ],
             [
-              27.522187,
-              52.093716
+              27.526778,
+              52.093883
             ],
             [
               26.945009,
@@ -6095,6 +6684,2814 @@
             [
               46.928939,
               32.589188
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlvx8i8fju6",
+      "properties": {
+        "name": "",
+        "countryId": "country_19",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40.616,
+              43.536
+            ],
+            [
+              40.48,
+              43.509
+            ],
+            [
+              40.233,
+              43.576
+            ],
+            [
+              40.097,
+              43.563
+            ],
+            [
+              40.059,
+              43.535
+            ],
+            [
+              40.002038,
+              43.421075
+            ],
+            [
+              39.986,
+              43.389
+            ],
+            [
+              39.91,
+              43.426
+            ],
+            [
+              39.868,
+              43.496
+            ],
+            [
+              39.718,
+              43.568
+            ],
+            [
+              39.691,
+              43.614
+            ],
+            [
+              39.634,
+              43.635
+            ],
+            [
+              39.458,
+              43.771
+            ],
+            [
+              39.329,
+              43.896
+            ],
+            [
+              39.393311,
+              44.001047
+            ],
+            [
+              39.5755,
+              43.988533
+            ],
+            [
+              39.631881,
+              43.961241
+            ],
+            [
+              39.73,
+              43.918
+            ],
+            [
+              39.838,
+              43.888
+            ],
+            [
+              39.947476,
+              43.855601
+            ],
+            [
+              40.027178,
+              43.817855
+            ],
+            [
+              40.175029,
+              43.769412
+            ],
+            [
+              40.321336,
+              43.687077
+            ],
+            [
+              40.475411,
+              43.617753
+            ],
+            [
+              40.616,
+              43.536
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlw58synu4g",
+      "properties": {
+        "name": "",
+        "countryId": "country_10",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29.163,
+              47.231
+            ],
+            [
+              29.125,
+              47.274
+            ],
+            [
+              29.134,
+              47.279
+            ],
+            [
+              29.174,
+              47.29
+            ],
+            [
+              29.19,
+              47.262
+            ],
+            [
+              29.163,
+              47.231
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlw7t4p7wt9",
+      "properties": {
+        "name": "",
+        "countryId": "country_10",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29.001,
+              44.689
+            ],
+            [
+              28.975,
+              44.745
+            ],
+            [
+              29.098,
+              44.775
+            ],
+            [
+              29.145,
+              44.827
+            ],
+            [
+              29.06,
+              44.832
+            ],
+            [
+              29.052,
+              44.945
+            ],
+            [
+              29.102,
+              44.98
+            ],
+            [
+              28.93,
+              45.279
+            ],
+            [
+              28.966,
+              45.32
+            ],
+            [
+              29.163541,
+              45.38553
+            ],
+            [
+              29.174,
+              45.389
+            ],
+            [
+              29.228,
+              45.424
+            ],
+            [
+              29.313671,
+              45.442228
+            ],
+            [
+              29.322,
+              45.444
+            ],
+            [
+              29.57,
+              45.395
+            ],
+            [
+              29.65,
+              45.346
+            ],
+            [
+              29.672,
+              45.273
+            ],
+            [
+              29.659,
+              45.216
+            ],
+            [
+              29.667,
+              45.164
+            ],
+            [
+              29.618,
+              44.861
+            ],
+            [
+              29.562,
+              44.82
+            ],
+            [
+              29.192,
+              44.793
+            ],
+            [
+              29.056,
+              44.735
+            ],
+            [
+              29.001,
+              44.689
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwbftf4tax",
+      "properties": {
+        "name": "",
+        "countryId": "country_11",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38.877,
+              47.861
+            ],
+            [
+              38.881092,
+              47.94011
+            ],
+            [
+              38.918046,
+              47.964859
+            ],
+            [
+              38.959069,
+              48.012352
+            ],
+            [
+              39.027,
+              48.007
+            ],
+            [
+              39.110177,
+              48.005151
+            ],
+            [
+              39.183668,
+              47.971267
+            ],
+            [
+              39.367104,
+              47.958566
+            ],
+            [
+              39.456442,
+              47.97027
+            ],
+            [
+              39.490824,
+              47.940883
+            ],
+            [
+              39.673282,
+              47.948619
+            ],
+            [
+              39.712545,
+              47.918444
+            ],
+            [
+              39.776746,
+              47.902971
+            ],
+            [
+              39.759,
+              47.833
+            ],
+            [
+              39.701,
+              47.812
+            ],
+            [
+              39.57,
+              47.831
+            ],
+            [
+              39.414,
+              47.823
+            ],
+            [
+              39.32,
+              47.846
+            ],
+            [
+              39.093,
+              47.832
+            ],
+            [
+              39.036,
+              47.857
+            ],
+            [
+              38.877,
+              47.861
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwcwh66w9x",
+      "properties": {
+        "name": "",
+        "countryId": "country_10",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38.595,
+              47.241
+            ],
+            [
+              38.478241,
+              47.261524
+            ],
+            [
+              38.42753,
+              47.318817
+            ],
+            [
+              38.394867,
+              47.39847
+            ],
+            [
+              38.388977,
+              47.476376
+            ],
+            [
+              38.395844,
+              47.531111
+            ],
+            [
+              38.397217,
+              47.571893
+            ],
+            [
+              38.430007,
+              47.614369
+            ],
+            [
+              38.353,
+              47.607
+            ],
+            [
+              38.293,
+              47.563
+            ],
+            [
+              38.26,
+              47.493
+            ],
+            [
+              38.258,
+              47.393
+            ],
+            [
+              38.203,
+              47.335
+            ],
+            [
+              38.201,
+              47.291
+            ],
+            [
+              38.292,
+              47.287
+            ],
+            [
+              38.285,
+              47.241
+            ],
+            [
+              38.203,
+              47.192
+            ],
+            [
+              38.217,
+              47.103
+            ],
+            [
+              38.428,
+              47.134
+            ],
+            [
+              38.519,
+              47.211
+            ],
+            [
+              38.595,
+              47.241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlweo4qcqf0",
+      "properties": {
+        "name": "",
+        "countryId": "country_10",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39.088,
+              47.286
+            ],
+            [
+              39.048595,
+              47.336436
+            ],
+            [
+              38.967026,
+              47.337752
+            ],
+            [
+              38.917502,
+              47.318007
+            ],
+            [
+              38.821366,
+              47.303522
+            ],
+            [
+              38.743681,
+              47.279811
+            ],
+            [
+              38.721902,
+              47.25315
+            ],
+            [
+              38.783,
+              47.259
+            ],
+            [
+              38.776,
+              47.246
+            ],
+            [
+              38.593,
+              47.23
+            ],
+            [
+              38.595,
+              47.241
+            ],
+            [
+              38.519,
+              47.211
+            ],
+            [
+              38.428,
+              47.134
+            ],
+            [
+              38.478,
+              47.142
+            ],
+            [
+              38.517,
+              47.119
+            ],
+            [
+              38.938,
+              47.19
+            ],
+            [
+              38.945,
+              47.253
+            ],
+            [
+              39.013,
+              47.254
+            ],
+            [
+              39.088,
+              47.286
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwyby3qaam",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -59.403,
+              47.91
+            ],
+            [
+              -59.399,
+              47.88
+            ],
+            [
+              -59.283,
+              47.759
+            ],
+            [
+              -59.313,
+              47.662
+            ],
+            [
+              -59.301,
+              47.614
+            ],
+            [
+              -59.228,
+              47.574
+            ],
+            [
+              -59.112,
+              47.561
+            ],
+            [
+              -58.963,
+              47.581
+            ],
+            [
+              -58.922,
+              47.602
+            ],
+            [
+              -58.767,
+              47.596
+            ],
+            [
+              -58.57,
+              47.643
+            ],
+            [
+              -58.426,
+              47.637
+            ],
+            [
+              -58.371,
+              47.718
+            ],
+            [
+              -58.313,
+              47.728
+            ],
+            [
+              -58.355,
+              47.663
+            ],
+            [
+              -58.227,
+              47.656
+            ],
+            [
+              -58.042,
+              47.699
+            ],
+            [
+              -57.955,
+              47.673
+            ],
+            [
+              -57.885,
+              47.697
+            ],
+            [
+              -57.919,
+              47.65
+            ],
+            [
+              -57.847,
+              47.652
+            ],
+            [
+              -57.768,
+              47.616
+            ],
+            [
+              -57.721,
+              47.654
+            ],
+            [
+              -57.628,
+              47.602
+            ],
+            [
+              -57.556,
+              47.643
+            ],
+            [
+              -57.376,
+              47.63
+            ],
+            [
+              -57.341,
+              47.643
+            ],
+            [
+              -57.326,
+              47.586
+            ],
+            [
+              -57.196,
+              47.599
+            ],
+            [
+              -57.121,
+              47.568
+            ],
+            [
+              -56.984,
+              47.587
+            ],
+            [
+              -56.851,
+              47.532
+            ],
+            [
+              -56.777,
+              47.533
+            ],
+            [
+              -56.638,
+              47.588
+            ],
+            [
+              -56.7,
+              47.622
+            ],
+            [
+              -56.514,
+              47.622
+            ],
+            [
+              -56.39,
+              47.606
+            ],
+            [
+              -56.302,
+              47.629
+            ],
+            [
+              -56.158,
+              47.643
+            ],
+            [
+              -56.098,
+              47.63
+            ],
+            [
+              -55.957,
+              47.606
+            ],
+            [
+              -55.931874,
+              47.577055
+            ],
+            [
+              -56.169,
+              47.504
+            ],
+            [
+              -56.106,
+              47.467
+            ],
+            [
+              -55.949,
+              47.512
+            ],
+            [
+              -55.917,
+              47.457
+            ],
+            [
+              -55.857,
+              47.478
+            ],
+            [
+              -55.805,
+              47.462
+            ],
+            [
+              -55.774,
+              47.458
+            ],
+            [
+              -55.664,
+              47.492
+            ],
+            [
+              -55.619,
+              47.542
+            ],
+            [
+              -55.589,
+              47.512
+            ],
+            [
+              -55.664,
+              47.437
+            ],
+            [
+              -55.598,
+              47.399
+            ],
+            [
+              -55.521,
+              47.465
+            ],
+            [
+              -55.438,
+              47.471
+            ],
+            [
+              -55.391,
+              47.596
+            ],
+            [
+              -55.418,
+              47.634
+            ],
+            [
+              -55.362,
+              47.654
+            ],
+            [
+              -55.329,
+              47.671
+            ],
+            [
+              -55.195,
+              47.636
+            ],
+            [
+              -55.13,
+              47.664
+            ],
+            [
+              -55.131,
+              47.584
+            ],
+            [
+              -55.072,
+              47.597
+            ],
+            [
+              -54.893,
+              47.619
+            ],
+            [
+              -54.831,
+              47.622
+            ],
+            [
+              -54.853,
+              47.56
+            ],
+            [
+              -54.948,
+              47.51
+            ],
+            [
+              -55.184,
+              47.46
+            ],
+            [
+              -55.255,
+              47.411
+            ],
+            [
+              -55.301,
+              47.268
+            ],
+            [
+              -55.462,
+              47.181
+            ],
+            [
+              -55.487,
+              47.14
+            ],
+            [
+              -55.685,
+              47.095
+            ],
+            [
+              -55.761,
+              47.108
+            ],
+            [
+              -55.87,
+              47.075
+            ],
+            [
+              -55.98,
+              46.97
+            ],
+            [
+              -55.95,
+              46.904
+            ],
+            [
+              -55.739,
+              46.854
+            ],
+            [
+              -55.466,
+              46.931
+            ],
+            [
+              -55.473,
+              46.898
+            ],
+            [
+              -55.418,
+              46.867
+            ],
+            [
+              -55.359,
+              46.875
+            ],
+            [
+              -55.37,
+              46.909
+            ],
+            [
+              -55.251,
+              46.919
+            ],
+            [
+              -55.178,
+              47.026
+            ],
+            [
+              -55.075,
+              47.081
+            ],
+            [
+              -55.097,
+              47.172
+            ],
+            [
+              -55.017,
+              47.184
+            ],
+            [
+              -55.041,
+              47.218
+            ],
+            [
+              -55.005,
+              47.266
+            ],
+            [
+              -54.929,
+              47.311
+            ],
+            [
+              -54.849,
+              47.408
+            ],
+            [
+              -54.822,
+              47.369
+            ],
+            [
+              -54.76,
+              47.363
+            ],
+            [
+              -54.677,
+              47.403
+            ],
+            [
+              -54.603,
+              47.41
+            ],
+            [
+              -54.606,
+              47.352
+            ],
+            [
+              -54.506,
+              47.403
+            ],
+            [
+              -54.451,
+              47.455
+            ],
+            [
+              -54.404,
+              47.451
+            ],
+            [
+              -54.438,
+              47.499
+            ],
+            [
+              -54.321,
+              47.667
+            ],
+            [
+              -54.327,
+              47.71
+            ],
+            [
+              -54.249,
+              47.73
+            ],
+            [
+              -54.179,
+              47.879
+            ],
+            [
+              -54.125,
+              47.828
+            ],
+            [
+              -54.061,
+              47.8
+            ],
+            [
+              -54.013,
+              47.807
+            ],
+            [
+              -53.975,
+              47.765
+            ],
+            [
+              -53.886,
+              47.527
+            ],
+            [
+              -53.923,
+              47.454
+            ],
+            [
+              -53.875,
+              47.405
+            ],
+            [
+              -53.877,
+              47.362
+            ],
+            [
+              -53.939,
+              47.305
+            ],
+            [
+              -54,
+              47.304
+            ],
+            [
+              -53.989,
+              47.263
+            ],
+            [
+              -54.1,
+              47.06
+            ],
+            [
+              -54.15,
+              47.005
+            ],
+            [
+              -54.198,
+              46.886
+            ],
+            [
+              -54.224854,
+              46.828881
+            ],
+            [
+              -54.05,
+              46.808
+            ],
+            [
+              -53.948,
+              46.858
+            ],
+            [
+              -53.818,
+              46.963
+            ],
+            [
+              -53.767,
+              47.04
+            ],
+            [
+              -53.725,
+              47.047
+            ],
+            [
+              -53.573,
+              47.162
+            ],
+            [
+              -53.519,
+              47.17
+            ],
+            [
+              -53.512,
+              47.123
+            ],
+            [
+              -53.643,
+              46.985
+            ],
+            [
+              -53.592,
+              46.95
+            ],
+            [
+              -53.521,
+              46.945
+            ],
+            [
+              -53.599,
+              46.906
+            ],
+            [
+              -53.645,
+              46.801
+            ],
+            [
+              -53.612,
+              46.814
+            ],
+            [
+              -53.605,
+              46.755
+            ],
+            [
+              -53.636,
+              46.711
+            ],
+            [
+              -53.623,
+              46.656
+            ],
+            [
+              -53.555,
+              46.618
+            ],
+            [
+              -53.449,
+              46.664
+            ],
+            [
+              -53.389,
+              46.684
+            ],
+            [
+              -53.331,
+              46.693
+            ],
+            [
+              -53.266,
+              46.739
+            ],
+            [
+              -53.211,
+              46.635
+            ],
+            [
+              -53.143,
+              46.629
+            ],
+            [
+              -53.067,
+              46.666
+            ],
+            [
+              -53.031,
+              46.736
+            ],
+            [
+              -52.941,
+              46.791
+            ],
+            [
+              -52.889,
+              47.007
+            ],
+            [
+              -52.849,
+              47.07
+            ],
+            [
+              -52.938,
+              47.088
+            ],
+            [
+              -52.859,
+              47.115
+            ],
+            [
+              -52.814,
+              47.273
+            ],
+            [
+              -52.76,
+              47.3
+            ],
+            [
+              -52.657,
+              47.437
+            ],
+            [
+              -52.691,
+              47.465
+            ],
+            [
+              -52.629,
+              47.486
+            ],
+            [
+              -52.629,
+              47.527
+            ],
+            [
+              -52.691,
+              47.554
+            ],
+            [
+              -52.655,
+              47.652
+            ],
+            [
+              -52.718,
+              47.671
+            ],
+            [
+              -52.704,
+              47.756
+            ],
+            [
+              -52.773,
+              47.801
+            ],
+            [
+              -52.818,
+              47.744
+            ],
+            [
+              -52.841,
+              47.65
+            ],
+            [
+              -52.916,
+              47.634
+            ],
+            [
+              -52.956,
+              47.655
+            ],
+            [
+              -53.03,
+              47.599
+            ],
+            [
+              -52.977,
+              47.597
+            ],
+            [
+              -52.912,
+              47.556
+            ],
+            [
+              -53.078,
+              47.47
+            ],
+            [
+              -53.184,
+              47.561
+            ],
+            [
+              -53.26,
+              47.559
+            ],
+            [
+              -53.252,
+              47.625
+            ],
+            [
+              -53.156,
+              47.684
+            ],
+            [
+              -53.172,
+              47.749
+            ],
+            [
+              -53.063,
+              47.87
+            ],
+            [
+              -53.054,
+              47.933
+            ],
+            [
+              -52.967,
+              48.002
+            ],
+            [
+              -52.846,
+              48.098
+            ],
+            [
+              -52.923,
+              48.171
+            ],
+            [
+              -53.042,
+              48.062
+            ],
+            [
+              -53.148,
+              48.064
+            ],
+            [
+              -53.304,
+              47.989
+            ],
+            [
+              -53.246176,
+              48.37425
+            ],
+            [
+              -53.187,
+              48.355
+            ],
+            [
+              -53.058,
+              48.436
+            ],
+            [
+              -53.028,
+              48.536
+            ],
+            [
+              -52.981,
+              48.591
+            ],
+            [
+              -53.033,
+              48.671
+            ],
+            [
+              -53.085,
+              48.7
+            ],
+            [
+              -53.21935,
+              48.552975
+            ],
+            [
+              -53.342,
+              48.613
+            ],
+            [
+              -53.281683,
+              48.559453
+            ],
+            [
+              -53.342,
+              48.613
+            ],
+            [
+              -53.414,
+              48.624
+            ],
+            [
+              -53.461,
+              48.593
+            ],
+            [
+              -53.657,
+              48.547
+            ],
+            [
+              -53.711,
+              48.561
+            ],
+            [
+              -53.785,
+              48.623
+            ],
+            [
+              -53.66,
+              48.647
+            ],
+            [
+              -53.604,
+              48.677
+            ],
+            [
+              -53.631,
+              48.699
+            ],
+            [
+              -53.8,
+              48.815
+            ],
+            [
+              -53.844,
+              48.839
+            ],
+            [
+              -53.979,
+              48.836
+            ],
+            [
+              -53.812,
+              48.935
+            ],
+            [
+              -53.888,
+              48.971
+            ],
+            [
+              -53.725,
+              49.014
+            ],
+            [
+              -53.794,
+              49.028
+            ],
+            [
+              -53.609,
+              49.044
+            ],
+            [
+              -53.58,
+              49.067
+            ],
+            [
+              -53.623,
+              49.109
+            ],
+            [
+              -53.566,
+              49.126
+            ],
+            [
+              -53.54,
+              49.188
+            ],
+            [
+              -53.454,
+              49.242
+            ],
+            [
+              -53.493,
+              49.288
+            ],
+            [
+              -53.547,
+              49.288
+            ],
+            [
+              -53.664,
+              49.359
+            ],
+            [
+              -53.924,
+              49.452
+            ],
+            [
+              -54.017,
+              49.432
+            ],
+            [
+              -54.041,
+              49.481
+            ],
+            [
+              -53.987,
+              49.651
+            ],
+            [
+              -54.092,
+              49.75
+            ],
+            [
+              -54.198,
+              49.705
+            ],
+            [
+              -54.27,
+              49.727
+            ],
+            [
+              -54.307,
+              49.672
+            ],
+            [
+              -54.277,
+              49.576
+            ],
+            [
+              -54.451,
+              49.548
+            ],
+            [
+              -54.545,
+              49.529
+            ],
+            [
+              -54.539,
+              49.661
+            ],
+            [
+              -54.781,
+              49.596
+            ],
+            [
+              -54.885,
+              49.595
+            ],
+            [
+              -54.883,
+              49.555
+            ],
+            [
+              -54.877,
+              49.494
+            ],
+            [
+              -54.744,
+              49.494
+            ],
+            [
+              -54.75,
+              49.424
+            ],
+            [
+              -54.834,
+              49.41
+            ],
+            [
+              -54.888,
+              49.362
+            ],
+            [
+              -55.013,
+              49.349
+            ],
+            [
+              -55.082,
+              49.363
+            ],
+            [
+              -55.225,
+              49.368
+            ],
+            [
+              -55.128,
+              49.466
+            ],
+            [
+              -55.156,
+              49.549
+            ],
+            [
+              -55.22,
+              49.53
+            ],
+            [
+              -55.315,
+              49.535
+            ],
+            [
+              -55.35,
+              49.494
+            ],
+            [
+              -55.521,
+              49.494
+            ],
+            [
+              -55.554,
+              49.49
+            ],
+            [
+              -55.679,
+              49.473
+            ],
+            [
+              -55.774,
+              49.513
+            ],
+            [
+              -55.864,
+              49.52
+            ],
+            [
+              -55.877,
+              49.596
+            ],
+            [
+              -55.939,
+              49.61
+            ],
+            [
+              -55.836,
+              49.692
+            ],
+            [
+              -55.898,
+              49.719
+            ],
+            [
+              -55.715,
+              49.822
+            ],
+            [
+              -55.495,
+              49.919
+            ],
+            [
+              -55.465,
+              49.963
+            ],
+            [
+              -55.493,
+              50.014
+            ],
+            [
+              -55.667,
+              49.976
+            ],
+            [
+              -55.723,
+              49.931
+            ],
+            [
+              -55.864,
+              50.017
+            ],
+            [
+              -56.067,
+              50.096
+            ],
+            [
+              -56.164,
+              50.15
+            ],
+            [
+              -56.317,
+              50.039
+            ],
+            [
+              -56.384,
+              49.946
+            ],
+            [
+              -56.467,
+              49.898
+            ],
+            [
+              -56.548,
+              49.854
+            ],
+            [
+              -56.741,
+              49.877
+            ],
+            [
+              -56.728,
+              49.959
+            ],
+            [
+              -56.523,
+              50.196
+            ],
+            [
+              -56.462,
+              50.277
+            ],
+            [
+              -56.266,
+              50.506
+            ],
+            [
+              -56.096,
+              50.679
+            ],
+            [
+              -56.081,
+              50.721
+            ],
+            [
+              -55.743,
+              51.07
+            ],
+            [
+              -55.719,
+              51.184
+            ],
+            [
+              -55.774,
+              51.22
+            ],
+            [
+              -55.848,
+              51.231
+            ],
+            [
+              -56.018,
+              51.218
+            ],
+            [
+              -56.021,
+              51.309
+            ],
+            [
+              -55.967,
+              51.347
+            ],
+            [
+              -55.617,
+              51.304
+            ],
+            [
+              -55.516,
+              51.369
+            ],
+            [
+              -55.408683,
+              51.435857
+            ],
+            [
+              -55.362072,
+              51.53261
+            ],
+            [
+              -55.39703,
+              51.619513
+            ],
+            [
+              -55.599011,
+              51.641213
+            ],
+            [
+              -55.744005,
+              51.679581
+            ],
+            [
+              -55.914498,
+              51.618008
+            ],
+            [
+              -56.218273,
+              51.495853
+            ],
+            [
+              -56.494,
+              51.412
+            ],
+            [
+              -56.665,
+              51.35
+            ],
+            [
+              -56.777512,
+              51.260599
+            ],
+            [
+              -56.809,
+              51.192
+            ],
+            [
+              -56.864,
+              51.114
+            ],
+            [
+              -56.98,
+              51.055
+            ],
+            [
+              -56.943931,
+              51.001697
+            ],
+            [
+              -57.07,
+              51.027
+            ],
+            [
+              -57.075586,
+              50.901574
+            ],
+            [
+              -57.136556,
+              50.797089
+            ],
+            [
+              -57.245431,
+              50.853485
+            ],
+            [
+              -57.381,
+              50.691
+            ],
+            [
+              -57.364789,
+              50.589968
+            ],
+            [
+              -57.457,
+              50.483
+            ],
+            [
+              -57.527,
+              50.37
+            ],
+            [
+              -57.539,
+              50.308
+            ],
+            [
+              -57.733,
+              50.006
+            ],
+            [
+              -57.762,
+              49.945
+            ],
+            [
+              -57.939274,
+              49.757411
+            ],
+            [
+              -57.952,
+              49.644
+            ],
+            [
+              -58.001,
+              49.562
+            ],
+            [
+              -58.092,
+              49.515
+            ],
+            [
+              -58.186,
+              49.443
+            ],
+            [
+              -58.229,
+              49.371
+            ],
+            [
+              -58.229,
+              49.268
+            ],
+            [
+              -58.138,
+              49.228
+            ],
+            [
+              -58.101,
+              49.183
+            ],
+            [
+              -58.127,
+              49.135
+            ],
+            [
+              -58.213,
+              49.074
+            ],
+            [
+              -58.37,
+              49.072
+            ],
+            [
+              -58.349,
+              49.145
+            ],
+            [
+              -58.398,
+              49.137
+            ],
+            [
+              -58.455,
+              49.041
+            ],
+            [
+              -58.502,
+              49.006
+            ],
+            [
+              -58.512,
+              48.931
+            ],
+            [
+              -58.557,
+              48.856
+            ],
+            [
+              -58.611,
+              48.811
+            ],
+            [
+              -58.667,
+              48.726
+            ],
+            [
+              -58.685,
+              48.602
+            ],
+            [
+              -58.714,
+              48.568
+            ],
+            [
+              -58.839,
+              48.588
+            ],
+            [
+              -58.893,
+              48.554
+            ],
+            [
+              -58.961,
+              48.63
+            ],
+            [
+              -58.919,
+              48.679
+            ],
+            [
+              -58.842,
+              48.719
+            ],
+            [
+              -58.803,
+              48.771
+            ],
+            [
+              -58.971,
+              48.675
+            ],
+            [
+              -59.085128,
+              48.621955
+            ],
+            [
+              -59.226,
+              48.54
+            ],
+            [
+              -59.262,
+              48.473
+            ],
+            [
+              -59.078,
+              48.515
+            ],
+            [
+              -58.838,
+              48.526
+            ],
+            [
+              -58.777952,
+              48.538899
+            ],
+            [
+              -58.703,
+              48.555
+            ],
+            [
+              -58.598,
+              48.547
+            ],
+            [
+              -58.519,
+              48.507
+            ],
+            [
+              -58.406,
+              48.497
+            ],
+            [
+              -58.495,
+              48.451
+            ],
+            [
+              -58.57,
+              48.44
+            ],
+            [
+              -58.667,
+              48.383
+            ],
+            [
+              -58.723,
+              48.306
+            ],
+            [
+              -58.857,
+              48.216
+            ],
+            [
+              -58.91,
+              48.2
+            ],
+            [
+              -59.002,
+              48.123
+            ],
+            [
+              -59.042397,
+              48.107425
+            ],
+            [
+              -59.089312,
+              48.089338
+            ],
+            [
+              -59.168,
+              48.059
+            ],
+            [
+              -59.242,
+              48.016
+            ],
+            [
+              -59.32,
+              47.934
+            ],
+            [
+              -59.403,
+              47.91
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwzk82ycvx",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -54.351,
+              47.403
+            ],
+            [
+              -54.244,
+              47.408
+            ],
+            [
+              -54.160519,
+              47.528904
+            ],
+            [
+              -54.123,
+              47.643
+            ],
+            [
+              -54.183,
+              47.616
+            ],
+            [
+              -54.246,
+              47.554
+            ],
+            [
+              -54.217,
+              47.54
+            ],
+            [
+              -54.351,
+              47.403
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwzq3lan6j",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -54.098,
+              47.492
+            ],
+            [
+              -54.066,
+              47.555
+            ],
+            [
+              -54.095,
+              47.619
+            ],
+            [
+              -54.098,
+              47.492
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlwzy631d74",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -55.702528,
+              49.513794
+            ],
+            [
+              -55.657,
+              49.562
+            ],
+            [
+              -55.726,
+              49.562
+            ],
+            [
+              -55.708,
+              49.508
+            ],
+            [
+              -55.702528,
+              49.513794
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlx1j7ubgzv",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -55.726,
+              49.582
+            ],
+            [
+              -55.67,
+              49.571
+            ],
+            [
+              -55.584796,
+              49.607516
+            ],
+            [
+              -55.579,
+              49.61
+            ],
+            [
+              -55.672,
+              49.637
+            ],
+            [
+              -55.726,
+              49.582
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlx1oel1rrk",
+      "properties": {
+        "name": "",
+        "countryId": "country_22",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -55.79,
+              50.207
+            ],
+            [
+              -55.763,
+              50.232
+            ],
+            [
+              -55.696,
+              50.194
+            ],
+            [
+              -55.79,
+              50.207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlx2jreb0kk",
+      "properties": {
+        "name": "",
+        "countryId": "country_21",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -61.552,
+              46.022
+            ],
+            [
+              -61.455,
+              45.71
+            ],
+            [
+              -61.335,
+              45.566
+            ],
+            [
+              -61.004,
+              45.461
+            ],
+            [
+              -60.672,
+              45.574
+            ],
+            [
+              -60.235,
+              45.707
+            ],
+            [
+              -59.812,
+              45.931
+            ],
+            [
+              -59.708,
+              45.995
+            ],
+            [
+              -59.695,
+              46.034
+            ],
+            [
+              -59.811,
+              46.17
+            ],
+            [
+              -60.136,
+              46.252
+            ],
+            [
+              -60.284,
+              46.328
+            ],
+            [
+              -60.352,
+              46.686
+            ],
+            [
+              -60.339,
+              46.876
+            ],
+            [
+              -60.383,
+              47.017
+            ],
+            [
+              -60.501,
+              47.001
+            ],
+            [
+              -60.603,
+              47.034
+            ],
+            [
+              -60.642,
+              47.004
+            ],
+            [
+              -60.77,
+              46.844
+            ],
+            [
+              -60.869,
+              46.8
+            ],
+            [
+              -61.057,
+              46.601
+            ],
+            [
+              -61.459,
+              46.145
+            ],
+            [
+              -61.552,
+              46.022
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlx7qhphg3h",
+      "properties": {
+        "name": "",
+        "countryId": "country_9",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -55.65,
+              -30.861
+            ],
+            [
+              -53.842,
+              -27.164
+            ],
+            [
+              -53.964,
+              -27.154
+            ],
+            [
+              -54.204278,
+              -27.146796
+            ],
+            [
+              -54.781675,
+              -27.361696
+            ],
+            [
+              -54.828,
+              -27.545
+            ],
+            [
+              -55.37755,
+              -27.79978
+            ],
+            [
+              -55.623,
+              -28.144
+            ],
+            [
+              -55.773,
+              -28.232
+            ],
+            [
+              -56.008838,
+              -28.29713
+            ],
+            [
+              -56.707874,
+              -29.134343
+            ],
+            [
+              -57.292,
+              -29.815
+            ],
+            [
+              -57.612,
+              -30.183
+            ],
+            [
+              -57.642,
+              -30.193
+            ],
+            [
+              -57.567,
+              -30.256
+            ],
+            [
+              -57.399,
+              -30.299
+            ],
+            [
+              -56.150493,
+              -30.869012
+            ],
+            [
+              -56.017,
+              -31.074
+            ],
+            [
+              -56.01,
+              -31.082
+            ],
+            [
+              -55.756323,
+              -31.135606
+            ],
+            [
+              -55.653,
+              -30.939
+            ],
+            [
+              -55.65,
+              -30.861
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlxig0ed5p8",
+      "properties": {
+        "name": "",
+        "countryId": "country_23",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.033,
+              44.013
+            ],
+            [
+              16.100425,
+              44.256406
+            ],
+            [
+              16.096541,
+              44.364804
+            ],
+            [
+              16.006,
+              44.541
+            ],
+            [
+              16.116,
+              44.521
+            ],
+            [
+              16.16,
+              44.401
+            ],
+            [
+              16.206,
+              44.351
+            ],
+            [
+              16.188,
+              44.282
+            ],
+            [
+              16.216,
+              44.208
+            ],
+            [
+              16.327,
+              44.082
+            ],
+            [
+              16.404,
+              44.059
+            ],
+            [
+              16.44,
+              44.014
+            ],
+            [
+              16.527,
+              43.968
+            ],
+            [
+              16.47,
+              43.964
+            ],
+            [
+              16.4,
+              43.92
+            ],
+            [
+              16.351,
+              43.926
+            ],
+            [
+              16.319,
+              43.941
+            ],
+            [
+              16.231,
+              43.918
+            ],
+            [
+              16.17,
+              43.927
+            ],
+            [
+              16.149,
+              44.026
+            ],
+            [
+              16.033,
+              44.013
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlxka2bxnik",
+      "properties": {
+        "name": "",
+        "countryId": "country_23",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              23.387,
+              42.062
+            ],
+            [
+              23.213141,
+              41.908816
+            ],
+            [
+              23.061655,
+              41.813352
+            ],
+            [
+              22.991,
+              41.761
+            ],
+            [
+              22.946,
+              41.769
+            ],
+            [
+              22.882,
+              41.872
+            ],
+            [
+              22.846,
+              42.007
+            ],
+            [
+              22.934,
+              42.086
+            ],
+            [
+              23.061,
+              42.049
+            ],
+            [
+              23.201,
+              42.092
+            ],
+            [
+              23.387,
+              42.062
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlxkvdn1rov",
+      "properties": {
+        "name": "",
+        "countryId": "country_12",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              22.917,
+              41.336
+            ],
+            [
+              22.941,
+              41.35
+            ],
+            [
+              22.941,
+              41.638
+            ],
+            [
+              22.985,
+              41.677
+            ],
+            [
+              23.171942,
+              41.601793
+            ],
+            [
+              23.309125,
+              41.528479
+            ],
+            [
+              23.485039,
+              41.48247
+            ],
+            [
+              23.630698,
+              41.409682
+            ],
+            [
+              23.653,
+              41.398
+            ],
+            [
+              23.625,
+              41.377
+            ],
+            [
+              23.436649,
+              41.397629
+            ],
+            [
+              23.326,
+              41.369
+            ],
+            [
+              23.288,
+              41.398
+            ],
+            [
+              23.21,
+              41.369
+            ],
+            [
+              23.18,
+              41.321
+            ],
+            [
+              23.145146,
+              41.31671
+            ],
+            [
+              23.115,
+              41.313
+            ],
+            [
+              22.917,
+              41.336
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlxsjyg0hnb",
+      "properties": {
+        "name": "",
+        "countryId": "country_24",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.305,
+              40.653
+            ],
+            [
+              19.379,
+              40.566
+            ],
+            [
+              19.455,
+              40.554
+            ],
+            [
+              19.446,
+              40.511
+            ],
+            [
+              19.391,
+              40.522
+            ],
+            [
+              19.482,
+              40.439
+            ],
+            [
+              19.475,
+              40.348
+            ],
+            [
+              19.776,
+              40.423
+            ],
+            [
+              19.905,
+              40.527
+            ],
+            [
+              20.214,
+              40.718
+            ],
+            [
+              20.450777,
+              40.824745
+            ],
+            [
+              20.703,
+              40.936
+            ],
+            [
+              20.654,
+              41.075
+            ],
+            [
+              20.597,
+              41.086
+            ],
+            [
+              20.017,
+              40.874
+            ],
+            [
+              19.867,
+              40.868
+            ],
+            [
+              19.774,
+              40.847
+            ],
+            [
+              19.732,
+              40.812
+            ],
+            [
+              19.445,
+              40.651
+            ],
+            [
+              19.305,
+              40.653
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwlxsswgz2m5",
+      "properties": {
+        "name": "",
+        "countryId": "country_12",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              20.416,
+              40.752
+            ],
+            [
+              20.468,
+              40.8
+            ],
+            [
+              20.450777,
+              40.824745
+            ],
+            [
+              20.214,
+              40.718
+            ],
+            [
+              20.293,
+              40.726
+            ],
+            [
+              20.416,
+              40.752
             ]
           ]
         ]
