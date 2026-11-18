@@ -1071,7 +1071,7 @@
       "id": "country_21",
       "name": "Квебек",
       "color": "#c13399",
-      "flagUrl": "",
+      "flagUrl": "flags/qc.png",
       "capital": {
         "name": "Монреаль",
         "lat": 45.7894,
@@ -1291,7 +1291,7 @@
       "id": "country_31",
       "name": "Царство Болгарія",
       "color": "#2a6200",
-      "flagUrl": "",
+      "flagUrl": "flags/bg.png",
       "capital": {
         "name": "Варна",
         "lat": 43.2033,
@@ -1311,7 +1311,7 @@
       "id": "country_32",
       "name": "Ірландія",
       "color": "#00ee2f",
-      "flagUrl": "",
+      "flagUrl": "flags/ie.png",
       "capital": {
         "name": "Дублін",
         "lat": 53.3638,
