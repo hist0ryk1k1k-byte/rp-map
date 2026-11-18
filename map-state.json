@@ -653,9 +653,52 @@
         "lat": 50.4711,
         "lng": 30.4855
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
+      "population": 33000,
+      "gdp": 418,
+      "cities": [
+        {
+          "id": "city_mwm7w5f2vs41",
+          "name": "Харків",
+          "lat": 49.975647,
+          "lng": 36.246754
+        },
+        {
+          "id": "city_mwm7wgvhlrtm",
+          "name": "Дніпро",
+          "lat": 48.450458,
+          "lng": 35.028992
+        },
+        {
+          "id": "city_mwm7wtnee0i5",
+          "name": "Львів",
+          "lat": 49.8223,
+          "lng": 24.002659
+        },
+        {
+          "id": "city_mwm7xszg8nys",
+          "name": "Донецьк",
+          "lat": 48.005366,
+          "lng": 37.804987
+        },
+        {
+          "id": "city_mwm81mc6mk08",
+          "name": "Одеса",
+          "lat": 46.548697,
+          "lng": 30.752102
+        },
+        {
+          "id": "city_mwm8202t18s5",
+          "name": "Миколаїв",
+          "lat": 46.958333,
+          "lng": 31.976676
+        },
+        {
+          "id": "city_mwm82cmhjxy1",
+          "name": "Запоріжжя",
+          "lat": 47.821805,
+          "lng": 35.166991
+        }
+      ],
       "tgLink": "https://t.me/ukraineprp",
       "description": "",
       "overlordId": null,
@@ -675,7 +718,128 @@
       },
       "population": null,
       "gdp": null,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwm84poc0yl5",
+          "name": "Москва",
+          "lat": 55.74616,
+          "lng": 37.587013
+        },
+        {
+          "id": "city_mwm85bp5bf09",
+          "name": "Петрославль",
+          "lat": 59.912081,
+          "lng": 30.277951
+        },
+        {
+          "id": "city_mwm864qr0bnq",
+          "name": "Новгород-на-Волзі",
+          "lat": 56.321868,
+          "lng": 43.93158
+        },
+        {
+          "id": "city_mwm86s28f15s",
+          "name": "Ґрозний",
+          "lat": 55.79855,
+          "lng": 49.074472
+        },
+        {
+          "id": "city_mwm87951hdx8",
+          "name": "Симбірськ",
+          "lat": 54.326135,
+          "lng": 48.364563
+        },
+        {
+          "id": "city_mwm87rdhpa8e",
+          "name": "Самара",
+          "lat": 53.222198,
+          "lng": 50.188634
+        },
+        {
+          "id": "city_mwm886wdan7o",
+          "name": "Саратов",
+          "lat": 51.40496,
+          "lng": 45.891855
+        },
+        {
+          "id": "city_mwm88ns5mckq",
+          "name": "Ростов-на-Дону",
+          "lat": 47.168359,
+          "lng": 39.510821
+        },
+        {
+          "id": "city_mwm890nfu4eu",
+          "name": "Єкатеринодар",
+          "lat": 45.010985,
+          "lng": 39.015579
+        },
+        {
+          "id": "city_mwm89pyikn5y",
+          "name": "Мінськ",
+          "lat": 53.906984,
+          "lng": 27.619912
+        },
+        {
+          "id": "city_mwm8ayrp0le2",
+          "name": "Воронеж",
+          "lat": 51.655519,
+          "lng": 39.194641
+        },
+        {
+          "id": "city_mwm8brupztsj",
+          "name": "Перм",
+          "lat": 58.026891,
+          "lng": 56.305376
+        },
+        {
+          "id": "city_mwm8d1vvqtln",
+          "name": "Вятка",
+          "lat": 58.584209,
+          "lng": 49.683654
+        },
+        {
+          "id": "city_mwm8dr4jm435",
+          "name": "Єкатеринбурґ",
+          "lat": 56.736304,
+          "lng": 60.86814
+        },
+        {
+          "id": "city_mwm8eewlz2t7",
+          "name": "Омськ",
+          "lat": 54.988121,
+          "lng": 73.391418
+        },
+        {
+          "id": "city_mwm8eupmw8r4",
+          "name": "Новосибірськ",
+          "lat": 54.916327,
+          "lng": 82.974649
+        },
+        {
+          "id": "city_mwm8fz6eud56",
+          "name": "Красноярськ",
+          "lat": 56.159074,
+          "lng": 93.437096
+        },
+        {
+          "id": "city_mwm8gyfixj7r",
+          "name": "Томськ",
+          "lat": 57.809828,
+          "lng": 85.203885
+        },
+        {
+          "id": "city_mwm8hamcxanu",
+          "name": "Іркутськ",
+          "lat": 52.30194,
+          "lng": 104.232767
+        },
+        {
+          "id": "city_mwm8hkkzxngw",
+          "name": "Владивосток",
+          "lat": 43.344367,
+          "lng": 131.940519
+        }
+      ],
       "tgLink": "https://t.me/slavicland",
       "description": "",
       "overlordId": null,
