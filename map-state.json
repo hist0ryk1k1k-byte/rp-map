@@ -600,7 +600,7 @@
       "id": "country_8",
       "name": "Зюдвестафрика",
       "color": "#3392c1",
-      "flagUrl": "",
+      "flagUrl": "flags/nmb.png",
       "capital": {
         "name": "Віндгук",
         "lat": -22.7917,
@@ -653,7 +653,7 @@
       "id": "country_10",
       "name": "Україна",
       "color": "#cfe66b",
-      "flagUrl": "",
+      "flagUrl": "flags/ua.png",
       "capital": {
         "name": "Київ",
         "lat": 50.4711,
@@ -917,7 +917,7 @@
       "id": "country_15",
       "name": "Рейхскомісаріат Левант",
       "color": "#c13360",
-      "flagUrl": "",
+      "flagUrl": "flags/lvtg.png",
       "capital": {
         "name": "Дамаск",
         "lat": 33.5177,
@@ -956,7 +956,7 @@
       "id": "country_16",
       "name": "Протекторат Месопотамія",
       "color": "#3394c1",
-      "flagUrl": "",
+      "flagUrl": "flags/mspg.png",
       "capital": {
         "name": "Новий Вавилон",
         "lat": 33.3,
@@ -995,7 +995,7 @@
       "id": "country_17",
       "name": "Рейхскомісаріат Західна Африка",
       "color": "#c133b6",
-      "flagUrl": "",
+      "flagUrl": "flags/wag.png",
       "capital": {
         "name": "Дахла",
         "lat": 23.7434,
@@ -1015,7 +1015,7 @@
       "id": "country_18",
       "name": "НТК",
       "color": "#3346c1",
-      "flagUrl": "",
+      "flagUrl": "flags/spbg.png",
       "capital": null,
       "population": 1,
       "gdp": 6,
@@ -1051,7 +1051,7 @@
       "id": "country_20",
       "name": "Дакія",
       "color": "#f09b00",
-      "flagUrl": "",
+      "flagUrl": "flags/dk.png",
       "capital": {
         "name": "Бухарест",
         "lat": 44.4601,
@@ -1091,7 +1091,7 @@
       "id": "country_22",
       "name": "Сполучене Королівство",
       "color": "#af1500",
-      "flagUrl": "",
+      "flagUrl": "flags/uk.png",
       "capital": {
         "name": "Лондон",
         "lat": 51.5167,
@@ -1111,7 +1111,7 @@
       "id": "country_23",
       "name": "Королівство Югославія",
       "color": "#89b500",
-      "flagUrl": "",
+      "flagUrl": "flags/us.png",
       "capital": {
         "name": "Белград",
         "lat": 44.7605,
@@ -1151,7 +1151,7 @@
       "id": "country_p",
       "name": "Республіка Польща",
       "color": "#702400",
-      "flagUrl": "",
+      "flagUrl": "flags/pl.png",
       "capital": {
         "name": "Варшава",
         "lat": 52.3722,
@@ -1171,7 +1171,7 @@
       "id": "country_25",
       "name": "ХНР",
       "color": "#c13346",
-      "flagUrl": "",
+      "flagUrl": "flags/hnr.png",
       "capital": {
         "name": "Холм",
         "lat": 50.999,
@@ -1191,7 +1191,7 @@
       "id": "country_26",
       "name": "БНР",
       "color": "#890000",
-      "flagUrl": "",
+      "flagUrl": "flags/bnr.png",
       "capital": {
         "name": "Берестя",
         "lat": 51.8708,
@@ -1211,7 +1211,7 @@
       "id": "country_27",
       "name": "Королівство Ісландія",
       "color": "#6c3e00",
-      "flagUrl": "",
+      "flagUrl": "flags/ice.png",
       "capital": {
         "name": "Рейкʼявік",
         "lat": 64.1172,
@@ -1231,7 +1231,7 @@
       "id": "country_28",
       "name": "Швеція",
       "color": "#00b38f",
-      "flagUrl": "",
+      "flagUrl": "flags/swed.png",
       "capital": {
         "name": "Стокгольм",
         "lat": 59.2976,
@@ -1251,7 +1251,7 @@
       "id": "country_29",
       "name": "Фінляндія",
       "color": "#b6fffc",
-      "flagUrl": "",
+      "flagUrl": "flags/fin.png",
       "capital": {
         "name": "Гельсінкі",
         "lat": 60.1455,
@@ -1271,7 +1271,7 @@
       "id": "country_30",
       "name": "Словакія",
       "color": "#e4005f",
-      "flagUrl": "",
+      "flagUrl": "flags/sk.png",
       "capital": {
         "name": "Братислава",
         "lat": 48.114,
