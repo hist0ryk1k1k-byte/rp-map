@@ -195,7 +195,7 @@
         }
       ],
       "tgLink": "https://t.me/dunajreprp",
-      "description": "",
+      "description": "Неофеодальна патриціанська федеративна республіка в західному середземноморʼї. Держава відома своїм торгівельним та військовим морським флотом. Банківський центр Європи. \n\nВалюта: латинський грошик, носить статус головної міжнародної; \nДож: Марко Мілович \nПерший Консул: Ніко Рюгенберг",
       "overlordId": null,
       "dependencyType": "",
       "inheritOverlordColor": true,
@@ -703,10 +703,16 @@
           "name": "Запоріжжя",
           "lat": 47.821805,
           "lng": 35.166991
+        },
+        {
+          "id": "city_mwmd7vlzsihn",
+          "name": "Курськ",
+          "lat": 51.784834,
+          "lng": 36.259003
         }
       ],
       "tgLink": "https://t.me/ukraineprp",
-      "description": "",
+      "description": "Олігархічна республіка у східній Європі.\nВалюта: українська гривня  \nПрезидент: Леонід Кучма ",
       "overlordId": null,
       "dependencyType": "",
       "inheritOverlordColor": true,
