@@ -234,7 +234,32 @@
       },
       "population": 42300,
       "gdp": 341,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwm658zelvr4",
+          "name": "Касабланка",
+          "lat": 33.546274,
+          "lng": -7.536441
+        },
+        {
+          "id": "city_mwm65vuk0lf0",
+          "name": "Аккра",
+          "lat": 5.748628,
+          "lng": 0.044935
+        },
+        {
+          "id": "city_mwm66u8vk85s",
+          "name": "Лагос",
+          "lat": 6.4657,
+          "lng": 3.306358
+        },
+        {
+          "id": "city_mwm6757nhvvo",
+          "name": "Маракайбо",
+          "lat": 10.573269,
+          "lng": -71.658325
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": "country_1",
