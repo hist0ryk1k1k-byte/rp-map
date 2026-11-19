@@ -1544,10 +1544,23 @@
         "lat": 25.115,
         "lng": 121.569
       },
-      "population": null,
-      "gdp": null,
-      "cities": [],
-      "tgLink": "",
+      "population": 23189,
+      "gdp": 492,
+      "cities": [
+        {
+          "id": "city_mwneswb0q80l",
+          "name": "Тайчжун",
+          "lat": 24.271005,
+          "lng": 120.619453
+        },
+        {
+          "id": "city_mwnet8uli6u6",
+          "name": "Гаосюн",
+          "lat": 22.624164,
+          "lng": 120.325605
+        }
+      ],
+      "tgLink": "https://t.me/+P_6x7b7axWswYzI6",
       "description": "",
       "overlordId": null,
       "dependencyType": "",
