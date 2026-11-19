@@ -1758,6 +1758,66 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": true
+    },
+    "country_48": {
+      "id": "country_48",
+      "name": "Вільне місто Каапстад",
+      "color": "#33aec1",
+      "flagUrl": "",
+      "capital": {
+        "name": "Кейп-Таун",
+        "lat": -33.9403,
+        "lng": 18.5325
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_49": {
+      "id": "country_49",
+      "name": "Республіка Родезія",
+      "color": "#46c133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Солсбері",
+        "lat": -17.8921,
+        "lng": 31.0781
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_50": {
+      "id": "country_50",
+      "name": "Республіка Трансвааль",
+      "color": "#c13346",
+      "flagUrl": "",
+      "capital": {
+        "name": "Преторія",
+        "lat": -25.8132,
+        "lng": 28.3047
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -3419,6 +3479,13 @@
     "MNG-3331": "country_35",
     "MNG-3332": "country_35",
     "MNG-3333": "country_35",
+    "MOZ-1190": "country_49",
+    "MOZ-1192": "country_49",
+    "MOZ-1207": "country_49",
+    "MOZ-1905": "country_49",
+    "MOZ-1925": "country_49",
+    "MOZ-1927": "country_49",
+    "MOZ-5854": "country_49",
     "MRT-2785": "country_17",
     "MRT-2786": "country_17",
     "MRT-2787": "country_17",
@@ -4130,6 +4197,7 @@
     "SWE-262": "country_28",
     "SWE-3428": "country_28",
     "SWE-3429": "country_28",
+    "SWZ-537": "country_50",
     "SYC-5197": "country_9",
     "SYC-5198": "country_9",
     "SYC-5199": "country_9",
@@ -4392,7 +4460,22 @@
     "YEM-3498": "country_9",
     "YEM-3499": "country_9",
     "YEM-3510": "country_9",
-    "YEM-3511": "country_9"
+    "YEM-3511": "country_9",
+    "ZAF-1189": "country_48",
+    "ZAF-1201": "country_50",
+    "ZAF-1208": "country_50",
+    "ZAF-1209": "country_50",
+    "ZAF-1210": "country_50",
+    "ZWE-524": "country_49",
+    "ZWE-525": "country_49",
+    "ZWE-526": "country_49",
+    "ZWE-527": "country_49",
+    "ZWE-528": "country_49",
+    "ZWE-529": "country_49",
+    "ZWE-530": "country_49",
+    "ZWE-531": "country_49",
+    "ZWE-532": "country_49",
+    "ZWE-533": "country_49"
   },
   "customPolygons": [
     {
@@ -13842,6 +13925,162 @@
             [
               140.53,
               50.856
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnhlq7usvvw",
+      "properties": {
+        "name": "",
+        "countryId": null,
+        "neutral": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              22.745,
+              -33.328
+            ],
+            [
+              22.058417,
+              -33.239872
+            ],
+            [
+              21.420969,
+              -33.189633
+            ],
+            [
+              21.074531,
+              -33.120024
+            ],
+            [
+              20.784,
+              -32.862
+            ],
+            [
+              20.159933,
+              -32.504053
+            ],
+            [
+              19.925,
+              -32.357
+            ],
+            [
+              20.002881,
+              -31.968776
+            ],
+            [
+              21.502127,
+              -32.068939
+            ],
+            [
+              22.408453,
+              -31.324247
+            ],
+            [
+              23.786068,
+              -31.494421
+            ],
+            [
+              24.335,
+              -31.719
+            ],
+            [
+              24.24441,
+              -32.180784
+            ],
+            [
+              23.260399,
+              -33.038021
+            ],
+            [
+              22.745,
+              -33.328
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnhros5cx2a",
+      "properties": {
+        "name": "",
+        "countryId": null,
+        "neutral": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              24.694,
+              -27.644
+            ],
+            [
+              24.625142,
+              -27.364431
+            ],
+            [
+              24.800671,
+              -27.060446
+            ],
+            [
+              25.147705,
+              -26.45582
+            ],
+            [
+              25.686035,
+              -26.106121
+            ],
+            [
+              25.587,
+              -25.62
+            ],
+            [
+              24.063142,
+              -25.510193
+            ],
+            [
+              23.539634,
+              -25.234734
+            ],
+            [
+              22.900647,
+              -25.19155
+            ],
+            [
+              22.537928,
+              -25.936135
+            ],
+            [
+              22.522391,
+              -26.556246
+            ],
+            [
+              23.925901,
+              -27.653452
+            ],
+            [
+              24.275484,
+              -28.058682
+            ],
+            [
+              24.640604,
+              -28.154615
+            ],
+            [
+              24.807791,
+              -27.863083
+            ],
+            [
+              24.694,
+              -27.644
             ]
           ]
         ]
