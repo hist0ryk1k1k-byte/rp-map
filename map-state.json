@@ -1910,6 +1910,66 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_56": {
+      "id": "country_56",
+      "name": "Сполучені Штати Амерїї",
+      "color": "#3360c1",
+      "flagUrl": "",
+      "capital": {
+        "name": "Філадельфія",
+        "lat": 39.894,
+        "lng": -75.2477
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_57": {
+      "id": "country_57",
+      "name": "Вільна Амерія",
+      "color": "#ff680e",
+      "flagUrl": "",
+      "capital": {
+        "name": "Чикаго",
+        "lat": 41.9252,
+        "lng": -87.6946
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_58": {
+      "id": "country_58",
+      "name": "Норска",
+      "color": "#7f1600",
+      "flagUrl": "",
+      "capital": {
+        "name": "Столиця Норски",
+        "lat": 25.4595,
+        "lng": -97.6544
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -2075,11 +2135,20 @@
     "BLR-2344": "country_11",
     "BLR-2345": "country_11",
     "BLR-4825": "country_11",
+    "BLZ-1323": "country_58",
+    "BLZ-1324": "country_58",
+    "BLZ-1325": "country_58",
+    "BLZ-1326": "country_58",
+    "BLZ-1355": "country_58",
+    "BLZ-1356": "country_58",
     "BRN-1181": "country_9",
     "BRN-1182": "country_9",
     "BRN-1183": "country_9",
     "BRN-1184": "country_9",
+    "CAN-682": "country_56",
     "CAN-683": "country_21",
+    "CAN-684": "country_56",
+    "CAN-685": "country_56",
     "CAN-686": "country_21",
     "CAN-687": "country_21",
     "CHE-159": "country_1",
@@ -2150,6 +2219,7 @@
     "COG-3344": "country_47",
     "COG-3345": "country_47",
     "COL-1318": "country_3",
+    "COL-1415": "country_58",
     "COM-4934": "country_9",
     "COM-4935": "country_9",
     "COM-4936": "country_9",
@@ -2174,6 +2244,13 @@
     "CPV-5060": "country_3",
     "CPV-5061": "country_3",
     "CPV-5062": "country_3",
+    "CRI-1327": "country_58",
+    "CRI-1328": "country_58",
+    "CRI-1329": "country_58",
+    "CRI-1330": "country_58",
+    "CRI-1331": "country_58",
+    "CRI-1333": "country_58",
+    "CRI-1334": "country_58",
     "CYN+00?": "country_12",
     "CYP-3463": "country_12",
     "CYP-3464": "country_12",
@@ -2760,6 +2837,28 @@
     "GRL-2741": "country_27",
     "GRL-2742": "country_27",
     "GRL-2743": "country_27",
+    "GTM-1942": "country_58",
+    "GTM-1943": "country_58",
+    "GTM-1944": "country_58",
+    "GTM-1945": "country_58",
+    "GTM-1946": "country_58",
+    "GTM-1947": "country_58",
+    "GTM-1948": "country_58",
+    "GTM-1949": "country_58",
+    "GTM-1950": "country_58",
+    "GTM-1951": "country_58",
+    "GTM-1952": "country_58",
+    "GTM-1953": "country_58",
+    "GTM-1954": "country_58",
+    "GTM-1955": "country_58",
+    "GTM-1956": "country_58",
+    "GTM-1957": "country_58",
+    "GTM-1959": "country_58",
+    "GTM-1960": "country_58",
+    "GTM-1961": "country_58",
+    "GTM-1962": "country_58",
+    "GTM-1963": "country_58",
+    "GTM-3467": "country_58",
     "HKG-5153": "country_4",
     "HKG-5154": "country_4",
     "HKG-5155": "country_4",
@@ -2777,6 +2876,23 @@
     "HKG-5168": "country_4",
     "HKG-5169": "country_4",
     "HKG-5170": "country_4",
+    "HND-637": "country_58",
+    "HND-638": "country_58",
+    "HND-639": "country_58",
+    "HND-640": "country_58",
+    "HND-642": "country_58",
+    "HND-643": "country_58",
+    "HND-645": "country_58",
+    "HND-646": "country_58",
+    "HND-647": "country_58",
+    "HND-648": "country_58",
+    "HND-649": "country_58",
+    "HND-650": "country_58",
+    "HND-651": "country_58",
+    "HND-652": "country_58",
+    "HND-653": "country_58",
+    "HND-661": "country_58",
+    "HND-662": "country_58",
     "HRV-1490": "country_23",
     "HRV-1491": "country_23",
     "HRV-1492": "country_23",
@@ -3451,6 +3567,38 @@
     "MDV-5241": "country_9",
     "MDV-5242": "country_9",
     "MDV-5243": "country_9",
+    "MEX-2706": "country_58",
+    "MEX-2707": "country_58",
+    "MEX-2708": "country_58",
+    "MEX-2709": "country_58",
+    "MEX-2710": "country_58",
+    "MEX-2711": "country_58",
+    "MEX-2712": "country_58",
+    "MEX-2713": "country_58",
+    "MEX-2714": "country_58",
+    "MEX-2715": "country_58",
+    "MEX-2716": "country_58",
+    "MEX-2717": "country_58",
+    "MEX-2718": "country_58",
+    "MEX-2719": "country_58",
+    "MEX-2720": "country_58",
+    "MEX-2721": "country_58",
+    "MEX-2722": "country_58",
+    "MEX-2723": "country_58",
+    "MEX-2724": "country_58",
+    "MEX-2725": "country_58",
+    "MEX-2726": "country_58",
+    "MEX-2727": "country_58",
+    "MEX-2728": "country_58",
+    "MEX-2729": "country_58",
+    "MEX-2730": "country_58",
+    "MEX-2731": "country_58",
+    "MEX-2732": "country_58",
+    "MEX-2733": "country_58",
+    "MEX-2734": "country_58",
+    "MEX-2735": "country_58",
+    "MEX-2736": "country_58",
+    "MEX-2737": "country_58",
     "MKD-2894": "country_12",
     "MKD-2895": "country_12",
     "MKD-2896": "country_12",
@@ -3667,6 +3815,23 @@
     "NGA-2873": "country_3",
     "NGA-2881": "country_3",
     "NGA-3470": "country_3",
+    "NIC-24": "country_58",
+    "NIC-644": "country_58",
+    "NIC-654": "country_58",
+    "NIC-655": "country_58",
+    "NIC-656": "country_58",
+    "NIC-657": "country_58",
+    "NIC-658": "country_58",
+    "NIC-659": "country_58",
+    "NIC-660": "country_58",
+    "NIC-663": "country_58",
+    "NIC-664": "country_58",
+    "NIC-665": "country_58",
+    "NIC-666": "country_58",
+    "NIC-667": "country_58",
+    "NIC-668": "country_58",
+    "NIC-669": "country_58",
+    "NIC-4800": "country_58",
     "NLD-894": "country_5",
     "NLD-895": "country_5",
     "NLD-896": "country_5",
@@ -3725,6 +3890,18 @@
     "OMN-5496": "country_1",
     "OMN-5497": "country_1",
     "PAK-1114": "country_7",
+    "PAN-1332": "country_58",
+    "PAN-1336": "country_58",
+    "PAN-1337": "country_58",
+    "PAN-1338": "country_58",
+    "PAN-1339": "country_58",
+    "PAN-1340": "country_58",
+    "PAN-1341": "country_58",
+    "PAN-1418": "country_58",
+    "PAN-1419": "country_58",
+    "PAN-1958": "country_58",
+    "PAN-3454": "country_58",
+    "PAN-3455": "country_58",
     "PHL-2511": "country_9",
     "PHL-2513": "country_9",
     "PHL-2514": "country_9",
@@ -4047,6 +4224,20 @@
     "SLB-3507": "country_9",
     "SLB-3508": "country_9",
     "SLB-3509": "country_9",
+    "SLV-1343": "country_58",
+    "SLV-1344": "country_58",
+    "SLV-1345": "country_58",
+    "SLV-1346": "country_58",
+    "SLV-1347": "country_58",
+    "SLV-1348": "country_58",
+    "SLV-1349": "country_58",
+    "SLV-1350": "country_58",
+    "SLV-1351": "country_58",
+    "SLV-1352": "country_58",
+    "SLV-1353": "country_58",
+    "SLV-1354": "country_58",
+    "SLV-1357": "country_58",
+    "SLV-1358": "country_58",
     "SMR-4883": "country_1",
     "SMR-4884": "country_1",
     "SMR-4885": "country_1",
@@ -4056,7 +4247,8 @@
     "SMR-4889": "country_1",
     "SMR-4890": "country_1",
     "SMR-4891": "country_1",
-    "SPM-4867": "country_22",
+    "SPM-4866": "country_21",
+    "SPM-4867": "country_21",
     "SRB-121": "country_23",
     "SRB-125": "country_23",
     "SRB-273": "country_23",
@@ -4518,6 +4710,41 @@
     "URY-20": "country_9",
     "URY-21": "country_9",
     "URY-22": "country_9",
+    "USA-3513": "country_56",
+    "USA-3514": "country_57",
+    "USA-3520": "country_58",
+    "USA-3521": "country_58",
+    "USA-3524": "country_58",
+    "USA-3528": "country_57",
+    "USA-3529": "country_57",
+    "USA-3531": "country_57",
+    "USA-3535": "country_57",
+    "USA-3536": "country_58",
+    "USA-3537": "country_56",
+    "USA-3538": "country_56",
+    "USA-3539": "country_56",
+    "USA-3540": "country_56",
+    "USA-3541": "country_57",
+    "USA-3542": "country_57",
+    "USA-3543": "country_57",
+    "USA-3544": "country_57",
+    "USA-3545": "country_56",
+    "USA-3546": "country_57",
+    "USA-3547": "country_57",
+    "USA-3548": "country_57",
+    "USA-3549": "country_56",
+    "USA-3550": "country_56",
+    "USA-3551": "country_57",
+    "USA-3552": "country_56",
+    "USA-3553": "country_57",
+    "USA-3554": "country_56",
+    "USA-3555": "country_56",
+    "USA-3557": "country_56",
+    "USA-3558": "country_56",
+    "USA-3559": "country_56",
+    "USA-3560": "country_56",
+    "USA-3561": "country_56",
+    "USA-3562": "country_57",
     "UZB-354": "country_43",
     "UZB-355": "country_43",
     "UZB-356": "country_43",
@@ -14617,6 +14844,610 @@
             [
               3.879107,
               43.536912
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnsesrq4v4k",
+      "properties": {
+        "name": "",
+        "countryId": "country_57",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.115,
+              35
+            ],
+            [
+              -82.997,
+              35.782
+            ],
+            [
+              -82.094,
+              36.1
+            ],
+            [
+              -81.714,
+              36.347
+            ],
+            [
+              -81.221873,
+              36.964283
+            ],
+            [
+              -81.645,
+              37.209
+            ],
+            [
+              -81.763,
+              37.281
+            ],
+            [
+              -81.824,
+              37.286
+            ],
+            [
+              -81.923,
+              37.367
+            ],
+            [
+              -81.931,
+              37.431
+            ],
+            [
+              -81.984,
+              37.477
+            ],
+            [
+              -81.965,
+              37.539
+            ],
+            [
+              -82.865934,
+              37.317966
+            ],
+            [
+              -84.099623,
+              36.10571
+            ],
+            [
+              -84.598495,
+              34.644432
+            ],
+            [
+              -83.115,
+              35
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnshe1rmq85",
+      "properties": {
+        "name": "",
+        "countryId": "country_56",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.018886,
+              43.172983
+            ],
+            [
+              -82.36139,
+              43.147325
+            ],
+            [
+              -82.43014,
+              43.371667
+            ],
+            [
+              -82.505236,
+              43.748839
+            ],
+            [
+              -82.74347,
+              44.099478
+            ],
+            [
+              -83.600752,
+              43.863682
+            ],
+            [
+              -84.17353,
+              43.40903
+            ],
+            [
+              -84.986506,
+              43.153461
+            ],
+            [
+              -85.928819,
+              43.462697
+            ],
+            [
+              -86.409214,
+              44.142778
+            ],
+            [
+              -85.799482,
+              45.259035
+            ],
+            [
+              -85.534649,
+              46.110931
+            ],
+            [
+              -84.854,
+              46.861
+            ],
+            [
+              -83.816314,
+              46.646295
+            ],
+            [
+              -81.931687,
+              45.763996
+            ],
+            [
+              -82.018886,
+              43.172983
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnsj3jh5fhz",
+      "properties": {
+        "name": "",
+        "countryId": null,
+        "neutral": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.161,
+              49.369
+            ],
+            [
+              -95.162295,
+              48.732047
+            ],
+            [
+              -94.535895,
+              48.509411
+            ],
+            [
+              -93.987752,
+              48.354123
+            ],
+            [
+              -93.405735,
+              48.372538
+            ],
+            [
+              -92.734414,
+              48.183991
+            ],
+            [
+              -92.050775,
+              47.844094
+            ],
+            [
+              -90.695815,
+              47.792398
+            ],
+            [
+              -89.855124,
+              47.87302
+            ],
+            [
+              -89.102783,
+              47.522147
+            ],
+            [
+              -87.454834,
+              47.561701
+            ],
+            [
+              -86.685791,
+              47.147388
+            ],
+            [
+              -85.328326,
+              46.865709
+            ],
+            [
+              -84.854,
+              46.861
+            ],
+            [
+              -83.757804,
+              47.268435
+            ],
+            [
+              -81.785893,
+              47.168773
+            ],
+            [
+              -79.58,
+              47.452
+            ],
+            [
+              -79.513,
+              47.597
+            ],
+            [
+              -79.521,
+              51.467
+            ],
+            [
+              -79.56,
+              51.556
+            ],
+            [
+              -81.914062,
+              55.743605
+            ],
+            [
+              -87.407227,
+              56.984902
+            ],
+            [
+              -88.727773,
+              56.928299
+            ],
+            [
+              -88.947,
+              56.853
+            ],
+            [
+              -91.705876,
+              55.572437
+            ],
+            [
+              -93.62,
+              53.747
+            ],
+            [
+              -95.376586,
+              53.03637
+            ],
+            [
+              -95.161,
+              49.369
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnstgyxxvys",
+      "properties": {
+        "name": "",
+        "countryId": "country_57",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.605,
+              38.689
+            ],
+            [
+              -83.757935,
+              39.101647
+            ],
+            [
+              -83.972168,
+              39.420635
+            ],
+            [
+              -84.023437,
+              39.850721
+            ],
+            [
+              -84.342041,
+              40.380028
+            ],
+            [
+              -84.287109,
+              40.913513
+            ],
+            [
+              -83.847656,
+              41.393294
+            ],
+            [
+              -83.465256,
+              41.611354
+            ],
+            [
+              -83.294903,
+              41.609934
+            ],
+            [
+              -83.278571,
+              41.666079
+            ],
+            [
+              -83.414,
+              41.735
+            ],
+            [
+              -84.806,
+              41.697
+            ],
+            [
+              -84.824,
+              39.097
+            ],
+            [
+              -84.390393,
+              38.935851
+            ],
+            [
+              -84.176759,
+              38.713938
+            ],
+            [
+              -83.842714,
+              38.601711
+            ],
+            [
+              -83.61063,
+              38.598169
+            ],
+            [
+              -83.605,
+              38.689
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnsy1woa7y1",
+      "properties": {
+        "name": "",
+        "countryId": "country_58",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -114.04,
+              37.003
+            ],
+            [
+              -117.226012,
+              37.014474
+            ],
+            [
+              -117.070313,
+              35.88905
+            ],
+            [
+              -115.026855,
+              34.885931
+            ],
+            [
+              -114.016113,
+              35.029996
+            ],
+            [
+              -113.269043,
+              36.244273
+            ],
+            [
+              -114.04,
+              37.003
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnszm7gvi6r",
+      "properties": {
+        "name": "",
+        "countryId": "country_57",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -93.76,
+              29.961
+            ],
+            [
+              -93.798,
+              29.986
+            ],
+            [
+              -93.854,
+              29.987
+            ],
+            [
+              -93.924,
+              29.866
+            ],
+            [
+              -93.933,
+              29.776
+            ],
+            [
+              -93.876,
+              29.723
+            ],
+            [
+              -93.876,
+              29.675
+            ],
+            [
+              -94.038,
+              29.684
+            ],
+            [
+              -94.335,
+              29.578
+            ],
+            [
+              -94.572317,
+              29.865089
+            ],
+            [
+              -94.770414,
+              30.12636
+            ],
+            [
+              -94.84033,
+              30.388058
+            ],
+            [
+              -94.914131,
+              30.625663
+            ],
+            [
+              -95.10498,
+              31.137603
+            ],
+            [
+              -95.9729,
+              32.03602
+            ],
+            [
+              -96.261935,
+              32.75797
+            ],
+            [
+              -96.329,
+              33.702
+            ],
+            [
+              -96.29,
+              33.763
+            ],
+            [
+              -96.184,
+              33.774
+            ],
+            [
+              -96.156,
+              33.821
+            ],
+            [
+              -96.04,
+              33.843
+            ],
+            [
+              -95.938,
+              33.896
+            ],
+            [
+              -95.86,
+              33.854
+            ],
+            [
+              -95.772,
+              33.862
+            ],
+            [
+              -95.598,
+              33.952
+            ],
+            [
+              -95.55,
+              33.896
+            ],
+            [
+              -95.357,
+              33.868
+            ],
+            [
+              -95.269,
+              33.905
+            ],
+            [
+              -95.22,
+              33.963
+            ],
+            [
+              -95.154,
+              33.944
+            ],
+            [
+              -95.047,
+              33.876
+            ],
+            [
+              -94.982,
+              33.862
+            ],
+            [
+              -94.873,
+              33.756
+            ],
+            [
+              -94.77,
+              33.739
+            ],
+            [
+              -94.708,
+              33.692
+            ],
+            [
+              -94.484,
+              33.647
+            ],
+            [
+              -94.00651,
+              33.640186
+            ],
+            [
+              -93.924941,
+              32.158536
+            ],
+            [
+              -93.554642,
+              31.81811
+            ],
+            [
+              -93.326766,
+              30.944895
+            ],
+            [
+              -93.392798,
+              30.205838
+            ],
+            [
+              -93.76,
+              29.961
             ]
           ]
         ]
