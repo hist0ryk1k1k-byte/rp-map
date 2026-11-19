@@ -849,8 +849,8 @@
         "lat": 58.5097,
         "lng": 31.2625
       },
-      "population": null,
-      "gdp": null,
+      "population": 118367,
+      "gdp": 1129,
       "cities": [
         {
           "id": "city_mwm84poc0yl5",
