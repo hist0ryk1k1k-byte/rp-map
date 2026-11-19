@@ -641,7 +641,128 @@
       },
       "population": 287000,
       "gdp": 6120,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwndcc3hcrbc",
+          "name": "Сідней",
+          "lat": -33.980402,
+          "lng": 151.146076
+        },
+        {
+          "id": "city_mwndfc8ypshl",
+          "name": "Канберра",
+          "lat": -35.427303,
+          "lng": 149.078447
+        },
+        {
+          "id": "city_mwndg1643l5o",
+          "name": "Брисбен",
+          "lat": -25.375008,
+          "lng": 152.873835
+        },
+        {
+          "id": "city_mwndh3rpt02c",
+          "name": "Аделаїда",
+          "lat": -34.921971,
+          "lng": 138.537598
+        },
+        {
+          "id": "city_mwndhm6k230n",
+          "name": "Перт",
+          "lat": -32.683308,
+          "lng": 115.749207
+        },
+        {
+          "id": "city_mwndibkiym6o",
+          "name": "Окленд",
+          "lat": -36.901268,
+          "lng": 174.824701
+        },
+        {
+          "id": "city_mwndl2mh8auj",
+          "name": "Голд-Кост",
+          "lat": -25.956509,
+          "lng": 153.09999
+        },
+        {
+          "id": "city_mwndogdgxwrl",
+          "name": "Сурабая",
+          "lat": -7.267495,
+          "lng": 112.776094
+        },
+        {
+          "id": "city_mwndpc7w4j81",
+          "name": "Семаранґ",
+          "lat": -6.981535,
+          "lng": 110.461907
+        },
+        {
+          "id": "city_mwndpuhn21a8",
+          "name": "Джакарта",
+          "lat": -6.21315,
+          "lng": 106.878459
+        },
+        {
+          "id": "city_mwndrmv2amit",
+          "name": "Медан",
+          "lat": 3.636777,
+          "lng": 98.783569
+        },
+        {
+          "id": "city_mwndss7gen43",
+          "name": "Макасар",
+          "lat": -5.156655,
+          "lng": 119.431717
+        },
+        {
+          "id": "city_mwndtna8o89a",
+          "name": "Давао",
+          "lat": 7.097275,
+          "lng": 125.607956
+        },
+        {
+          "id": "city_mwndu028hi9p",
+          "name": "Маніла",
+          "lat": 14.583085,
+          "lng": 121.027061
+        },
+        {
+          "id": "city_mwndv1ggxjwd",
+          "name": "Аден",
+          "lat": 12.847719,
+          "lng": 45.013016
+        },
+        {
+          "id": "city_mwndvxc8w4zs",
+          "name": "Буенос-Айрес",
+          "lat": -34.636027,
+          "lng": -58.452107
+        },
+        {
+          "id": "city_mwndwoktb14e",
+          "name": "Монтевідео",
+          "lat": -34.845367,
+          "lng": -56.220705
+        },
+        {
+          "id": "city_mwndxn2x08em",
+          "name": "Кордова",
+          "lat": -31.398443,
+          "lng": -64.222059
+        },
+        {
+          "id": "city_mwndy3i7f4yf",
+          "name": "Лісабон",
+          "lat": 38.760552,
+          "lng": -9.173319
+        },
+        {
+          "id": "city_mwndyh3ui42f",
+          "name": "Порто",
+          "lat": 41.137303,
+          "lng": -8.636004
+        }
+      ],
       "tgLink": "https://t.me/+CMv7lZ4DZ55lOTY6",
       "description": "",
       "overlordId": null,
@@ -1687,6 +1808,7 @@
     "ARG-1309": "country_9",
     "ARG-1310": "country_9",
     "ARG-1312": "country_9",
+    "ARG-5493": "country_9",
     "ATF-5916": "country_9",
     "AUS-2650": "country_9",
     "AUS-2651": "country_9",
