@@ -1894,6 +1894,26 @@
       "dependencyType": "",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_55": {
+      "id": "country_55",
+      "name": "Князівство Міреваль",
+      "color": "#c13342",
+      "flagUrl": "",
+      "capital": {
+        "name": "Міреваль",
+        "lat": 43.5204,
+        "lng": 3.8664
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_49",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -14501,6 +14521,78 @@
             [
               30.786,
               -30.237
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnliubxm0t3",
+      "properties": {
+        "name": "Міреваль",
+        "countryId": "country_55",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              3.879107,
+              43.536912
+            ],
+            [
+              3.874737,
+              43.545182
+            ],
+            [
+              3.865512,
+              43.548174
+            ],
+            [
+              3.860414,
+              43.545182
+            ],
+            [
+              3.846819,
+              43.523887
+            ],
+            [
+              3.847709,
+              43.518547
+            ],
+            [
+              3.838241,
+              43.510449
+            ],
+            [
+              3.836785,
+              43.507456
+            ],
+            [
+              3.85305,
+              43.506399
+            ],
+            [
+              3.862796,
+              43.487048
+            ],
+            [
+              3.896799,
+              43.507552
+            ],
+            [
+              3.873442,
+              43.525941
+            ],
+            [
+              3.87854,
+              43.532453
+            ],
+            [
+              3.879107,
+              43.536912
             ]
           ]
         ]
