@@ -1818,6 +1818,82 @@
       "dependencyType": "",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_51": {
+      "id": "country_51",
+      "name": "ПВД",
+      "color": "#c17133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Блуфонтейн",
+        "lat": -28.9438,
+        "lng": 26.4415
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_52": {
+      "id": "country_52",
+      "name": "Королівство Свазіленд",
+      "color": "#c1b133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Мбабане",
+        "lat": -26.301,
+        "lng": 31.1382
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_53": {
+      "id": "country_53",
+      "name": "Зулуленд",
+      "color": "#c13378",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_54": {
+      "id": "country_54",
+      "name": "Вільне місто Дурбан",
+      "color": "#9cc133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Дурбан",
+        "lat": -29.8895,
+        "lng": 30.9837
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -3143,6 +3219,13 @@
     "LKA-2470": "country_4",
     "LKA-2471": "country_4",
     "LKA-2472": "country_4",
+    "LSO-1202": "country_51",
+    "LSO-1203": "country_51",
+    "LSO-1211": "country_51",
+    "LSO-1212": "country_51",
+    "LSO-1213": "country_51",
+    "LSO-1215": "country_51",
+    "LSO-3453": "country_51",
     "LTU-935": "country_5",
     "LTU-936": "country_5",
     "LTU-1067": "country_5",
@@ -4197,7 +4280,10 @@
     "SWE-262": "country_28",
     "SWE-3428": "country_28",
     "SWE-3429": "country_28",
-    "SWZ-537": "country_50",
+    "SWZ-534": "country_52",
+    "SWZ-535": "country_52",
+    "SWZ-536": "country_52",
+    "SWZ-537": "country_52",
     "SYC-5197": "country_9",
     "SYC-5198": "country_9",
     "SYC-5199": "country_9",
@@ -4463,9 +4549,11 @@
     "YEM-3511": "country_9",
     "ZAF-1189": "country_48",
     "ZAF-1201": "country_50",
+    "ZAF-1206": "country_51",
     "ZAF-1208": "country_50",
     "ZAF-1209": "country_50",
     "ZAF-1210": "country_50",
+    "ZAF-1216": "country_53",
     "ZWE-524": "country_49",
     "ZWE-525": "country_49",
     "ZWE-526": "country_49",
@@ -14081,6 +14169,338 @@
             [
               24.694,
               -27.644
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwnhz9za0wwe",
+      "properties": {
+        "name": "",
+        "countryId": "country_52",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32.114,
+              -26.84
+            ],
+            [
+              32.073,
+              -26.811
+            ],
+            [
+              31.99,
+              -26.808
+            ],
+            [
+              31.969741,
+              -26.955081
+            ],
+            [
+              31.942,
+              -27.101
+            ],
+            [
+              31.944,
+              -27.162
+            ],
+            [
+              31.968,
+              -27.316
+            ],
+            [
+              32.336866,
+              -27.282354
+            ],
+            [
+              32.624025,
+              -27.31656
+            ],
+            [
+              32.736032,
+              -27.370582
+            ],
+            [
+              32.804,
+              -27.168
+            ],
+            [
+              32.839,
+              -27.124
+            ],
+            [
+              32.893,
+              -26.846
+            ],
+            [
+              32.352,
+              -26.86
+            ],
+            [
+              32.114,
+              -26.84
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwni6nvedkbf",
+      "properties": {
+        "name": "",
+        "countryId": null,
+        "neutral": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30.841167,
+              -29.561809
+            ],
+            [
+              31.187,
+              -29.56
+            ],
+            [
+              31.262658,
+              -29.472025
+            ],
+            [
+              30.289307,
+              -29.195328
+            ],
+            [
+              29.357,
+              -29.183
+            ],
+            [
+              29.436,
+              -29.342
+            ],
+            [
+              29.4,
+              -29.43
+            ],
+            [
+              29.304,
+              -29.467
+            ],
+            [
+              29.275,
+              -29.528
+            ],
+            [
+              29.296,
+              -29.572
+            ],
+            [
+              29.267,
+              -29.626
+            ],
+            [
+              29.161,
+              -29.667
+            ],
+            [
+              29.114,
+              -29.753
+            ],
+            [
+              29.106,
+              -29.826
+            ],
+            [
+              29.151,
+              -29.911
+            ],
+            [
+              29.016,
+              -29.979
+            ],
+            [
+              29.116,
+              -30.078
+            ],
+            [
+              29.102,
+              -30.174
+            ],
+            [
+              29.13,
+              -30.245
+            ],
+            [
+              29.175,
+              -30.286
+            ],
+            [
+              29.298,
+              -30.318
+            ],
+            [
+              29.296,
+              -30.374
+            ],
+            [
+              29.2,
+              -30.436
+            ],
+            [
+              29.163,
+              -30.555
+            ],
+            [
+              29.118,
+              -30.581
+            ],
+            [
+              29.187,
+              -30.637
+            ],
+            [
+              29.22,
+              -30.618
+            ],
+            [
+              29.32,
+              -30.655
+            ],
+            [
+              29.464,
+              -30.617
+            ],
+            [
+              29.627,
+              -30.693
+            ],
+            [
+              29.755,
+              -30.72
+            ],
+            [
+              29.794,
+              -30.709
+            ],
+            [
+              29.881,
+              -30.771
+            ],
+            [
+              29.939,
+              -30.777
+            ],
+            [
+              29.974,
+              -30.832
+            ],
+            [
+              30.061,
+              -30.854
+            ],
+            [
+              30.126,
+              -30.934
+            ],
+            [
+              30.141,
+              -31.016
+            ],
+            [
+              30.196,
+              -31.078
+            ],
+            [
+              30.442384,
+              -30.981866
+            ],
+            [
+              30.753978,
+              -30.285176
+            ],
+            [
+              30.632065,
+              -30.00792
+            ],
+            [
+              30.719168,
+              -29.793944
+            ],
+            [
+              30.841167,
+              -29.561809
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwniam71ns5g",
+      "properties": {
+        "name": "",
+        "countryId": "country_54",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30.786,
+              -30.237
+            ],
+            [
+              30.753978,
+              -30.285176
+            ],
+            [
+              30.632065,
+              -30.00792
+            ],
+            [
+              30.719168,
+              -29.793944
+            ],
+            [
+              30.841167,
+              -29.561809
+            ],
+            [
+              31.187,
+              -29.56
+            ],
+            [
+              31.056,
+              -29.79
+            ],
+            [
+              31.056,
+              -29.868
+            ],
+            [
+              31.024,
+              -29.936
+            ],
+            [
+              30.92,
+              -30.018
+            ],
+            [
+              30.843,
+              -30.123
+            ],
+            [
+              30.786,
+              -30.237
             ]
           ]
         ]
