@@ -257,30 +257,6 @@
           "lng": 6.599541
         },
         {
-          "id": "city_mwqwtnxkw0yf",
-          "name": "Бугія",
-          "lat": 36.747688,
-          "lng": 5.081177
-        },
-        {
-          "id": "city_mwqwxjghv8lg",
-          "name": "Арріс",
-          "lat": 36.055539,
-          "lng": 4.700182
-        },
-        {
-          "id": "city_mwqwxqjlsu9w",
-          "name": "Абенсіс",
-          "lat": 35.182788,
-          "lng": -0.834961
-        },
-        {
-          "id": "city_mwqwy09dpd5x",
-          "name": "Ігілгілі",
-          "lat": 36.796784,
-          "lng": 5.769641
-        },
-        {
           "id": "city_mwqwybq1g5bt",
           "name": "Бон",
           "lat": 36.914764,
@@ -291,12 +267,6 @@
           "name": "Тімгад",
           "lat": 35.55144,
           "lng": 6.153033
-        },
-        {
-          "id": "city_mwqwys4hovno",
-          "name": "Бізерт",
-          "lat": 37.268595,
-          "lng": 9.828202
         },
         {
           "id": "city_mwqxdjiyfc7s",
@@ -315,12 +285,6 @@
           "name": "Сфакс",
           "lat": 34.852982,
           "lng": 10.873403
-        },
-        {
-          "id": "city_mwqxjpnm82tt",
-          "name": "Шлеф",
-          "lat": 36.195227,
-          "lng": 1.48766
         },
         {
           "id": "city_mwqxjx8ipy5a",
@@ -1234,40 +1198,10 @@
           "lng": 32.476413
         },
         {
-          "id": "city_mwqxw5jmdols",
-          "name": "Бубастіс",
-          "lat": 30.508373,
-          "lng": 31.58163
-        },
-        {
           "id": "city_mwqxwchmzvof",
           "name": "Танта",
           "lat": 30.511237,
           "lng": 31.045794
-        },
-        {
-          "id": "city_mwqxwjgza9ly",
-          "name": "Болбітін",
-          "lat": 31.444985,
-          "lng": 30.393346
-        },
-        {
-          "id": "city_mwqxwpl6s87p",
-          "name": "Таміат",
-          "lat": 31.505034,
-          "lng": 31.832961
-        },
-        {
-          "id": "city_mwqxwtnmxd3f",
-          "name": "Таніс",
-          "lat": 30.846056,
-          "lng": 31.886496
-        },
-        {
-          "id": "city_mwqy04fuphpl",
-          "name": "Тімінхор",
-          "lat": 30.908243,
-          "lng": 30.336214
         },
         {
           "id": "city_mwqy300ca2d9",
@@ -1292,12 +1226,6 @@
           "name": "Сауті",
           "lat": 27.24079,
           "lng": 31.041186
-        },
-        {
-          "id": "city_mwqyffhncnwy",
-          "name": "Зефіріон",
-          "lat": 36.831272,
-          "lng": 34.766235
         }
       ],
       "tgLink": "https://t.me/Eastern_Roman_Empire_RP",
