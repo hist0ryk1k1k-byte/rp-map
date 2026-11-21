@@ -207,19 +207,13 @@
       "color": "#6c33c1",
       "flagUrl": "flags/rkk.png",
       "capital": {
-        "name": "Тінгіс",
-        "lat": 35.7842,
-        "lng": -5.8616
+        "name": "Ікозіум",
+        "lat": 36.7097,
+        "lng": 3.0998
       },
       "population": 49000,
       "gdp": 214,
       "cities": [
-        {
-          "id": "city_mwm5pqh0lahp",
-          "name": "Ікозіум",
-          "lat": 36.711214,
-          "lng": 3.094002
-        },
         {
           "id": "city_mwqwsrchx9c4",
           "name": "Фес",
@@ -297,6 +291,12 @@
           "name": "Маракеш",
           "lat": 31.630266,
           "lng": -8.077407
+        },
+        {
+          "id": "city_mwqz9bsk1eml",
+          "name": "Тінгіс",
+          "lat": 35.769115,
+          "lng": -5.842982
         }
       ],
       "tgLink": "https://t.me/romePussyy",
