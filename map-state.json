@@ -992,7 +992,98 @@
       },
       "population": 127240,
       "gdp": 7929,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwqhxbxozoxq",
+          "name": "Анкіра",
+          "lat": 39.583125,
+          "lng": 32.975062
+        },
+        {
+          "id": "city_mwqhxxzbe59x",
+          "name": "Афіни",
+          "lat": 37.973157,
+          "lng": 23.710973
+        },
+        {
+          "id": "city_mwqhyvgh4ns5",
+          "name": "Пурса",
+          "lat": 40.275477,
+          "lng": 29.012979
+        },
+        {
+          "id": "city_mwqhz0w2zmdo",
+          "name": "Смірна",
+          "lat": 38.420234,
+          "lng": 27.136722
+        },
+        {
+          "id": "city_mwqi0k3vq8by",
+          "name": "Салоніки",
+          "lat": 40.650429,
+          "lng": 22.880402
+        },
+        {
+          "id": "city_mwqi3mls68ka",
+          "name": "Атталія",
+          "lat": 36.88701,
+          "lng": 30.642153
+        },
+        {
+          "id": "city_mwqi5irbygh6",
+          "name": "Амісос",
+          "lat": 41.282671,
+          "lng": 36.334874
+        },
+        {
+          "id": "city_mwqi6epyb8yp",
+          "name": "Адана",
+          "lat": 37.017732,
+          "lng": 35.319039
+        },
+        {
+          "id": "city_mwqi8jkf899o",
+          "name": "Скопʼє",
+          "lat": 41.982005,
+          "lng": 21.403079
+        },
+        {
+          "id": "city_mwqi9vvg4p48",
+          "name": "Мемфіс",
+          "lat": 30.001058,
+          "lng": 31.248779
+        },
+        {
+          "id": "city_mwqia8q7102z",
+          "name": "Александрія",
+          "lat": 31.093961,
+          "lng": 29.829712
+        },
+        {
+          "id": "city_mwqibtpi53ih",
+          "name": "Береніка",
+          "lat": 32.028005,
+          "lng": 20.05848
+        },
+        {
+          "id": "city_mwqicg28lnw4",
+          "name": "Трапезунд",
+          "lat": 40.968493,
+          "lng": 39.699097
+        },
+        {
+          "id": "city_mwqid8n9ow4v",
+          "name": "Адріанополь",
+          "lat": 41.691163,
+          "lng": 26.545183
+        },
+        {
+          "id": "city_mwqie7k1s2sw",
+          "name": "Нікосія",
+          "lat": 35.155551,
+          "lng": 33.404282
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
@@ -1032,7 +1123,44 @@
       },
       "population": 57720,
       "gdp": 1327,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwqgwy2bt1gv",
+          "name": "Ліон",
+          "lat": 45.76964,
+          "lng": 4.85017
+        },
+        {
+          "id": "city_mwqgx7xs0ipu",
+          "name": "Бордо",
+          "lat": 44.991508,
+          "lng": -0.568069
+        },
+        {
+          "id": "city_mwqgxw1w9nvz",
+          "name": "Тулуза",
+          "lat": 43.605508,
+          "lng": 1.437854
+        },
+        {
+          "id": "city_mwqgyk6c7bta",
+          "name": "Нант",
+          "lat": 47.211873,
+          "lng": -1.567612
+        },
+        {
+          "id": "city_mwqgzcg6jozf",
+          "name": "Лілль",
+          "lat": 50.655627,
+          "lng": 3.076273
+        },
+        {
+          "id": "city_mwqh08nnkmiq",
+          "name": "Монпельє",
+          "lat": 43.565943,
+          "lng": 3.934943
+        }
+      ],
       "tgLink": "https://t.me/KingdomFrance",
       "description": "",
       "overlordId": null,
@@ -1226,7 +1354,44 @@
       },
       "population": 73494,
       "gdp": 1485,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwqh225it59q",
+          "name": "Бірмінґем",
+          "lat": 52.486128,
+          "lng": -1.864895
+        },
+        {
+          "id": "city_mwqh2uv1y2f5",
+          "name": "Ліверпуль",
+          "lat": 53.468623,
+          "lng": -3.011446
+        },
+        {
+          "id": "city_mwqh31oyngg8",
+          "name": "Манчестер",
+          "lat": 53.392884,
+          "lng": -2.262268
+        },
+        {
+          "id": "city_mwqh43he7wln",
+          "name": "Едінбург",
+          "lat": 55.960732,
+          "lng": -3.276672
+        },
+        {
+          "id": "city_mwqh4uqre99s",
+          "name": "Глазго",
+          "lat": 55.847346,
+          "lng": -4.254586
+        },
+        {
+          "id": "city_mwqh58f1jg0n",
+          "name": "Йорк",
+          "lat": 53.937963,
+          "lng": -1.07699
+        }
+      ],
       "tgLink": "https://t.me/Kingdom_of_England_and_Scotland",
       "description": "",
       "overlordId": null,
@@ -1286,7 +1451,32 @@
       },
       "population": 11892,
       "gdp": 157,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwqhg94thvpk",
+          "name": "Краків",
+          "lat": 50.060223,
+          "lng": 19.998069
+        },
+        {
+          "id": "city_mwqhramk2ejp",
+          "name": "Люблін",
+          "lat": 51.244438,
+          "lng": 22.570038
+        },
+        {
+          "id": "city_mwqhtptvmgdg",
+          "name": "Лодзь",
+          "lat": 51.6797,
+          "lng": 19.36909
+        },
+        {
+          "id": "city_mwqhvdvz7vt6",
+          "name": "Познань",
+          "lat": 52.424002,
+          "lng": 16.944086
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
