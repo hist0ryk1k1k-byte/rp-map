@@ -3264,6 +3264,26 @@
       "dependencyType": "Учасник",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_112": {
+      "id": "country_112",
+      "name": "Вірменія",
+      "color": "#776dff",
+      "flagUrl": "",
+      "capital": {
+        "name": "Єреван",
+        "lat": 40.1397,
+        "lng": 44.5386
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "country_12",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": false,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -3347,6 +3367,17 @@
     "ARG-1310": "country_9",
     "ARG-1312": "country_68",
     "ARG-5493": "country_9",
+    "ARM-1553": "country_112",
+    "ARM-1554": "country_112",
+    "ARM-1555": "country_112",
+    "ARM-1670": "country_112",
+    "ARM-1671": "country_112",
+    "ARM-1672": "country_112",
+    "ARM-1673": "country_112",
+    "ARM-1674": "country_112",
+    "ARM-1675": "country_112",
+    "ARM-1732": "country_112",
+    "ARM-1733": "country_112",
     "ATF-5916": "country_9",
     "ATG-5091": "country_99",
     "ATG-5093": "country_99",
@@ -3372,6 +3403,9 @@
     "AUT-2329": "country_5",
     "AUT-2330": "country_5",
     "AUT-2331": "country_5",
+    "AZE-1678": "country_112",
+    "AZE-1682": "country_112",
+    "AZE-1684": "country_112",
     "AZE-1689": "country_101",
     "AZE-1690": "country_101",
     "AZE-1693": "country_101",
@@ -3392,6 +3426,10 @@
     "AZE-1716": "country_101",
     "AZE-1717": "country_101",
     "AZE-1720": "country_102",
+    "AZE-1735": "country_112",
+    "AZE-1737": "country_112",
+    "AZE-1739": "country_112",
+    "AZE-4838": "country_112",
     "AZE-5562": "country_101",
     "AZE-5563": "country_101",
     "BEL-2": "country_5",
@@ -6374,7 +6412,9 @@
     "TUR-3026": "country_12",
     "TUR-3031": "country_12",
     "TUR-3032": "country_12",
+    "TUR-3040": "country_112",
     "TUR-4839": "country_19",
+    "TUR-4840": "country_112",
     "TUR-4842": "country_12",
     "TUR-5518": "country_12",
     "TUR-5519": "country_12",
@@ -19289,16 +19329,24 @@
               39.111637
             ],
             [
-              45.003205,
-              39.410897
+              45.051,
+              39.387
             ],
             [
               44.892478,
               39.686738
             ],
             [
-              44.567,
-              39.873
+              44.775,
+              39.703
+            ],
+            [
+              44.566,
+              39.766
+            ],
+            [
+              44.459,
+              39.698
             ],
             [
               44.403,
@@ -20947,6 +20995,66 @@
             [
               36.89,
               37.367
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwr1r8v5500r",
+      "properties": {
+        "name": "",
+        "countryId": "country_112",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.678,
+              40.595
+            ],
+            [
+              45.702,
+              40.615
+            ],
+            [
+              45.723,
+              40.823
+            ],
+            [
+              45.599,
+              40.863
+            ],
+            [
+              45.582,
+              40.799
+            ],
+            [
+              45.478,
+              40.748
+            ],
+            [
+              45.49,
+              40.704
+            ],
+            [
+              45.588,
+              40.679
+            ],
+            [
+              45.606,
+              40.63
+            ],
+            [
+              45.666387,
+              40.600645
+            ],
+            [
+              45.678,
+              40.595
             ]
           ]
         ]
