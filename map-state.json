@@ -1094,6 +1094,12 @@
           "name": "Цезарея",
           "lat": 38.694085,
           "lng": 35.419922
+        },
+        {
+          "id": "city_mwqw9f73seyg",
+          "name": "Авлона",
+          "lat": 40.549287,
+          "lng": 19.465027
         }
       ],
       "tgLink": "https://t.me/Eastern_Roman_Empire_RP",
@@ -12763,7 +12769,7 @@
       "id": "poly_mwlxsjyg0hnb",
       "properties": {
         "name": "",
-        "countryId": "country_24",
+        "countryId": "country_12",
         "neutral": false
       },
       "geometry": {
