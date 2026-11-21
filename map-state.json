@@ -1214,6 +1214,78 @@
           "name": "Авлона",
           "lat": 40.549287,
           "lng": 19.465027
+        },
+        {
+          "id": "city_mwqxu2yiipn5",
+          "name": "Уасет",
+          "lat": 25.70465,
+          "lng": 32.651367
+        },
+        {
+          "id": "city_mwqxu9y2lr1l",
+          "name": "Фаюм",
+          "lat": 29.386962,
+          "lng": 30.761719
+        },
+        {
+          "id": "city_mwqxud5exc8a",
+          "name": "Клізма",
+          "lat": 29.960969,
+          "lng": 32.476413
+        },
+        {
+          "id": "city_mwqxw5jmdols",
+          "name": "Бубастіс",
+          "lat": 30.508373,
+          "lng": 31.58163
+        },
+        {
+          "id": "city_mwqxwchmzvof",
+          "name": "Танта",
+          "lat": 30.511237,
+          "lng": 31.045794
+        },
+        {
+          "id": "city_mwqxwjgza9ly",
+          "name": "Болбітін",
+          "lat": 31.444985,
+          "lng": 30.393346
+        },
+        {
+          "id": "city_mwqxwpl6s87p",
+          "name": "Таміат",
+          "lat": 31.505034,
+          "lng": 31.832961
+        },
+        {
+          "id": "city_mwqxwtnmxd3f",
+          "name": "Таніс",
+          "lat": 30.846056,
+          "lng": 31.886496
+        },
+        {
+          "id": "city_mwqy04fuphpl",
+          "name": "Тімінхор",
+          "lat": 30.908243,
+          "lng": 30.336214
+        },
+        {
+          "id": "city_mwqy300ca2d9",
+          "name": "Ель Мансура",
+          "lat": 31.033223,
+          "lng": 31.385484
+        },
+        {
+          "id": "city_mwqy4fqsk1ri",
+          "name": "Ісмаїлія",
+          "lat": 30.58443,
+          "lng": 32.255036
+        },
+        {
+          "id": "city_mwqy4vrusysr",
+          "name": "Пелузіум",
+          "lat": 31.237313,
+          "lng": 32.319633
         }
       ],
       "tgLink": "https://t.me/Eastern_Roman_Empire_RP",
@@ -3910,7 +3982,6 @@
     "ESP-5812": "country_1",
     "ESP-5813": "country_1",
     "ESP-5814": "country_1",
-    "ESP-5815": "country_2",
     "ESP-5816": "country_1",
     "ESP-5817": "country_1",
     "ESP-5818": "country_1",
