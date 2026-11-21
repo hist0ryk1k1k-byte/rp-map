@@ -3280,9 +3280,9 @@
       "cities": [],
       "tgLink": "",
       "description": "",
-      "overlordId": null,
-      "dependencyType": "",
-      "inheritOverlordColor": true,
+      "overlordId": "country_12",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": false,
       "hideMapLabel": false
     }
   },
