@@ -219,6 +219,96 @@
           "name": "Ікозіум",
           "lat": 36.711214,
           "lng": 3.094002
+        },
+        {
+          "id": "city_mwqwsrchx9c4",
+          "name": "Фес",
+          "lat": 34.052659,
+          "lng": -5.064697
+        },
+        {
+          "id": "city_mwqwsx0go5wq",
+          "name": "Сала",
+          "lat": 34.030581,
+          "lng": -6.793365
+        },
+        {
+          "id": "city_mwqwszz4d4s8",
+          "name": "Септем",
+          "lat": 35.88905,
+          "lng": -5.328367
+        },
+        {
+          "id": "city_mwqwt414mdpr",
+          "name": "Агадір",
+          "lat": 30.382353,
+          "lng": -9.602051
+        },
+        {
+          "id": "city_mwqwt7kpwuzp",
+          "name": "Оран",
+          "lat": 35.728677,
+          "lng": -0.604248
+        },
+        {
+          "id": "city_mwqwtiag9t1z",
+          "name": "Константина",
+          "lat": 36.350725,
+          "lng": 6.599541
+        },
+        {
+          "id": "city_mwqwtnxkw0yf",
+          "name": "Бугія",
+          "lat": 36.747688,
+          "lng": 5.081177
+        },
+        {
+          "id": "city_mwqwxjghv8lg",
+          "name": "Арріс",
+          "lat": 36.055539,
+          "lng": 4.700182
+        },
+        {
+          "id": "city_mwqwxqjlsu9w",
+          "name": "Абенсіс",
+          "lat": 35.182788,
+          "lng": -0.834961
+        },
+        {
+          "id": "city_mwqwy09dpd5x",
+          "name": "Ігілгілі",
+          "lat": 36.796784,
+          "lng": 5.769641
+        },
+        {
+          "id": "city_mwqwybq1g5bt",
+          "name": "Бон",
+          "lat": 36.914764,
+          "lng": 7.767334
+        },
+        {
+          "id": "city_mwqwyi019uqs",
+          "name": "Тімгад",
+          "lat": 35.55144,
+          "lng": 6.153033
+        },
+        {
+          "id": "city_mwqwys4hovno",
+          "name": "Бізерт",
+          "lat": 37.268595,
+          "lng": 9.828202
+        },
+        {
+          "id": "city_mwqxdjiyfc7s",
+          "name": "Тлесмен",
+          "lat": 34.857012,
+          "lng": -1.339873
+        },
+        {
+          "id": "city_mwqxdo4xcgnh",
+          "name": "Триполіс",
+          "lat": 32.815979,
+          "lng": 12.915516
         }
       ],
       "tgLink": "https://t.me/romePussyy",
@@ -3796,6 +3886,7 @@
     "ESP-5812": "country_1",
     "ESP-5813": "country_1",
     "ESP-5814": "country_1",
+    "ESP-5815": "country_2",
     "ESP-5816": "country_1",
     "ESP-5817": "country_1",
     "ESP-5818": "country_1",
@@ -12769,7 +12860,7 @@
       "id": "poly_mwlxsjyg0hnb",
       "properties": {
         "name": "",
-        "countryId": "country_12",
+        "countryId": "country_24",
         "neutral": false
       },
       "geometry": {
