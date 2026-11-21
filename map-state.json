@@ -1007,7 +1007,7 @@
         },
         {
           "id": "city_mwqhyvgh4ns5",
-          "name": "Пурса",
+          "name": "Пруса",
           "lat": 40.275477,
           "lng": 29.012979
         },
@@ -1043,7 +1043,7 @@
         },
         {
           "id": "city_mwqi8jkf899o",
-          "name": "Скопʼє",
+          "name": "Скупі",
           "lat": 41.982005,
           "lng": 21.403079
         },
@@ -1082,6 +1082,18 @@
           "name": "Нікосія",
           "lat": 35.155551,
           "lng": 33.404282
+        },
+        {
+          "id": "city_mwqw3i53t6ox",
+          "name": "Іконіон",
+          "lat": 37.814124,
+          "lng": 32.431641
+        },
+        {
+          "id": "city_mwqw5gm2ukxr",
+          "name": "Цезарея",
+          "lat": 38.694085,
+          "lng": 35.419922
         }
       ],
       "tgLink": "https://t.me/Eastern_Roman_Empire_RP",
