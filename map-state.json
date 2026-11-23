@@ -3284,6 +3284,126 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": false,
       "hideMapLabel": false
+    },
+    "country_113": {
+      "id": "country_113",
+      "name": "Табук",
+      "color": "#84d900",
+      "flagUrl": "",
+      "capital": {
+        "name": "Табук",
+        "lat": 27.9578,
+        "lng": 36.2457
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_114": {
+      "id": "country_114",
+      "name": "Медіна",
+      "color": "#33c155",
+      "flagUrl": "",
+      "capital": {
+        "name": "Медіна",
+        "lat": 24.5304,
+        "lng": 39.5639
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_115": {
+      "id": "country_115",
+      "name": "Джедда",
+      "color": "#60c133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Джедда",
+        "lat": 21.4241,
+        "lng": 39.206
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_116": {
+      "id": "country_116",
+      "name": "Мекка",
+      "color": "#4dc133",
+      "flagUrl": "",
+      "capital": {
+        "name": "Мекка",
+        "lat": 21.3133,
+        "lng": 39.7943
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_117": {
+      "id": "country_117",
+      "name": "Асір",
+      "color": "#33c16a",
+      "flagUrl": "",
+      "capital": {
+        "name": "Абха",
+        "lat": 18.229,
+        "lng": 42.4784
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_er": {
+      "id": "country_er",
+      "name": "Емірат Ріяд",
+      "color": "#004a2b",
+      "flagUrl": "",
+      "capital": {
+        "name": "Ріяд",
+        "lat": 24.6071,
+        "lng": 46.6425
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -5954,6 +6074,13 @@
     "RUS-3200": "country_11",
     "RUS-5482": "country_13",
     "SAH+00?": "country_17",
+    "SAU-845": "country_114",
+    "SAU-848": "country_113",
+    "SAU-885": "country_116",
+    "SAU-886": "country_117",
+    "SAU-887": "country_117",
+    "SAU-888": "country_115",
+    "SAU-1097": "country_er",
     "SAU-1098": "country_1",
     "SGP-4871": "country_4",
     "SGP-4872": "country_4",
@@ -7365,8 +7492,16 @@
               17.093
             ],
             [
-              47.399758,
-              19.004415
+              44.517,
+              19.513
+            ],
+            [
+              45.079546,
+              21.578686
+            ],
+            [
+              46.498594,
+              22.380707
             ],
             [
               48.299,
@@ -21159,6 +21294,310 @@
             [
               42.814015,
               40.845924
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwt2mbcmbdnb",
+      "properties": {
+        "name": "",
+        "countryId": "country_116",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39.238,
+              21.063
+            ],
+            [
+              39.542411,
+              21.281158
+            ],
+            [
+              39.829842,
+              21.40893
+            ],
+            [
+              40.628192,
+              21.074542
+            ],
+            [
+              41.331,
+              20.763
+            ],
+            [
+              41.329053,
+              20.481613
+            ],
+            [
+              41.152675,
+              20.1692
+            ],
+            [
+              41.576199,
+              19.900186
+            ],
+            [
+              41.699,
+              19.797
+            ],
+            [
+              41.819,
+              19.808
+            ],
+            [
+              41.867,
+              19.72
+            ],
+            [
+              41.834,
+              19.57
+            ],
+            [
+              41.841,
+              19.5
+            ],
+            [
+              41.889,
+              19.383
+            ],
+            [
+              41.832,
+              19.245
+            ],
+            [
+              41.765,
+              19.221
+            ],
+            [
+              41.588,
+              19.221
+            ],
+            [
+              41.47003,
+              19.158911
+            ],
+            [
+              41.391,
+              19.153
+            ],
+            [
+              41.384,
+              18.92
+            ],
+            [
+              41.403,
+              18.838
+            ],
+            [
+              41.471,
+              18.786
+            ],
+            [
+              41.666,
+              18.776
+            ],
+            [
+              41.734,
+              18.723
+            ],
+            [
+              41.803,
+              18.525
+            ],
+            [
+              41.806,
+              18.441
+            ],
+            [
+              41.771,
+              18.314
+            ],
+            [
+              41.722,
+              18.242
+            ],
+            [
+              41.641,
+              18.197
+            ],
+            [
+              41.597,
+              18.121
+            ],
+            [
+              41.561,
+              18.19
+            ],
+            [
+              41.521,
+              18.197
+            ],
+            [
+              41.5,
+              18.279
+            ],
+            [
+              41.472,
+              18.279
+            ],
+            [
+              41.438,
+              18.464
+            ],
+            [
+              41.328,
+              18.588
+            ],
+            [
+              41.267,
+              18.601
+            ],
+            [
+              41.21,
+              18.698
+            ],
+            [
+              41.249,
+              18.834
+            ],
+            [
+              41.171,
+              18.872
+            ],
+            [
+              41.137,
+              18.958
+            ],
+            [
+              41.177,
+              19.067
+            ],
+            [
+              41.069,
+              19.125
+            ],
+            [
+              41.048,
+              19.227
+            ],
+            [
+              41.009,
+              19.304
+            ],
+            [
+              40.956,
+              19.343
+            ],
+            [
+              40.945,
+              19.506
+            ],
+            [
+              40.835,
+              19.547
+            ],
+            [
+              40.785,
+              19.596
+            ],
+            [
+              40.791,
+              19.714
+            ],
+            [
+              40.745,
+              19.777
+            ],
+            [
+              40.674,
+              19.795
+            ],
+            [
+              40.642,
+              19.771
+            ],
+            [
+              40.619,
+              19.821
+            ],
+            [
+              40.527,
+              19.91
+            ],
+            [
+              40.535,
+              19.962
+            ],
+            [
+              40.268,
+              20.125
+            ],
+            [
+              40.222,
+              20.189
+            ],
+            [
+              40.165,
+              20.2
+            ],
+            [
+              40.068,
+              20.287
+            ],
+            [
+              39.992,
+              20.267
+            ],
+            [
+              39.903,
+              20.308
+            ],
+            [
+              39.923,
+              20.264
+            ],
+            [
+              39.76,
+              20.351
+            ],
+            [
+              39.646,
+              20.462
+            ],
+            [
+              39.567,
+              20.568
+            ],
+            [
+              39.493,
+              20.706
+            ],
+            [
+              39.506,
+              20.746
+            ],
+            [
+              39.423,
+              20.772
+            ],
+            [
+              39.423,
+              20.814
+            ],
+            [
+              39.297,
+              20.928
+            ],
+            [
+              39.238,
+              21.063
             ]
           ]
         ]
