@@ -377,12 +377,6 @@
           "lng": 103.858969
         },
         {
-          "id": "city_mwm60zxb6u7d",
-          "name": "Гонконг",
-          "lat": 22.40465,
-          "lng": 114.170059
-        },
-        {
           "id": "city_mwm61981adeo",
           "name": "Ціндао",
           "lat": 36.109442,
@@ -393,6 +387,12 @@
           "name": "Порт-Артур",
           "lat": 38.8044,
           "lng": 121.232071
+        },
+        {
+          "id": "city_mwthnxqufmer",
+          "name": "Гонконг-деллʼСуд",
+          "lat": 22.262472,
+          "lng": 114.177405
         }
       ],
       "tgLink": "",
@@ -1914,13 +1914,20 @@
       "color": "#6333c1",
       "flagUrl": "",
       "capital": {
-        "name": "Кантон",
-        "lat": 23.1459,
-        "lng": 113.4867
+        "name": "Гонконг",
+        "lat": 22.4009,
+        "lng": 114.1637
       },
       "population": 115000,
       "gdp": 690,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwthmityhj9k",
+          "name": "Кантон",
+          "lat": 23.145099,
+          "lng": 113.485136
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
@@ -4742,18 +4749,18 @@
     "HKG-5154": "country_4",
     "HKG-5155": "country_4",
     "HKG-5156": "country_4",
-    "HKG-5158": "country_4",
-    "HKG-5159": "country_4",
-    "HKG-5160": "country_4",
-    "HKG-5161": "country_4",
-    "HKG-5162": "country_4",
-    "HKG-5163": "country_4",
-    "HKG-5164": "country_4",
-    "HKG-5165": "country_4",
-    "HKG-5166": "country_4",
-    "HKG-5167": "country_4",
-    "HKG-5168": "country_4",
-    "HKG-5169": "country_4",
+    "HKG-5158": "country_36",
+    "HKG-5159": "country_36",
+    "HKG-5160": "country_36",
+    "HKG-5161": "country_36",
+    "HKG-5162": "country_36",
+    "HKG-5163": "country_36",
+    "HKG-5164": "country_36",
+    "HKG-5165": "country_36",
+    "HKG-5166": "country_36",
+    "HKG-5167": "country_36",
+    "HKG-5168": "country_36",
+    "HKG-5169": "country_36",
     "HKG-5170": "country_4",
     "HND-637": "country_58",
     "HND-638": "country_58",
@@ -6774,6 +6781,7 @@
     "TWN-1176": "country_37",
     "TWN-1177": "country_37",
     "TWN-3414": "country_4",
+    "TWN-3415": "country_37",
     "TZA-3337": "country_1",
     "TZA-3380": "country_1",
     "TZA-3381": "country_1",
