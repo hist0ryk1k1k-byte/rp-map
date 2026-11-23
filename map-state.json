@@ -900,14 +900,74 @@
         {
           "id": "city_mwm82cmhjxy1",
           "name": "Запоріжжя",
-          "lat": 47.821805,
-          "lng": 35.166991
+          "lat": 47.784508,
+          "lng": 35.184696
         },
         {
           "id": "city_mwmd7vlzsihn",
           "name": "Курськ",
           "lat": 51.784834,
           "lng": 36.259003
+        },
+        {
+          "id": "city_mwt4e4ml9o11",
+          "name": "Маріуполь",
+          "lat": 47.097805,
+          "lng": 37.580274
+        },
+        {
+          "id": "city_mwt4esdalm49",
+          "name": "Кривий Ріг",
+          "lat": 47.932694,
+          "lng": 33.400604
+        },
+        {
+          "id": "city_mwt4ifbfbv38",
+          "name": "Кременчук",
+          "lat": 49.076426,
+          "lng": 33.362048
+        },
+        {
+          "id": "city_mwt4saw3394j",
+          "name": "Білгород",
+          "lat": 50.575963,
+          "lng": 36.641329
+        },
+        {
+          "id": "city_mwt4ssk50s94",
+          "name": "Черкаси",
+          "lat": 49.423671,
+          "lng": 32.067799
+        },
+        {
+          "id": "city_mwt4t7i7qcwu",
+          "name": "Полтава",
+          "lat": 49.568868,
+          "lng": 34.591827
+        },
+        {
+          "id": "city_mwt4txt45btr",
+          "name": "Луганськ",
+          "lat": 48.533368,
+          "lng": 39.448972
+        },
+        {
+          "id": "city_mwt4ukt8zylc",
+          "name": "Івано-Франківськ",
+          "lat": 48.893678,
+          "lng": 24.770762
+        },
+        {
+          "id": "city_mwt4v0njfry1",
+          "name": "Чернівці",
+          "lat": 48.279376,
+          "lng": 25.953157
+        },
+        {
+          "id": "city_mwt4ved5d56b",
+          "name": "Вінниця",
+          "lat": 49.212643,
+          "lng": 28.46928
         }
       ],
       "tgLink": "https://t.me/ukraineprp",
