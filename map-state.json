@@ -3846,7 +3846,11 @@
       "name": "ЛР",
       "color": "#3357c1",
       "flagUrl": "",
-      "capital": null,
+      "capital": {
+        "name": "Маракай",
+        "lat": 10.181,
+        "lng": -67.5808
+      },
       "population": null,
       "gdp": null,
       "cities": [],
