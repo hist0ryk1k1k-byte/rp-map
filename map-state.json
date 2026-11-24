@@ -3804,6 +3804,22 @@
       "dependencyType": "",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "RFF": {
+      "id": "RFF",
+      "name": "РФФ",
+      "color": "#33c192",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "Революционный фронт Фрейхейта был создан фрейхейтскими политическими эмигрантами после окончательного разгрома нескольких антиимператорских организаций на территории Федерации.\n\nПервоначальный Фронт существенно отличался от современной организации. Его первые руководители были убеждёнными революционерами, рассматривавшими Гавайи исключительно как временный плацдарм для возвращения в Федерацию.",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -7142,6 +7158,7 @@
     "URY-22": "country_68",
     "USA-3513": "country_56",
     "USA-3514": "country_57",
+    "USA-3517": "RFF",
     "USA-3519": "country_87",
     "USA-3520": "country_58",
     "USA-3521": "country_58",
