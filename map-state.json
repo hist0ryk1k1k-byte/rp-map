@@ -1109,6 +1109,12 @@
           "name": "Владивосток",
           "lat": 43.344367,
           "lng": 131.940519
+        },
+        {
+          "id": "city_mwuk6ytpq3ye",
+          "name": "Ціцікар",
+          "lat": 47.201338,
+          "lng": 123.807631
         }
       ],
       "tgLink": "https://t.me/slavicland",
@@ -1860,7 +1866,50 @@
       },
       "population": 420000,
       "gdp": 1150,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwujip0aull2",
+          "name": "Тяньцзінь",
+          "lat": 38.901594,
+          "lng": 117.486842
+        },
+        {
+          "id": "city_mwujkly3ela0",
+          "name": "Ухань",
+          "lat": 30.550086,
+          "lng": 114.015376
+        },
+        {
+          "id": "city_mwujmnse4ks3",
+          "name": "Шанхай",
+          "lat": 31.038031,
+          "lng": 121.386108
+        },
+        {
+          "id": "city_mwujo8jm4scc",
+          "name": "Нанкін",
+          "lat": 32.075343,
+          "lng": 118.88263
+        },
+        {
+          "id": "city_mwujx3awz5g2",
+          "name": "Цізнань",
+          "lat": 36.681485,
+          "lng": 117.150805
+        },
+        {
+          "id": "city_mwuk18hig73x",
+          "name": "Сіань",
+          "lat": 34.261196,
+          "lng": 109.089688
+        },
+        {
+          "id": "city_mwuk6m8p9zt6",
+          "name": "Харбін",
+          "lat": 45.442521,
+          "lng": 125.712262
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
@@ -1880,7 +1929,20 @@
       },
       "population": 185000,
       "gdp": 820,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwujgtr0hptf",
+          "name": "Чунцин",
+          "lat": 29.444706,
+          "lng": 106.537429
+        },
+        {
+          "id": "city_mwuk8wjp9htz",
+          "name": "Чанша",
+          "lat": 27.944918,
+          "lng": 113.364247
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
