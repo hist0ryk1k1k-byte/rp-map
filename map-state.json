@@ -3782,7 +3782,7 @@
       "description": "Дом кофейных магнатов восставшие против СИБА. Независимо только из за союза с ФВТ",
       "overlordId": "country_89",
       "dependencyType": "Фракція",
-      "inheritOverlordColor": true,
+      "inheritOverlordColor": false,
       "hideMapLabel": false
     },
     "Ravella": {
