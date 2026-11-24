@@ -3876,6 +3876,182 @@
       "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "Djor": {
+      "id": "Djor",
+      "name": "Дьор",
+      "color": "#333fc1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_127": {
+      "id": "country_127",
+      "name": "Мошонмадьяровар-Фертёсентмиклош",
+      "color": "#73c133",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "Мошонмадьяровар-Фертёсентмиклош",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_128": {
+      "id": "country_128",
+      "name": "Шопрон",
+      "color": "#c1bf33",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_129": {
+      "id": "country_129",
+      "name": "Лига Справедливости",
+      "color": "#bf33c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_130": {
+      "id": "country_130",
+      "name": "Székesfehérvár",
+      "color": "#4633c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_131": {
+      "id": "country_131",
+      "name": "Zalaegerszeg",
+      "color": "#a3c133",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_132": {
+      "id": "country_132",
+      "name": "Borsod-Abaúj-Zemplén",
+      "color": "#c1334d",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_133": {
+      "id": "country_133",
+      "name": "Hódmezôvásárhely",
+      "color": "#9233c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_134": {
+      "id": "country_134",
+      "name": "Свободная Словения",
+      "color": "#33c142",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_135": {
+      "id": "country_135",
+      "name": "Альтернативный фронт Венгрии",
+      "color": "#49c133",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_136": {
+      "id": "country_136",
+      "name": "Королевство Венгрия",
+      "color": "#c13355",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -5115,7 +5291,49 @@
     "HTI-1387": "country_93",
     "HTI-1388": "country_93",
     "HTI-1389": "country_93",
-    "HUN-4904": "country_5",
+    "HUN-3138": "country_127",
+    "HUN-3155": "country_136",
+    "HUN-3156": "country_127",
+    "HUN-3157": "country_136",
+    "HUN-3158": "Djor",
+    "HUN-3159": "country_131",
+    "HUN-3160": "country_129",
+    "HUN-3161": "country_133",
+    "HUN-3162": "country_130",
+    "HUN-3163": "country_129",
+    "HUN-3164": "country_129",
+    "HUN-3165": "country_130",
+    "HUN-3166": "country_129",
+    "HUN-3168": "country_132",
+    "HUN-3169": "country_135",
+    "HUN-3171": "country_135",
+    "HUN-3172": "country_133",
+    "HUN-3173": "country_135",
+    "HUN-3174": "country_129",
+    "HUN-3175": "country_129",
+    "HUN-4903": "country_127",
+    "HUN-4904": "country_128",
+    "HUN-4905": "Djor",
+    "HUN-4906": "country_129",
+    "HUN-4907": "country_129",
+    "HUN-4908": "country_130",
+    "HUN-4909": "Djor",
+    "HUN-4910": "country_131",
+    "HUN-4911": "country_131",
+    "HUN-4912": "country_136",
+    "HUN-4913": "country_136",
+    "HUN-4914": "country_130",
+    "HUN-4915": "country_129",
+    "HUN-4916": "country_133",
+    "HUN-4917": "country_133",
+    "HUN-4918": "country_129",
+    "HUN-4919": "country_135",
+    "HUN-4920": "country_129",
+    "HUN-4921": "country_129",
+    "HUN-4922": "country_132",
+    "HUN-4923": "country_135",
+    "HUN-4924": "country_135",
+    "HUN-4925": "country_130",
     "IDN-381": "country_9",
     "IDN-492": "country_9",
     "IDN-513": "country_9",
@@ -6682,7 +6900,6 @@
     "SVN-198": "country_1",
     "SVN-199": "country_1",
     "SVN-200": "country_1",
-    "SVN-201": "country_5",
     "SVN-202": "country_5",
     "SVN-203": "country_1",
     "SVN-204": "country_1",
@@ -6741,10 +6958,14 @@
     "SVN-259": "country_1",
     "SVN-260": "country_1",
     "SVN-261": "country_1",
+    "SVN-263": "country_5",
+    "SVN-264": "country_134",
     "SVN-265": "country_1",
     "SVN-266": "country_1",
     "SVN-267": "country_1",
     "SVN-268": "country_1",
+    "SVN-270": "country_134",
+    "SVN-271": "country_134",
     "SVN-272": "country_1",
     "SVN-926": "country_5",
     "SVN-927": "country_1",
@@ -6853,10 +7074,12 @@
     "SVN-1040": "country_1",
     "SVN-1041": "country_1",
     "SVN-1042": "country_1",
+    "SVN-1043": "country_134",
     "SVN-1044": "country_5",
     "SVN-1045": "country_5",
     "SVN-1047": "country_1",
     "SVN-1048": "country_1",
+    "SVN-1049": "country_134",
     "SVN-1050": "country_1",
     "SVN-5884": "country_1",
     "SVN-5885": "country_1",
@@ -8165,58 +8388,6 @@
             [
               52.538,
               22.955
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "poly_mwkrq2h5pm3c",
-      "properties": {
-        "name": "",
-        "countryId": "country_5",
-        "neutral": false
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              16.303,
-              46.822
-            ],
-            [
-              16.486,
-              46.999
-            ],
-            [
-              16.275,
-              47.004
-            ],
-            [
-              16.231,
-              46.948
-            ],
-            [
-              16.091194,
-              46.869363
-            ],
-            [
-              16.089821,
-              46.865365
-            ],
-            [
-              16.094,
-              46.863
-            ],
-            [
-              16.13,
-              46.857
-            ],
-            [
-              16.303,
-              46.822
             ]
           ]
         ]
@@ -27109,6 +27280,122 @@
             [
               -58.275,
               6.106
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwuvd97b9ls1",
+      "properties": {
+        "name": "",
+        "countryId": "Djor",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              17.472,
+              47.889
+            ],
+            [
+              17.527,
+              47.872
+            ],
+            [
+              17.719,
+              47.774
+            ],
+            [
+              17.884,
+              47.753
+            ],
+            [
+              17.898,
+              47.63
+            ],
+            [
+              17.927,
+              47.613
+            ],
+            [
+              17.887,
+              47.532
+            ],
+            [
+              17.882,
+              47.455
+            ],
+            [
+              17.726,
+              47.482
+            ],
+            [
+              17.637,
+              47.449
+            ],
+            [
+              17.517,
+              47.455
+            ],
+            [
+              17.438,
+              47.42
+            ],
+            [
+              17.369,
+              47.441
+            ],
+            [
+              17.339234,
+              47.499751
+            ],
+            [
+              17.316351,
+              47.567011
+            ],
+            [
+              17.298372,
+              47.605564
+            ],
+            [
+              17.36702,
+              47.617674
+            ],
+            [
+              17.422592,
+              47.674887
+            ],
+            [
+              17.492874,
+              47.69028
+            ],
+            [
+              17.492161,
+              47.743333
+            ],
+            [
+              17.455231,
+              47.794242
+            ],
+            [
+              17.404694,
+              47.776625
+            ],
+            [
+              17.408582,
+              47.851617
+            ],
+            [
+              17.427493,
+              47.884268
+            ],
+            [
+              17.472,
+              47.889
             ]
           ]
         ]
