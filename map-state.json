@@ -2170,7 +2170,38 @@
       },
       "population": 70100,
       "gdp": 1807,
-      "cities": [],
+      "cities": [
+        {
+          "id": "city_mwukfmqfvq1k",
+          "name": "Осака",
+          "lat": 34.659463,
+          "lng": 135.486588
+        },
+        {
+          "id": "city_mwukhzbwalha",
+          "name": "Наґоя",
+          "lat": 35.17725,
+          "lng": 136.878013
+        },
+        {
+          "id": "city_mwukib7humo5",
+          "name": "Саппоро",
+          "lat": 43.158589,
+          "lng": 141.340413
+        },
+        {
+          "id": "city_mwukjdwb8exn",
+          "name": "Фукуока",
+          "lat": 33.60811,
+          "lng": 130.470593
+        },
+        {
+          "id": "city_mwukjwex8ebc",
+          "name": "Хіросіма",
+          "lat": 34.401452,
+          "lng": 132.394417
+        }
+      ],
       "tgLink": "",
       "description": "",
       "overlordId": null,
