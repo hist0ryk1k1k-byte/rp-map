@@ -3712,6 +3712,26 @@
       "dependencyType": "",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "Karms": {
+      "id": "Karms",
+      "name": "КАРМС",
+      "color": "#ff0000",
+      "flagUrl": "",
+      "capital": {
+        "name": "Приморско-Куйский сельсовет",
+        "lat": 67.903,
+        "lng": 53.4435
+      },
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": null,
+      "dependencyType": "",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -6382,6 +6402,7 @@
     "RUS-2378": "country_11",
     "RUS-2379": "country_11",
     "RUS-2380": "country_11",
+    "RUS-2381": "Karms",
     "RUS-2382": "country_11",
     "RUS-2383": "country_11",
     "RUS-2384": "country_11",
@@ -9979,78 +10000,6 @@
             [
               91.928603,
               58.786731
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "poly_mwkwi30cppuy",
-      "properties": {
-        "name": "",
-        "countryId": null,
-        "neutral": true
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              42.420796,
-              68.158461
-            ],
-            [
-              39.359,
-              68.15
-            ],
-            [
-              38.431858,
-              67.217314
-            ],
-            [
-              36.887,
-              66.285
-            ],
-            [
-              38.321106,
-              65.621853
-            ],
-            [
-              40.870774,
-              66.298766
-            ],
-            [
-              42.459869,
-              67.102447
-            ],
-            [
-              44.527006,
-              65.532354
-            ],
-            [
-              48.850279,
-              64.913189
-            ],
-            [
-              52.286726,
-              65.363527
-            ],
-            [
-              53.653915,
-              65.301864
-            ],
-            [
-              56.425244,
-              66.226654
-            ],
-            [
-              59.933,
-              66.954
-            ],
-            [
-              42.420796,
-              68.158461
             ]
           ]
         ]
