@@ -3880,7 +3880,7 @@
     "Djor": {
       "id": "Djor",
       "name": "Какаш-Каврот",
-      "color": "#333fc1",
+      "color": "#3e3c57",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3896,7 +3896,7 @@
     "country_127": {
       "id": "country_127",
       "name": "Мошонмадьяровар-Фертёсентмиклош",
-      "color": "#73c133",
+      "color": "#543140",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3912,7 +3912,7 @@
     "country_128": {
       "id": "country_128",
       "name": "Шопрон",
-      "color": "#c1bf33",
+      "color": "#4d5c37",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3928,7 +3928,7 @@
     "country_129": {
       "id": "country_129",
       "name": "Лига Справедливости",
-      "color": "#bf33c1",
+      "color": "#473647",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3944,7 +3944,7 @@
     "country_130": {
       "id": "country_130",
       "name": "Székesfehérvár",
-      "color": "#4633c1",
+      "color": "#303342",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3976,7 +3976,7 @@
     "country_132": {
       "id": "country_132",
       "name": "Borsod-Abaúj-Zemplén",
-      "color": "#c1334d",
+      "color": "#4f2d38",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -3992,7 +3992,7 @@
     "country_133": {
       "id": "country_133",
       "name": "Hódmezôvásárhely",
-      "color": "#9233c1",
+      "color": "#435238",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -4024,7 +4024,7 @@
     "country_135": {
       "id": "country_135",
       "name": "Альтернативный фронт Венгрии",
-      "color": "#49c133",
+      "color": "#3d4d39",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -4040,7 +4040,7 @@
     "country_136": {
       "id": "country_136",
       "name": "Королевство Венгрия",
-      "color": "#c13355",
+      "color": "#365453",
       "flagUrl": "",
       "capital": null,
       "population": null,
@@ -4114,7 +4114,7 @@
       "description": "",
       "overlordId": "country_59",
       "dependencyType": "Зависимая территория",
-      "inheritOverlordColor": false,
+      "inheritOverlordColor": true,
       "hideMapLabel": false
     }
   },
