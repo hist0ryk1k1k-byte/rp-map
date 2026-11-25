@@ -4080,8 +4080,8 @@
       "cities": [],
       "tgLink": "",
       "description": "",
-      "overlordId": null,
-      "dependencyType": "",
+      "overlordId": "country_59",
+      "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
     },
@@ -4096,8 +4096,8 @@
       "cities": [],
       "tgLink": "",
       "description": "",
-      "overlordId": null,
-      "dependencyType": "",
+      "overlordId": "country_59",
+      "dependencyType": "Зависимая территория",
       "inheritOverlordColor": true,
       "hideMapLabel": false
     },
@@ -4112,9 +4112,9 @@
       "cities": [],
       "tgLink": "",
       "description": "",
-      "overlordId": null,
-      "dependencyType": "",
-      "inheritOverlordColor": true,
+      "overlordId": "country_59",
+      "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": false,
       "hideMapLabel": false
     }
   },
