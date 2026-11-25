@@ -3031,7 +3031,7 @@
     },
     "country_87": {
       "id": "country_87",
-      "name": "Пасифика",
+      "name": "Пасифіка",
       "color": "#00536b",
       "flagUrl": "",
       "capital": {
@@ -28820,7 +28820,7 @@
       "id": "poly_mwv5fbvpzo4d",
       "properties": {
         "name": "",
-        "countryId": "country_137",
+        "countryId": "country_59",
         "neutral": false
       },
       "geometry": {
