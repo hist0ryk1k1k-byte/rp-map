@@ -5391,7 +5391,7 @@
     "HUN-3174": "country_129",
     "HUN-3175": "country_129",
     "HUN-4903": "country_127",
-    "HUN-4904": "country_128",
+    "HUN-4904": "country_5",
     "HUN-4905": "Djor",
     "HUN-4906": "country_129",
     "HUN-4907": "country_129",
@@ -36584,6 +36584,226 @@
             [
               -131.469,
               52.734
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxbcdqk7na",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.094,
+              46.863
+            ],
+            [
+              16.231,
+              46.948
+            ],
+            [
+              16.275,
+              47.004
+            ],
+            [
+              16.486,
+              46.999
+            ],
+            [
+              16.297,
+              46.847
+            ],
+            [
+              16.179,
+              46.858
+            ],
+            [
+              16.13,
+              46.857
+            ],
+            [
+              16.094,
+              46.863
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxcqyvsbzs",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.444,
+              47.41
+            ],
+            [
+              16.425,
+              47.351
+            ],
+            [
+              16.469,
+              47.293
+            ],
+            [
+              16.482,
+              47.392
+            ],
+            [
+              16.444,
+              47.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxcvnb6dh4",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.425,
+              47.024
+            ],
+            [
+              16.493,
+              47.049
+            ],
+            [
+              16.486,
+              46.999
+            ],
+            [
+              16.425,
+              47.024
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxcykyy7n6",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.51,
+              47.138
+            ],
+            [
+              16.493,
+              47.049
+            ],
+            [
+              16.461,
+              47.096
+            ],
+            [
+              16.51,
+              47.138
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxd250vgl3",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.469,
+              47.293
+            ],
+            [
+              16.421,
+              47.243
+            ],
+            [
+              16.431526,
+              47.164457
+            ],
+            [
+              16.434,
+              47.146
+            ],
+            [
+              16.51,
+              47.138
+            ],
+            [
+              16.469,
+              47.293
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwvxd66r71ml",
+      "properties": {
+        "name": "",
+        "countryId": "country_5",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.684,
+              47.638
+            ],
+            [
+              16.558,
+              47.63
+            ],
+            [
+              16.648,
+              47.606
+            ],
+            [
+              16.684,
+              47.638
             ]
           ]
         ]
