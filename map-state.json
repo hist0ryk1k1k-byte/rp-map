@@ -56461,6 +56461,42 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwz576c7dgar",
+      "properties": {
+        "name": "",
+        "countryId": "country_196",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -102.052,
+              41
+            ],
+            [
+              -100.918784,
+              41.001527
+            ],
+            [
+              -100.895759,
+              37
+            ],
+            [
+              -102.04,
+              37
+            ],
+            [
+              -102.052,
+              41
+            ]
+          ]
+        ]
+      }
     }
   ],
   "provinceNames": {}
