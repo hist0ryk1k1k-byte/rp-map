@@ -4231,7 +4231,7 @@
     },
     "country_146": {
       "id": "country_146",
-      "name": "Л",
+      "name": "Республіка Логан Хайленд",
       "color": "#c19e33",
       "flagUrl": "",
       "capital": null,
@@ -4247,7 +4247,7 @@
     },
     "country_147": {
       "id": "country_147",
-      "name": "Б",
+      "name": "Колектив Бокс-Елдер",
       "color": "#c15233",
       "flagUrl": "",
       "capital": null,
@@ -4258,6 +4258,118 @@
       "description": "",
       "overlordId": "Ameria",
       "dependencyType": "Зависимая территория",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_148": {
+      "id": "country_148",
+      "name": "Соляний Конклав Солт-Лейк-Сіті",
+      "color": "#c19e33",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_149": {
+      "id": "country_149",
+      "name": "Конфедерація Прово",
+      "color": "#c133b1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_150": {
+      "id": "country_150",
+      "name": "Республіка Огден-Лейтон",
+      "color": "#33c1ac",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_151": {
+      "id": "country_151",
+      "name": "Гірська ліга Самміта",
+      "color": "#33b1c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "\n",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_152": {
+      "id": "country_152",
+      "name": "Тооел",
+      "color": "#aac133",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_153": {
+      "id": "country_153",
+      "name": "Конфедерація Великих рівнин",
+      "color": "#c16533",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_154": {
+      "id": "country_154",
+      "name": "Комунальна Республіка Санпіт",
+      "color": "#33c1aa",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
       "inheritOverlordColor": true,
       "hideMapLabel": false
     }
@@ -45264,16 +45376,20 @@
         "coordinates": [
           [
             [
-              -112.131957,
+              -112.282611,
               42
             ],
             [
-              -112.12646,
-              41.927224
+              -112.22502,
+              41.891357
             ],
             [
-              -112.060488,
-              41.839295
+              -112.163138,
+              41.774618
+            ],
+            [
+              -112.112287,
+              41.725018
             ],
             [
               -112.05499,
@@ -45324,7 +45440,7 @@
               42.031354
             ],
             [
-              -112.131957,
+              -112.282611,
               42
             ]
           ]
@@ -45336,7 +45452,7 @@
       "id": "poly_mwy1au41sism",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_151",
         "neutral": false
       },
       "geometry": {
@@ -45428,7 +45544,7 @@
       "id": "poly_mwy1ei53nj7x",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_152",
         "neutral": false
       },
       "geometry": {
@@ -45640,7 +45756,7 @@
       "id": "poly_mwy1r7zmgk5a",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_147",
         "neutral": false
       },
       "geometry": {
@@ -46166,7 +46282,7 @@
       "id": "poly_mwy1yg4i156s",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_149",
         "neutral": false
       },
       "geometry": {
@@ -46228,6 +46344,10 @@
             [
               -111.73474,
               40.471957
+            ],
+            [
+              -111.689792,
+              40.417871
             ],
             [
               -111.644844,
@@ -46330,7 +46450,7 @@
       "id": "poly_mwy26jv9h0li",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_150",
         "neutral": false
       },
       "geometry": {
@@ -46626,7 +46746,7 @@
       "id": "poly_mwy282nhp7a5",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_148",
         "neutral": false
       },
       "geometry": {
@@ -46718,7 +46838,7 @@
       "id": "poly_mwy2b6fv2f25",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_153",
         "neutral": false
       },
       "geometry": {
@@ -46814,7 +46934,7 @@
       "id": "poly_mwy2fkfd013t",
       "properties": {
         "name": "",
-        "countryId": "country_146",
+        "countryId": "country_154",
         "neutral": false
       },
       "geometry": {
