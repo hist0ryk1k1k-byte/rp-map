@@ -4548,6 +4548,134 @@
       "dependencyType": "Общини",
       "inheritOverlordColor": true,
       "hideMapLabel": false
+    },
+    "country_166": {
+      "id": "country_166",
+      "name": "Альянс Великих рівнин",
+      "color": "#5733c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_167": {
+      "id": "country_167",
+      "name": "Диявольське Войтовство",
+      "color": "#c13399",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_168": {
+      "id": "country_168",
+      "name": "Кемпбелліан",
+      "color": "#4933c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_169": {
+      "id": "country_169",
+      "name": "Буфальське князівство",
+      "color": "#6a33c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_170": {
+      "id": "country_170",
+      "name": "Республіка Шерідан",
+      "color": "#c1a333",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Общини",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_171": {
+      "id": "country_171",
+      "name": "Фратрія Платт-Гошен",
+      "color": "#33c17d",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_172": {
+      "id": "country_172",
+      "name": "Конфедерація Ларамі",
+      "color": "#6f33c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
+    },
+    "country_173": {
+      "id": "country_173",
+      "name": "Міська Республіка Шайєнн",
+      "color": "#3363c1",
+      "flagUrl": "",
+      "capital": null,
+      "population": null,
+      "gdp": null,
+      "cities": [],
+      "tgLink": "",
+      "description": "",
+      "overlordId": "Ameria",
+      "dependencyType": "Община",
+      "inheritOverlordColor": true,
+      "hideMapLabel": false
     }
   },
   "provinceOwners": {
@@ -51944,6 +52072,542 @@
             [
               -111.05,
               41.587382
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwymyp307aso",
+      "properties": {
+        "name": "",
+        "countryId": "country_170",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -107.578527,
+              45
+            ],
+            [
+              -107.480459,
+              44.936158
+            ],
+            [
+              -107.339895,
+              44.850544
+            ],
+            [
+              -107.23202,
+              44.713761
+            ],
+            [
+              -107.032615,
+              44.64641
+            ],
+            [
+              -106.960699,
+              44.620842
+            ],
+            [
+              -106.822808,
+              44.620536
+            ],
+            [
+              -106.676092,
+              44.62021
+            ],
+            [
+              -106.381863,
+              44.590553
+            ],
+            [
+              -106.162222,
+              44.589005
+            ],
+            [
+              -106.020623,
+              44.617364
+            ],
+            [
+              -106.023411,
+              44.75486
+            ],
+            [
+              -106.03129,
+              44.900067
+            ],
+            [
+              -106.036712,
+              45
+            ],
+            [
+              -107.578527,
+              45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyn0x52kace",
+      "properties": {
+        "name": "",
+        "countryId": "country_169",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.998973,
+              43.549709
+            ],
+            [
+              -106.020623,
+              44.617364
+            ],
+            [
+              -106.162222,
+              44.589005
+            ],
+            [
+              -106.381863,
+              44.590553
+            ],
+            [
+              -106.676092,
+              44.62021
+            ],
+            [
+              -106.960699,
+              44.620842
+            ],
+            [
+              -106.945978,
+              43.536355
+            ],
+            [
+              -105.998973,
+              43.549709
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyn3m42eit3",
+      "properties": {
+        "name": "",
+        "countryId": "country_168",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.023411,
+              44.75486
+            ],
+            [
+              -106.036712,
+              45
+            ],
+            [
+              -105.063158,
+              45
+            ],
+            [
+              -105.034404,
+              43.555384
+            ],
+            [
+              -105.998973,
+              43.549709
+            ],
+            [
+              -106.023411,
+              44.75486
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyn6jw5rpqc",
+      "properties": {
+        "name": "",
+        "countryId": "country_167",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.047644,
+              44.220568
+            ],
+            [
+              -104.056051,
+              44.228607
+            ],
+            [
+              -104.057,
+              45
+            ],
+            [
+              -105.063158,
+              45
+            ],
+            [
+              -105.054685,
+              44.574294
+            ],
+            [
+              -105.047644,
+              44.220568
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyna63m9rl9",
+      "properties": {
+        "name": "",
+        "countryId": "country_166",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.018697,
+              42.64082
+            ],
+            [
+              -104.05318,
+              42.640265
+            ],
+            [
+              -104.05522,
+              43.553591
+            ],
+            [
+              -105.034404,
+              43.555384
+            ],
+            [
+              -105.018697,
+              42.64082
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyndplw4mzu",
+      "properties": {
+        "name": "",
+        "countryId": "country_166",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.034404,
+              43.555384
+            ],
+            [
+              -104.05522,
+              43.553591
+            ],
+            [
+              -104.056051,
+              44.228607
+            ],
+            [
+              -105.047644,
+              44.220568
+            ],
+            [
+              -105.034404,
+              43.555384
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwynm77lcxkn",
+      "properties": {
+        "name": "",
+        "countryId": "country_173",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.290258,
+              41
+            ],
+            [
+              -105.302721,
+              41.607467
+            ],
+            [
+              -104.594262,
+              41.612577
+            ],
+            [
+              -104.592438,
+              41.51141
+            ],
+            [
+              -104.053741,
+              41.517208
+            ],
+            [
+              -104.054,
+              41
+            ],
+            [
+              -105.290258,
+              41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwynt6t2j8th",
+      "properties": {
+        "name": "",
+        "countryId": "country_172",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.302721,
+              41.607467
+            ],
+            [
+              -105.316588,
+              42.450945
+            ],
+            [
+              -105.370841,
+              42.456671
+            ],
+            [
+              -105.389333,
+              42.40553
+            ],
+            [
+              -105.440186,
+              42.361175
+            ],
+            [
+              -105.494865,
+              42.349988
+            ],
+            [
+              -105.522617,
+              42.373545
+            ],
+            [
+              -105.494406,
+              42.418769
+            ],
+            [
+              -105.486561,
+              42.444473
+            ],
+            [
+              -105.544202,
+              42.451559
+            ],
+            [
+              -105.622793,
+              42.44815
+            ],
+            [
+              -105.645908,
+              42.422582
+            ],
+            [
+              -106.086065,
+              42.419501
+            ],
+            [
+              -106.077744,
+              41.365988
+            ],
+            [
+              -106.340747,
+              41.365935
+            ],
+            [
+              -106.340145,
+              41
+            ],
+            [
+              -105.290258,
+              41
+            ],
+            [
+              -105.302721,
+              41.607467
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwynw1gqpzs0",
+      "properties": {
+        "name": "",
+        "countryId": "country_171",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -104.05318,
+              42.640265
+            ],
+            [
+              -105.319072,
+              42.6386
+            ],
+            [
+              -105.302721,
+              41.607467
+            ],
+            [
+              -104.594262,
+              41.612577
+            ],
+            [
+              -104.592438,
+              41.51141
+            ],
+            [
+              -104.053741,
+              41.517208
+            ],
+            [
+              -104.05318,
+              42.640265
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poly_mwyo4gwffgha",
+      "properties": {
+        "name": "",
+        "countryId": "country_173",
+        "neutral": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.170713,
+              42.418908
+            ],
+            [
+              -106.196307,
+              43.546926
+            ],
+            [
+              -105.034404,
+              43.555384
+            ],
+            [
+              -105.018697,
+              42.64082
+            ],
+            [
+              -105.319072,
+              42.6386
+            ],
+            [
+              -105.316588,
+              42.450945
+            ],
+            [
+              -105.370841,
+              42.456671
+            ],
+            [
+              -105.389333,
+              42.40553
+            ],
+            [
+              -105.440186,
+              42.361175
+            ],
+            [
+              -105.494865,
+              42.349988
+            ],
+            [
+              -105.522617,
+              42.373545
+            ],
+            [
+              -105.494406,
+              42.418769
+            ],
+            [
+              -105.486561,
+              42.444473
+            ],
+            [
+              -105.544202,
+              42.451559
+            ],
+            [
+              -105.622793,
+              42.44815
+            ],
+            [
+              -105.645908,
+              42.422582
+            ],
+            [
+              -106.170713,
+              42.418908
             ]
           ]
         ]
